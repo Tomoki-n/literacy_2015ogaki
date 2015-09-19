@@ -8,19 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+var level = 45
 
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var levelView: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //test
+        self.levelView.text = String(level)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

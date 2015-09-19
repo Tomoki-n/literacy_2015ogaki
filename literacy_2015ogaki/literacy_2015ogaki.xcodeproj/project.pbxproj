@@ -415,6 +415,7 @@
 				FA9B7D8D1BA66D05003DB632 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA9B7D8E1BA66D05003DB632 /* Build configuration list for PBXNativeTarget "literacy_2015ogakiTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +424,7 @@
 				FA9B7D901BA66D05003DB632 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
