@@ -13,9 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // test
+        
+        var app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        
+        var enemy:AnyObject? = app.enemy.getEnemy()
+        
+        println(enemy!.name)
     }
 
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -12,11 +12,46 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var enemy = enemyClass()
+    
+    //敵についてのクラス
+    internal class enemyClass{
+        //外部からは読み込み専用
+        private (set) var masterName :String?
+        private (set) var masterImage:String?
+        
+        //初期化
+        init(){
+            masterName! = "yamaguchi"
+        }
+        
+        //このインスタンスを返却する
+        internal func getEnemy() -> AnyObject{
+            return self;
+        }
+        
+        //呼び出す都度敵を変更する（エンカウント、ランダム）
+        internal func setEnemy(){
+            
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 

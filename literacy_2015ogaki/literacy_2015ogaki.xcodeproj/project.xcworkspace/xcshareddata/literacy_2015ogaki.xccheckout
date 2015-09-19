@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>493050F5-04EF-4C32-9F1C-F36B607FC509</string>
+	<key>IDESourceControlProjectName</key>
+	<string>literacy_2015ogaki</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0D85633CE11CEBDE2FC3ADFD198C011A41D9B26E</key>
+		<string>https://github.com/Tomoki-n/literacy_2015ogaki.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>literacy_2015ogaki/literacy_2015ogaki.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0D85633CE11CEBDE2FC3ADFD198C011A41D9B26E</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Tomoki-n/literacy_2015ogaki.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0D85633CE11CEBDE2FC3ADFD198C011A41D9B26E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0D85633CE11CEBDE2FC3ADFD198C011A41D9B26E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>literacy</string>
+		</dict>
+	</array>
+</dict>
+</plist>
