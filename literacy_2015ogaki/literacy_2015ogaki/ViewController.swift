@@ -13,14 +13,14 @@ var level = 45
 class ViewController: UIViewController {
     
     @IBOutlet weak var levelView: UILabel!
-    
-    
+    @IBOutlet weak var nameView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //test
         self.levelView.text = String(level)
+        self.nameView.text = "T.Kosen"
     }
 
     override func didReceiveMemoryWarning() {

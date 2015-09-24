@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -37,7 +38,7 @@
                                             <constraint firstAttribute="height" constant="57" id="mhB-Mb-smB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HITPOINT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6h-TT-VjA">
@@ -53,7 +54,7 @@
                                     <constraint firstAttribute="trailing" secondItem="WJB-Lk-uge" secondAttribute="trailing" constant="12" id="8yt-gs-8Yw"/>
                                     <constraint firstItem="WJB-Lk-uge" firstAttribute="top" secondItem="a6h-TT-VjA" secondAttribute="bottom" constant="8" id="AbZ-g7-gnl"/>
                                     <constraint firstAttribute="bottom" secondItem="WJB-Lk-uge" secondAttribute="bottom" constant="20" id="AmQ-GZ-sOh">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="9"/>
                                     </constraint>
                                     <constraint firstAttribute="trailing" secondItem="a6h-TT-VjA" secondAttribute="trailing" constant="12" id="K8a-RP-tcH"/>
                                     <constraint firstItem="WJB-Lk-uge" firstAttribute="top" secondItem="a6h-TT-VjA" secondAttribute="bottom" constant="8" id="N1B-kn-aUE"/>
@@ -64,31 +65,212 @@
                                     <constraint firstItem="a6h-TT-VjA" firstAttribute="top" secondItem="Dbo-4l-tE6" secondAttribute="top" id="YYm-Iz-yjg"/>
                                     <constraint firstItem="Dbo-4l-tE6" firstAttribute="leading" secondItem="bSu-7C-sBh" secondAttribute="leading" constant="20" id="nmv-8z-9OB"/>
                                     <constraint firstAttribute="bottom" secondItem="Dbo-4l-tE6" secondAttribute="bottom" constant="20" id="raK-Y9-mRd">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="9"/>
                                     </constraint>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ5-g6-Hqm" userLabel="equipment">
+                                <rect key="frame" x="196" y="198" width="408" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXp-8a-WD6">
+                                        <rect key="frame" x="208" y="20" width="180" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="vNd-13-IC6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vNd-13-IC6"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="vNd-13-IC6"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvx-nT-TAB">
+                                        <rect key="frame" x="20" y="20" width="180" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="jmf-WB-lFJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="jmf-WB-lFJ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="jmf-WB-lFJ"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pvx-nT-TAB" firstAttribute="top" secondItem="vQ5-g6-Hqm" secondAttribute="top" constant="20" id="27i-97-mjI"/>
+                                    <constraint firstItem="pvx-nT-TAB" firstAttribute="top" secondItem="PXp-8a-WD6" secondAttribute="top" id="8ey-OM-MBR"/>
+                                    <constraint firstItem="PXp-8a-WD6" firstAttribute="leading" secondItem="pvx-nT-TAB" secondAttribute="trailing" constant="8" symbolic="YES" id="In9-7S-nWG"/>
+                                    <constraint firstItem="PXp-8a-WD6" firstAttribute="baseline" secondItem="pvx-nT-TAB" secondAttribute="baseline" id="e74-Bg-h48"/>
+                                    <constraint firstItem="PXp-8a-WD6" firstAttribute="centerY" secondItem="vQ5-g6-Hqm" secondAttribute="centerY" id="fr0-1p-IZD"/>
+                                    <constraint firstItem="pvx-nT-TAB" firstAttribute="leading" secondItem="vQ5-g6-Hqm" secondAttribute="leading" constant="215" id="rZF-yz-Smd"/>
+                                    <constraint firstAttribute="height" constant="110" id="uWh-PQ-xAH"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uWh-PQ-xAH"/>
+                                        <exclude reference="27i-97-mjI"/>
+                                        <exclude reference="8ey-OM-MBR"/>
+                                        <exclude reference="rZF-yz-Smd"/>
+                                        <exclude reference="In9-7S-nWG"/>
+                                        <exclude reference="e74-Bg-h48"/>
+                                        <exclude reference="fr0-1p-IZD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="uWh-PQ-xAH"/>
+                                        <include reference="27i-97-mjI"/>
+                                        <include reference="8ey-OM-MBR"/>
+                                        <include reference="rZF-yz-Smd"/>
+                                        <include reference="In9-7S-nWG"/>
+                                        <include reference="e74-Bg-h48"/>
+                                        <include reference="fr0-1p-IZD"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afr-rx-MT0" userLabel="equipment">
+                                <rect key="frame" x="196" y="198" width="408" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjR-Di-K9V">
+                                        <rect key="frame" x="208" y="20" width="180" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="aVZ-kl-UGW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="aVZ-kl-UGW"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="403" y="20" width="180" height="70"/>
+                                            <mask key="constraints">
+                                                <include reference="aVZ-kl-UGW"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pJ-Rt-3Ak">
+                                        <rect key="frame" x="20" y="20" width="180" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="vLQ-Pu-C0D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vLQ-Pu-C0D"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="215" y="20" width="180" height="70"/>
+                                            <mask key="constraints">
+                                                <include reference="vLQ-Pu-C0D"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="8pJ-Rt-3Ak" firstAttribute="firstBaseline" secondItem="qjR-Di-K9V" secondAttribute="firstBaseline" id="JCH-Iu-iAM"/>
+                                    <constraint firstItem="8pJ-Rt-3Ak" firstAttribute="top" secondItem="afr-rx-MT0" secondAttribute="top" constant="20" id="Qit-Rh-9wj"/>
+                                    <constraint firstItem="8pJ-Rt-3Ak" firstAttribute="baseline" secondItem="qjR-Di-K9V" secondAttribute="baseline" id="YZt-aO-K9q"/>
+                                    <constraint firstItem="8pJ-Rt-3Ak" firstAttribute="leading" secondItem="afr-rx-MT0" secondAttribute="leading" constant="215" id="nwJ-Cl-O7a"/>
+                                    <constraint firstItem="qjR-Di-K9V" firstAttribute="leading" secondItem="8pJ-Rt-3Ak" secondAttribute="trailing" constant="8" symbolic="YES" id="qOH-47-Kgx"/>
+                                    <constraint firstItem="8pJ-Rt-3Ak" firstAttribute="centerY" secondItem="afr-rx-MT0" secondAttribute="centerY" id="rsf-oT-1Gy"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JCH-Iu-iAM"/>
+                                        <exclude reference="Qit-Rh-9wj"/>
+                                        <exclude reference="YZt-aO-K9q"/>
+                                        <exclude reference="nwJ-Cl-O7a"/>
+                                        <exclude reference="rsf-oT-1Gy"/>
+                                        <exclude reference="qOH-47-Kgx"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="670" width="800" height="110"/>
+                                    <mask key="constraints">
+                                        <include reference="JCH-Iu-iAM"/>
+                                        <include reference="Qit-Rh-9wj"/>
+                                        <include reference="YZt-aO-K9q"/>
+                                        <include reference="nwJ-Cl-O7a"/>
+                                        <include reference="rsf-oT-1Gy"/>
+                                        <include reference="qOH-47-Kgx"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="vQ5-g6-Hqm" secondAttribute="centerX" id="2VW-HA-OBu"/>
+                            <constraint firstItem="vQ5-g6-Hqm" firstAttribute="leading" secondItem="bSu-7C-sBh" secondAttribute="leading" id="4Ax-Zs-cJ9"/>
+                            <constraint firstItem="vQ5-g6-Hqm" firstAttribute="top" secondItem="bSu-7C-sBh" secondAttribute="bottom" constant="8" symbolic="YES" id="85J-kc-NDO"/>
+                            <constraint firstAttribute="centerX" secondItem="afr-rx-MT0" secondAttribute="centerX" id="9DO-2B-DtL"/>
+                            <constraint firstItem="vQ5-g6-Hqm" firstAttribute="trailing" secondItem="bSu-7C-sBh" secondAttribute="trailing" id="B2j-sb-UkU"/>
+                            <constraint firstItem="afr-rx-MT0" firstAttribute="trailing" secondItem="vQ5-g6-Hqm" secondAttribute="trailing" id="Bck-EL-1fi"/>
                             <constraint firstItem="bSu-7C-sBh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GIa-tq-bO0"/>
                             <constraint firstItem="bSu-7C-sBh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Jjq-Z8-79i"/>
+                            <constraint firstAttribute="bottom" secondItem="afr-rx-MT0" secondAttribute="bottom" constant="20" symbolic="YES" id="RvT-hV-r4P"/>
                             <constraint firstAttribute="centerX" secondItem="bSu-7C-sBh" secondAttribute="centerX" id="TQI-r0-tzn"/>
                             <constraint firstAttribute="trailing" secondItem="bSu-7C-sBh" secondAttribute="trailing" id="g0W-qy-cH9"/>
+                            <constraint firstItem="afr-rx-MT0" firstAttribute="leading" secondItem="vQ5-g6-Hqm" secondAttribute="leading" id="pnQ-zA-UwH"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="afr-rx-MT0"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="TQI-r0-tzn"/>
+                                <exclude reference="2VW-HA-OBu"/>
+                                <exclude reference="4Ax-Zs-cJ9"/>
+                                <exclude reference="85J-kc-NDO"/>
+                                <exclude reference="B2j-sb-UkU"/>
+                                <exclude reference="9DO-2B-DtL"/>
+                                <exclude reference="Bck-EL-1fi"/>
+                                <exclude reference="RvT-hV-r4P"/>
+                                <exclude reference="pnQ-zA-UwH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="afr-rx-MT0"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="TQI-r0-tzn"/>
+                                <include reference="2VW-HA-OBu"/>
+                                <include reference="4Ax-Zs-cJ9"/>
+                                <include reference="85J-kc-NDO"/>
+                                <include reference="B2j-sb-UkU"/>
+                                <include reference="9DO-2B-DtL"/>
+                                <include reference="Bck-EL-1fi"/>
+                                <include reference="RvT-hV-r4P"/>
+                                <include reference="pnQ-zA-UwH"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="levelView" destination="Dbo-4l-tE6" id="uvg-iT-tY6"/>
+                        <outlet property="nameView" destination="WJB-Lk-uge" id="UPC-ef-BIc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
