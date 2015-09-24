@@ -5,6 +5,7 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -171,6 +172,9 @@
                                                 <include reference="MD2-o7-RdQ"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="mainLeftButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SiK-GR-NRx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ac-W0-qpX">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -192,6 +196,9 @@
                                                 <include reference="rmc-CZ-MBH"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="mainRightButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1zb-1a-qBw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -236,6 +243,13 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pyh-Hp-Ura">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="16" y="336" width="768" height="326"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -247,14 +261,19 @@
                             <constraint firstItem="afr-rx-MT0" firstAttribute="trailing" secondItem="vQ5-g6-Hqm" secondAttribute="trailing" id="Bck-EL-1fi"/>
                             <constraint firstItem="bSu-7C-sBh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GIa-tq-bO0"/>
                             <constraint firstItem="bSu-7C-sBh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Jjq-Z8-79i"/>
+                            <constraint firstItem="pyh-Hp-Ura" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Knh-2P-lzC"/>
                             <constraint firstAttribute="bottom" secondItem="afr-rx-MT0" secondAttribute="bottom" constant="20" symbolic="YES" id="RvT-hV-r4P"/>
                             <constraint firstAttribute="centerX" secondItem="bSu-7C-sBh" secondAttribute="centerX" id="TQI-r0-tzn"/>
                             <constraint firstAttribute="trailing" secondItem="bSu-7C-sBh" secondAttribute="trailing" id="g0W-qy-cH9"/>
+                            <constraint firstItem="afr-rx-MT0" firstAttribute="top" secondItem="pyh-Hp-Ura" secondAttribute="bottom" constant="8" id="iZS-C9-Hbr"/>
                             <constraint firstItem="afr-rx-MT0" firstAttribute="leading" secondItem="vQ5-g6-Hqm" secondAttribute="leading" id="pnQ-zA-UwH"/>
+                            <constraint firstItem="pyh-Hp-Ura" firstAttribute="top" secondItem="vQ5-g6-Hqm" secondAttribute="bottom" constant="8" id="ruY-kR-q7g"/>
+                            <constraint firstItem="pyh-Hp-Ura" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zeC-ej-KNz"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="afr-rx-MT0"/>
+                                <exclude reference="pyh-Hp-Ura"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="TQI-r0-tzn"/>
@@ -262,15 +281,20 @@
                                 <exclude reference="4Ax-Zs-cJ9"/>
                                 <exclude reference="85J-kc-NDO"/>
                                 <exclude reference="B2j-sb-UkU"/>
+                                <exclude reference="Knh-2P-lzC"/>
+                                <exclude reference="ruY-kR-q7g"/>
+                                <exclude reference="zeC-ej-KNz"/>
                                 <exclude reference="9DO-2B-DtL"/>
                                 <exclude reference="Bck-EL-1fi"/>
                                 <exclude reference="RvT-hV-r4P"/>
+                                <exclude reference="iZS-C9-Hbr"/>
                                 <exclude reference="pnQ-zA-UwH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="afr-rx-MT0"/>
+                                <include reference="pyh-Hp-Ura"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="TQI-r0-tzn"/>
@@ -278,16 +302,23 @@
                                 <include reference="4Ax-Zs-cJ9"/>
                                 <include reference="85J-kc-NDO"/>
                                 <include reference="B2j-sb-UkU"/>
+                                <include reference="Knh-2P-lzC"/>
+                                <include reference="ruY-kR-q7g"/>
+                                <include reference="zeC-ej-KNz"/>
                                 <include reference="9DO-2B-DtL"/>
                                 <include reference="Bck-EL-1fi"/>
                                 <include reference="RvT-hV-r4P"/>
+                                <include reference="iZS-C9-Hbr"/>
                                 <include reference="pnQ-zA-UwH"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="armorName" destination="PXp-8a-WD6" id="5Qf-vd-2gy"/>
                         <outlet property="levelView" destination="Dbo-4l-tE6" id="uvg-iT-tY6"/>
+                        <outlet property="mapView" destination="pyh-Hp-Ura" id="BsX-RV-8xZ"/>
                         <outlet property="nameView" destination="WJB-Lk-uge" id="UPC-ef-BIc"/>
+                        <outlet property="weaponName" destination="pvx-nT-TAB" id="zWk-MW-WSC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

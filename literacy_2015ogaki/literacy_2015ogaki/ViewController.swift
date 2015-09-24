@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var levelView: UILabel!
     @IBOutlet weak var nameView: UILabel!
     
+    @IBOutlet weak var weaponName: UILabel!
+    @IBOutlet weak var armorName: UILabel!
+    
+    @IBOutlet weak var mapView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,6 +31,12 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func mainLeftButtonAction(sender: AnyObject) {
+    }
+    
+    @IBAction func mainRightButtonAction(sender: AnyObject) {
     }
 }
 
