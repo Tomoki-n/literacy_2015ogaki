@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var weaponName: UILabel!
     @IBOutlet weak var armorName: UILabel!
     
-    @IBOutlet weak var mapView: UIImageView!
+    @IBOutlet weak var map: mapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

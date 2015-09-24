@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0DD12011BB3EB330078B4C5 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD12001BB3EB330078B4C5 /* mapView.swift */; };
 		FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */; };
 		FA9B7D721BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D701BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld */; };
 		FA9B7D741BA66D05003DB632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D731BA66D05003DB632 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0DD12001BB3EB330078B4C5 /* mapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
 		FA9B7D691BA66D05003DB632 /* literacy_2015ogaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = literacy_2015ogaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9B7D6D1BA66D05003DB632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */,
 				FA9B7D731BA66D05003DB632 /* ViewController.swift */,
+				C0DD12001BB3EB330078B4C5 /* mapView.swift */,
 				FA9B7D751BA66D05003DB632 /* Main.storyboard */,
 				FA9B7D781BA66D05003DB632 /* Images.xcassets */,
 				FA9B7D7A1BA66D05003DB632 /* LaunchScreen.xib */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9B7D741BA66D05003DB632 /* ViewController.swift in Sources */,
+				C0DD12011BB3EB330078B4C5 /* mapView.swift in Sources */,
 				FA9B7D721BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld in Sources */,
 				FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */,
 			);
