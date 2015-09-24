@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 var level = 45
 
@@ -19,6 +20,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var armorName: UILabel!
     
     @IBOutlet weak var map: mapView!
+    
+    @IBOutlet var beacons:Array<CLBeacon> = []
+    @IBOutlet weak var locationManerger:CLLocationManager!
+    @IBOutlet weak var myUUID:NSUUID!
+    @IBOutlet weak var selectUUID:NSUUID!
+    @IBOutlet weak var myRegion:CLBeaconRegion!
+    @IBOutlet weak var selectBeacon:CLBeacon!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,5 +47,8 @@ class ViewController: UIViewController {
     
     @IBAction func mainRightButtonAction(sender: AnyObject) {
     }
+    
+    //iBeacon関連の関数
+    
 }
 
