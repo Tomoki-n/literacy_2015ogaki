@@ -37,15 +37,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.levelView.text = String(level)
         self.nameView.text = "T.Kosen"
         
+        self.myUUID = NSUUID(UUIDString: "xxxxxxxxxxxxxxx")
+        self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID!, identifier: self.myUUID!.UUIDString)
+        self.locationManerger! = CLLocationManager()
+        self.locationManerger!.delegate! = self
         
-        self.myUUID? = NSUUID(UUIDString: "")!
-        self.myRegion? = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID!.UUIDString)
-        self.locationManerger? = CLLocationManager()
-        self.locationManerger.delegate = self
+        self.b_count = 0
         
-        self.b_count! = 0
-        
-        self.locationManerger.startMonitoringForRegion(self.myRegion!)
+        //self.locationManerger.startMonitoringForRegion(self.myRegion!)
     }
 
     override func didReceiveMemoryWarning() {
