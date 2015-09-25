@@ -11,7 +11,7 @@ import CoreLocation
 
 var level = 45
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var levelView: UILabel!
     @IBOutlet weak var nameView: UILabel!
@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         //test
         self.levelView.text = String(level)
         self.nameView.text = "T.Kosen"
+        
+        self.myUUID? = NSUUID().
     }
 
     override func didReceiveMemoryWarning() {
