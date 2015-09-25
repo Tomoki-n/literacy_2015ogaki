@@ -16,7 +16,7 @@ class mapView: UIImageView {
         // Drawing code
     }
 
-    func drawLightEffectonMarker(id: Int){
+    func drawLightEffect(id: Int){
         
     }
 }
