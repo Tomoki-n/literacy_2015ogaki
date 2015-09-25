@@ -16,8 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var map:Int = 0  //0,1,2,3,4
     //var map:String = "Grassland" //Grassland,Coast,Forest,Desert,Devil
     
+    //プレイヤー
+    var player:playerClass = playerClass()
     //敵
-    var enemy:enemyClass = enemyClass();
+    var enemy:enemyClass = enemyClass()
     
     var window: UIWindow?
 

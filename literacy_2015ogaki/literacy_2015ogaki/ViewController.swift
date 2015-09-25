@@ -58,6 +58,9 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         textField.inputView = myPickerView
         textField.inputAccessoryView = myToolBar
         
+        nameLabel.text = app.player.Name!
+        
+        
     }
 
 

@@ -10,6 +10,27 @@ import UIKit
 
 var app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
+let weaponList[String] = ["はじまりの剣","漁師のモリ","狩人の弓","王者の曲刀","勇者の剣"]
+let armorList[String]  = ["風のマント","潮風のスカーフ","深緑の帽子","ファラオの鎧","勇者の盾"]
+
+
+//プレイヤーについてのクラス
+class playerClass{
+    
+    var Name:String?   //プレイヤー名
+    var HP:Int?        //HP　MAX : 5 MIN : 0
+    var weapon:String? //装備武器
+    var armor:String?  //装備防具
+    
+    init(){
+        Name   = "YAMAGUCHI"
+        HP     = 5
+        weapon = weaponList[0]
+        armor  = armorList[0]
+    }
+    
+}
+
 //敵についてのクラス
 class enemyClass{
     //敵の名前 Grassland,Coast,Forest,Desert,Devil
@@ -20,9 +41,9 @@ class enemyClass{
                                         ["銀スライム","死神","魔女","超能力者の高専生","大魔王"]]
     
     //外部からは読み込み専用
-    private (set) var Name :String?
-    private (set) var Image:String?
-    private var mapName:String?
+    private (set) var Name :String? //敵の名前
+    private (set) var Image:String? //敵の画像パス
+    private var mapName:String?     //現在のマップ（パス用）
     
     //初期化
     init(){
