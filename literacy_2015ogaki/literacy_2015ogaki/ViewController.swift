@@ -13,9 +13,14 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var bossButton: UIButton!
     @IBOutlet weak var charaImage: UIImageView!
-    @IBOutlet weak var imageLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
     
+    
+    @IBOutlet weak var name1Label: UILabel!
+    @IBOutlet weak var name2Label: UILabel!
+    @IBOutlet weak var name3Label: UILabel!
+    @IBOutlet weak var image1Label: UILabel!
+    @IBOutlet weak var image2Label: UILabel!
+    @IBOutlet weak var image3Label: UILabel!
     
     //Appdelegate
     var app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -36,9 +41,8 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         charaImage.image = enemyImage
         self.view.addSubview(charaImage)
         
-        println(app.enemy.Name!)
-        nameLabel.text = app.enemy.Name!
-        imageLabel.text = app.enemy.Image!
+        name1Label.text = app.enemy.Name!
+        image1Label.text = app.enemy.Image!
         
         //エリア選択
         myPickerView = UIPickerView()
@@ -58,9 +62,6 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         textField.inputView = myPickerView
         textField.inputAccessoryView = myToolBar
         
-        nameLabel.text = app.player.Name!
-        
-        
     }
 
 
@@ -73,11 +74,20 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         //敵セット
         app.enemy.setEnemy()
         //描画し直し
-        nameLabel.text = app.enemy.Name!
-        imageLabel.text = app.enemy.Image!
+        name1Label.text = app.enemy.Name!
+        image1Label.text = app.enemy.Image!
         enemyImage = UIImage(named:app.enemy.Image!)
         charaImage.image = enemyImage
         self.view.addSubview(charaImage)
+        
+        name1Label.text  = app.quest.weapon
+        image1Label.text = app.quest.weaponImage
+        name2Label.text  = app.quest.item1
+        image2Label.text = app.quest.item1Image
+        name3Label.text  = app.quest.titleQuest
+        image3Label.text = String(app.quest.item1Position!)
+        
+        
     }
 
     
@@ -85,11 +95,14 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         //ボス敵セット
         app.enemy.setBoss()
         //描画し直し
-        nameLabel.text = app.enemy.Name!
-        imageLabel.text = app.enemy.Image!
+        name1Label.text = app.enemy.Name!
+        image1Label.text = app.enemy.Image!
         enemyImage = UIImage(named:app.enemy.Image!)
         charaImage.image = enemyImage
         self.view.addSubview(charaImage)
+        
+        app.quest.setNextQuest()
+        
         
         
     }
