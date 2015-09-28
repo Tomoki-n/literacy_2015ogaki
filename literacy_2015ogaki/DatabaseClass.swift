@@ -107,6 +107,8 @@ class enemyClass{
     //外部からは変更不可
     private (set) var Name :String? //敵の名前
     private (set) var Image:String? //敵の画像パス
+    private let bossPositionList:[Int] = [3,17,5,14,18] //ボスの座標 12345 678910 1112131415 1617181920
+    private let bossPosition:Int?
     private var mapName:String?     //現在のマップ（パス用）
     //敵の名前 Grassland,Coast,Forest,Desert,Devil
     private let enemyName:[[String]] = [["赤スライム","お化け","魔法使い","眠りの高専生","黒猫ヤマト"],
@@ -120,6 +122,7 @@ class enemyClass{
         Name    = enemyName[0][0]
         Image   = "GrasslandEnemy0.png"
         mapName = "Grassland"
+        bossPosition = 0
     }
     
     
@@ -146,6 +149,10 @@ class enemyClass{
         Name = enemyName[app.map][4]
         //画像場所確定
         Image = mapName! + "Boss.png"
+    }
+    
+    func getBossPosition() -> Int{
+        return bossPositionList[app.map]
     }
     //必要ないと思われる？
     /*
@@ -320,7 +327,7 @@ class questClass{
                                              ["草原の思い出","砂漠の思い出","ライオンハート"]]
     
     //武器素材の位置
-    private let weaponItemPositionList:[[Int]]  = [[1],[1,1],[1,1,1],[1,1,1],[1,1,1]]
+    private let weaponItemPositionList:[[Int]]  = [[1],[20,5],[1,1,1],[1,1,1],[1,1,1]]
     private let weaponItemPositionList2:[[Int]] = [[5],[1,1],[1,1,1],[1,1,1],[1,1,1]]
     
     //防具素材
@@ -331,8 +338,8 @@ class questClass{
                                              ["海岸の思い出","森林の思い出","壊れたあいぱっど"]]
     
     //防具素材の位置
-    private let armorItemPositionList:[[Int]]  = [[1],[1,1],[1,1,1],[1,1,1],[1,1,1]]
-    private let armorItemPositionList2:[[Int]] = [[1],[1,1],[1,1,1],[1,1,1],[1,1,1]]
+    private let armorItemPositionList:[[Int]]  = [[17],[1,1],[1,1,1],[1,1,1],[1,1,1]]
+    private let armorItemPositionList2:[[Int]] = [[19],[1,1],[1,1,1],[1,1,1],[1,1,1]]
     
     //クエストタイトル
     private let titleQuestList:[[String]] = [["はじめての剣","はじめての盾"],
