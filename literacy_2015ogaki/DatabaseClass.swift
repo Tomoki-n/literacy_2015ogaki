@@ -182,6 +182,7 @@ class questClass{
     private (set) var item3Position:Int?
     private (set) var titleQuest:String?
     private (set) var sentenceQuest:String?
+    private var nowQuest:Int?
     
     private var mapName:String? //画像パス
     
@@ -190,6 +191,7 @@ class questClass{
         item1Position = 0
         item2Position = 0
         item3Position = 0
+        nowQuest = 0
     }
     
     func setNextQuest(){
@@ -218,6 +220,7 @@ class questClass{
     }
     
     private func setWeaponQuest(){
+        nowQuest = 1
         //アイテムの位置を設定する(2通り)
         var i:UInt32 = arc4random_uniform(2)
         var itemList:[[Int]] = [[0],[0,0],[0,0,0],[0,0,0],[0,0,0]]
@@ -228,13 +231,21 @@ class questClass{
         }
         
         //アイテム数把握
-        var count:Int = nowQuestItemCounts()
+        var count:Int = getQuestItemCounts()
         //アイテム数に応じてセットしていく
         switch(count){
             case 1:
                 item1 = weaponItemList[app.map][0]
                 item1Image = mapName! + "WeaponItem" + "0.png"
                 item1Position = itemList[app.map][0]
+                
+                item2 = nil
+                item2Image = nil
+                item2Position = nil
+                
+                item3 = nil
+                item3Image = nil
+                item3Position = nil
                 break
             case 2:
                 item1 = weaponItemList[app.map][0]
@@ -243,6 +254,10 @@ class questClass{
                 item2Image = mapName! + "WeaponItem" + "1.png"
                 item1Position = itemList[app.map][0]
                 item2Position = itemList[app.map][1]
+                
+                item3 = nil
+                item3Image = nil
+                item3Position = nil
                 break
             case 3:
                 item1 = weaponItemList[app.map][0]
@@ -266,6 +281,7 @@ class questClass{
     }
     
     private func setArmorQuest(){
+        nowQuest = 2
         //アイテムの位置を設定する(2通り)
         var i:UInt32 = arc4random_uniform(2)
         var itemList:[[Int]] = [[0],[0,0],[0,0,0],[0,0,0],[0,0,0]]
@@ -276,7 +292,7 @@ class questClass{
         }
         
         //アイテム数把握
-        var count:Int = nowQuestItemCounts()
+        var count:Int = getQuestItemCounts()
         //アイテム数に応じてセットしていく
         switch(count){
             case 1:
@@ -314,10 +330,14 @@ class questClass{
     }
     
     //今のクエストが何個アイテムを必要としているか判断する
-    func nowQuestItemCounts() -> Int{
+    func getQuestItemCounts() -> Int{
         return weaponItemList[app.map].count
     }
     
+    //現在のクエストが何か返却する 1->武器 2->防具
+    func getQuestEquip() -> Int{
+        return nowQuest!
+    }
     
     //武器素材
     private let weaponItemList:[[String]] = [["ヒスイの勾玉"],
@@ -327,8 +347,8 @@ class questClass{
                                              ["草原の思い出","砂漠の思い出","ライオンハート"]]
     
     //武器素材の位置
-    private let weaponItemPositionList:[[Int]]  = [[1],[20,5],[1,1,1],[1,1,1],[1,1,1]]
-    private let weaponItemPositionList2:[[Int]] = [[5],[1,1],[1,1,1],[1,1,1],[1,1,1]]
+    private let weaponItemPositionList:[[Int]]  = [[1],[20,5],[2,9,17],[1,9,11],[2,10,12]]
+    private let weaponItemPositionList2:[[Int]] = [[5],[18,3],[4,7,19],[5,7,15],[4,6,14]]
     
     //防具素材
     private let armorItemList:[[String]]  = [["そよ風のオーブ"],
@@ -338,8 +358,8 @@ class questClass{
                                              ["海岸の思い出","森林の思い出","壊れたあいぱっど"]]
     
     //防具素材の位置
-    private let armorItemPositionList:[[Int]]  = [[17],[1,1],[1,1,1],[1,1,1],[1,1,1]]
-    private let armorItemPositionList2:[[Int]] = [[19],[1,1],[1,1,1],[1,1,1],[1,1,1]]
+    private let armorItemPositionList:[[Int]]  = [[17],[19,7],[3,6,13],[13,2,19],[9,16,18]]
+    private let armorItemPositionList2:[[Int]] = [[19],[16,9],[3,10,13],[13,4,17],[7,20,18]]
     
     //クエストタイトル
     private let titleQuestList:[[String]] = [["はじめての剣","はじめての盾"],
