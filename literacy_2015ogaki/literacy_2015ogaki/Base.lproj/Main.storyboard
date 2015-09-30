@@ -344,7 +344,7 @@
         <!--View Controller-->
         <scene sceneID="SpD-D5-ELu">
             <objects>
-                <viewController id="PTx-3E-MZZ" sceneMemberID="viewController">
+                <viewController id="PTx-3E-MZZ" customClass="ViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="duH-h3-SFa"/>
                         <viewControllerLayoutGuide type="bottom" id="z61-38-4gd"/>

@@ -11,6 +11,14 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    //現在マップ
+    var map:Int = 0  //0,1,2,3,4
+    //var map:String = "Grassland" //Grassland,Coast,Forest,Desert,Devil
+    
+    var player:playerClass = playerClass() //プレイヤー
+    var enemy:enemyClass = enemyClass()    //敵
+    var quest:questClass = questClass()    //クエスト
 
     var window: UIWindow?
 

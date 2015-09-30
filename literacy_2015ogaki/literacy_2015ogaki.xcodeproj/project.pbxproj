@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C02EB6EC1BBB5C4D00339991 /* DatabaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02EB6EB1BBB5C4D00339991 /* DatabaseClass.swift */; };
 		C0DD12011BB3EB330078B4C5 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD12001BB3EB330078B4C5 /* mapView.swift */; };
 		C0DD12031BB3EDF30078B4C5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */; };
 		FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C02EB6EB1BBB5C4D00339991 /* DatabaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseClass.swift; sourceTree = "<group>"; };
 		C0DD12001BB3EB330078B4C5 /* mapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
 		C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FA9B7D691BA66D05003DB632 /* literacy_2015ogaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = literacy_2015ogaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,7 @@
 			children = (
 				FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */,
 				FA9B7D731BA66D05003DB632 /* ViewController.swift */,
+				C02EB6EB1BBB5C4D00339991 /* DatabaseClass.swift */,
 				C0DD12001BB3EB330078B4C5 /* mapView.swift */,
 				FA9B7D751BA66D05003DB632 /* Main.storyboard */,
 				FA9B7D781BA66D05003DB632 /* Images.xcassets */,
@@ -225,6 +228,7 @@
 				FA9B7D741BA66D05003DB632 /* ViewController.swift in Sources */,
 				C0DD12011BB3EB330078B4C5 /* mapView.swift in Sources */,
 				FA9B7D721BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld in Sources */,
+				C02EB6EC1BBB5C4D00339991 /* DatabaseClass.swift in Sources */,
 				FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
