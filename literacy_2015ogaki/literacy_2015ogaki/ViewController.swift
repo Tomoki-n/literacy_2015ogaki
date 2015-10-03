@@ -58,15 +58,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     //iBeacon関連の関数
-    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
-        println("iPad did Enter Region")
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("iPad did Enter Region")
     }
     
-    func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
-        println("iPad did Exit Region")
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("iPad did Exit Region")
     }
     
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -74,7 +74,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var closeBeacon:CLBeacon = CLBeacon()
         
         for var i = 0; i < beacons.count; i++ {
-            let beacon = beacons[i] as! CLBeacon
+            let beacon = beacons[i] 
             
             if i == 0 {
                 closeBeacon = beacon
@@ -83,7 +83,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             }
         }
         
-        var b_pos:Int = closeBeacon.major!.integerValue * 5 + closeBeacon.minor!.integerValue
+        let b_pos:Int = closeBeacon.major.integerValue * 5 + closeBeacon.minor.integerValue
         
         if closeBeacon.major != recent?.major && closeBeacon.minor != recent?.minor {
             //closeBeaconの距離(accuracy)でアクション

@@ -45,7 +45,7 @@ class playerClass{
         }
         //例外処理
         if (Struct.x > 4){
-            println("ERROR!'武器'はこれ以上更新できません。")
+            print("ERROR!'武器'はこれ以上更新できません。")
         }else{
             weapon = weaponList[Struct.x]
             mapName = getsMap()
@@ -62,7 +62,7 @@ class playerClass{
         }
         //例外処理
         if (Struct.x > 4){
-            println("ERROR!'装備'はこれ以上更新できません。")
+            print("ERROR!'装備'はこれ以上更新できません。")
         }else{
             armor = armorList[Struct.x]
             mapName = getsMap()
@@ -95,7 +95,7 @@ class playerClass{
                     _HP = newValue
                 }
             }else{
-                println("ERROR!設定HPは0~5です。この数字は設定できません。")
+                print("ERROR!設定HPは0~5です。この数字は設定できません。")
             }
         }
     }
@@ -130,7 +130,7 @@ class enemyClass{
     func setEnemy(){
         //ランダムでEnemy0~4を選択 4(レア）の確率は他と比べて1/10
         var enemyNum = arc4random_uniform(31);
-        println(enemyNum)
+        print(enemyNum)
         if (enemyNum == 30){
             enemyNum = 3
         }else{
@@ -391,7 +391,7 @@ private func getsMap() -> String{
     case 4:
         return "Devil"
     default:
-        println("map番号がおかしい")
+        print("map番号がおかしい")
         return "ERROR"
     }
 }
