@@ -74,20 +74,18 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         //敵セット
         app.enemy.setEnemy()
         //描画し直し
-        name1Label.text = app.enemy.Name!
-        image1Label.text = app.enemy.Image!
-        enemyImage = UIImage(named:app.enemy.Image!)
+        enemyImage = UIImage(named:app.quest.armorImage!)
         charaImage.image = enemyImage
         self.view.addSubview(charaImage)
         
-        name1Label.text  = app.quest.weapon
-        image1Label.text = app.quest.weaponImage
-        name2Label.text  = app.quest.item1
-        image2Label.text = app.quest.item1Image
-        name3Label.text  = app.quest.titleQuest
-        image3Label.text = String(app.quest.item1Position!)
-        
-        
+        name1Label.text  = app.player.weapon
+        image1Label.text = app.player.armor
+        name2Label.text  = app.quest.weapon
+        image2Label.text = app.quest.armor
+        name3Label.text  = app.quest.item3
+        var x:String = String(stringInterpolationSegment: app.quest.getQuestFinished())
+        image3Label.text = x
+        print(app.quest.getItemStatus())
     }
 
     
@@ -102,8 +100,9 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         self.view.addSubview(charaImage)
         
         app.quest.setNextQuest()
-        
-        
+        app.quest.getItem(1)
+        app.player.setNextWeapon()
+        app.player.setNextArmor()
         
     }
  

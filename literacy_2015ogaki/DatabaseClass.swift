@@ -39,36 +39,16 @@ class playerClass{
     
     //次の武器をゲットする
     func setNextWeapon(){
-        //staticで装備を管理
-        struct Struct{
-            static var x:Int = 0
-        }
-        //例外処理
-        if (Struct.x > 4){
-            println("ERROR!'武器'はこれ以上更新できません。")
-        }else{
-            weapon = weaponList[Struct.x]
-            mapName = getsMap()
-            weaponImage = mapName! + "Weapon.png"
-            Struct.x++
-        }
+        weapon = weaponList[app.map]
+        mapName = getsMap()
+        weaponImage = mapName! + "Weapon.png"
     }
     
     //次の防具をセットする
     func setNextArmor(){
-        //staticで装備を管理
-        struct Struct{
-            static var x:Int = 0
-        }
-        //例外処理
-        if (Struct.x > 4){
-            println("ERROR!'装備'はこれ以上更新できません。")
-        }else{
-            armor = armorList[Struct.x]
-            mapName = getsMap()
-            armorImage = mapName! + "Armor.png"
-            Struct.x++
-        }
+        armor = armorList[app.map]
+        mapName = getsMap()
+        armorImage = mapName! + "Armor.png"
     }
     
     //プレイヤー名
@@ -130,7 +110,6 @@ class enemyClass{
     func setEnemy(){
         //ランダムでEnemy0~4を選択 4(レア）の確率は他と比べて1/10
         var enemyNum = arc4random_uniform(31);
-        println(enemyNum)
         if (enemyNum == 30){
             enemyNum = 3
         }else{
@@ -167,22 +146,23 @@ class enemyClass{
 //クエストについてのクラス
 class questClass{
     //itemName -> アイテムの名前 itemImage ->アイテムの画像パス 外部からは変更不可
-    private (set) var weapon:String?
-    private (set) var armor:String?
-    private (set) var weaponImage:String?
-    private (set) var armorImage:String?
-    private (set) var item1:String?
-    private (set) var item2:String?
-    private (set) var item3:String?
-    private (set) var item1Image:String?
-    private (set) var item2Image:String?
-    private (set) var item3Image:String?
+    private (set) var weapon:String? = ""
+    private (set) var armor:String? = ""
+    private (set) var weaponImage:String? = ""
+    private (set) var armorImage:String? = ""
+    private (set) var item1:String? = ""
+    private (set) var item2:String? = ""
+    private (set) var item3:String? = ""
+    private (set) var item1Image:String? = ""
+    private (set) var item2Image:String? = ""
+    private (set) var item3Image:String? = ""
     private (set) var item1Position:Int?
     private (set) var item2Position:Int?
     private (set) var item3Position:Int?
-    private (set) var titleQuest:String?
-    private (set) var sentenceQuest:String?
+    private (set) var titleQuest:String? = ""
+    private (set) var sentenceQuest:String? = ""
     private var nowQuest:Int?
+    private var itemStatus:[Bool] = [false,false,false]
     
     private var mapName:String? //画像パス
     
@@ -196,14 +176,21 @@ class questClass{
     
     func setNextQuest(){
         struct Struct{
-            private static var i:UInt32 = 0 //Questの状態管理 0->防具終わった(次は武器) 1->武器終わった(次は防具）
+            private static var i:UInt32 = 0 //Questの状態管理 0->防具終わった(次は武器) 1->武器終わった(次は防具）]
+            private static var pastMap:Int = app.map
             private static var secondFlag:Bool = false //true ->次のクエスト確定している false->始めのクエスト（クエスト未確定）
+        }
+        
+        //mapが移ったらフラグリセット
+        if (Struct.pastMap != app.map){
+            Struct.secondFlag = false
         }
         
         //secondFlagがfalseのときは、1回目のクエストを乱数で選択
         if (Struct.secondFlag == false){
             //どちらのクエストを選択するか乱数で決定
             Struct.i = arc4random_uniform(2)
+            println("NEW")
         }
         
         //クエスト分岐
@@ -215,7 +202,23 @@ class questClass{
             setArmorQuest()  //防具クエスト
             Struct.i = 0
         }
-
+        
+        //アイテムの数に応じてステータスを確定
+        switch(getQuestItemCounts()){
+        case 1:
+            itemStatus = [false,true,true]
+            break
+        case 2:
+            itemStatus = [false,false,true]
+            break
+        case 3:
+            itemStatus = [false,false,false]
+            break
+        default:
+            break
+        }
+        
+        Struct.pastMap = app.map
         Struct.secondFlag = !Struct.secondFlag
     }
     
@@ -239,13 +242,13 @@ class questClass{
                 item1Image = mapName! + "WeaponItem" + "0.png"
                 item1Position = itemList[app.map][0]
                 
-                item2 = nil
-                item2Image = nil
-                item2Position = nil
+                item2 = ""
+                item2Image = ""
+                item2Position = 0
                 
-                item3 = nil
-                item3Image = nil
-                item3Position = nil
+                item3 = ""
+                item3Image = ""
+                item3Position = 0
                 break
             case 2:
                 item1 = weaponItemList[app.map][0]
@@ -255,9 +258,9 @@ class questClass{
                 item1Position = itemList[app.map][0]
                 item2Position = itemList[app.map][1]
                 
-                item3 = nil
-                item3Image = nil
-                item3Position = nil
+                item3 = ""
+                item3Image = ""
+                item3Position = 0
                 break
             case 3:
                 item1 = weaponItemList[app.map][0]
@@ -337,6 +340,24 @@ class questClass{
     //現在のクエストが何か返却する 1->武器 2->防具
     func getQuestEquip() -> Int{
         return nowQuest!
+    }
+    
+    //アイテムを取得した時実行する
+    func getItem(x:Int){
+        itemStatus[x-1] = true
+    }
+    
+    //アイテムの取得状況を取得する
+    func getItemStatus() -> [Bool]{
+        return itemStatus
+    }
+    
+    //クエストが終了したかどうか取得する
+    func getQuestFinished() -> Bool{
+        if(itemStatus == [true,true,true]){
+            return true
+        }
+        return false
     }
     
     //武器素材
