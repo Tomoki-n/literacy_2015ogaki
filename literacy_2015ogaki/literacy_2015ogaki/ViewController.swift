@@ -19,13 +19,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var map: mapView!
     
-    @IBOutlet weak var locationManerger:CLLocationManager!
-    @IBOutlet weak var myUUID:NSUUID!
-    @IBOutlet weak var selectUUID:NSUUID!
-    @IBOutlet weak var myRegion:CLBeaconRegion!
-    @IBOutlet weak var selectBeacon:CLBeacon!
+    var locationManerger:CLLocationManager!
+    var myUUID:NSUUID!
+    var selectUUID:NSUUID!
+    var myRegion:CLBeaconRegion!
+    var selectBeacon:CLBeacon!
     
-    @IBOutlet weak var recent: CLBeacon?
+    var recent: CLBeacon?
     var b_count: Int!
     var level = 1
     
@@ -36,14 +36,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.levelView.text = String(self.level)
         self.nameView.text = "T.Kosen"
         
-        self.myUUID = NSUUID(UUIDString: "xxxxxxxxxxxxxxx")
-        self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID!, identifier: self.myUUID!.UUIDString)
-        self.locationManerger! = CLLocationManager()
-        self.locationManerger!.delegate! = self
+        self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
+        self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
+        self.locationManerger = CLLocationManager()
+        self.locationManerger.delegate? = self
         
         self.b_count = 0
         
-        //self.locationManerger.startMonitoringForRegion(self.myRegion!)
+        self.locationManerger.startMonitoringForRegion(self.myRegion!)
+        self.map.drawBeacons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,7 +67,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         print("iPad did Exit Region")
     }
     
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -74,7 +75,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var closeBeacon:CLBeacon = CLBeacon()
         
         for var i = 0; i < beacons.count; i++ {
-            let beacon = beacons[i] 
+            let beacon = beacons[i] as! CLBeacon
             
             if i == 0 {
                 closeBeacon = beacon
