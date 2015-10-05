@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "grassland.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "boss.png"
     },
     {
       "idiom" : "universal",

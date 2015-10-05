@@ -25,8 +25,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var myRegion:CLBeaconRegion!
     var selectBeacon:CLBeacon!
     
-    var recent: CLBeacon?
-    var b_count: Int!
+    var recent:CLBeacon?
+    var b_count = 0
     var level = 1
     
     override func viewDidLoad() {
@@ -41,8 +41,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.locationManerger = CLLocationManager()
         self.locationManerger.delegate? = self
         
-        self.b_count = 0
-        
         self.locationManerger.startMonitoringForRegion(self.myRegion!)
         self.map.drawBeacons()
     }
@@ -52,10 +50,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func mainLeftButtonAction(sender: AnyObject) {
-    }
     
-    @IBAction func mainRightButtonAction(sender: AnyObject) {
+    @IBAction func questButton(sender: AnyObject) {
+        self.performSegueWithIdentifier("quest", sender: self)
     }
     
     //iBeacon関連の関数
@@ -68,71 +65,27 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
-        
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        //一番距離が近いbeaconをcloseBeaconに入れる
-        var closeBeacon:CLBeacon = CLBeacon()
-        
-        for var i = 0; i < beacons.count; i++ {
-            let beacon = beacons[i] as! CLBeacon
-            
-            if i == 0 {
-                closeBeacon = beacon
-            }else if closeBeacon.accuracy > beacon.accuracy{
-                closeBeacon = beacon
-            }
+        let closeBeacon = beacons.first as! CLBeacon
+        //最初の処理
+        if self.recent == nil && closeBeacon.accuracy < 1.0 {
+            self.recent = closeBeacon
         }
         
-        let b_pos:Int = closeBeacon.major.integerValue * 5 + closeBeacon.minor.integerValue
-        
-        if closeBeacon.major != recent?.major && closeBeacon.minor != recent?.minor {
-            //closeBeaconの距離(accuracy)でアクション
-            if closeBeacon.accuracy <= 1.0 {
-                self.recent? = closeBeacon
-                self.b_count!++
-            }
-            
-            //Item獲得判定
-            if 1 == 0/*アイテム全部とったかどうか*/ {
-                var alertView = UIAlertController(title: nil, message: "を手に入れた！", preferredStyle: UIAlertControllerStyle.Alert)
-                alertView.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
-                    self.performSegueWithIdentifier("quest", sender: self)
-                }))
-                if appDelegate.quest.item1Position == b_pos {
-                    alertView.title = appDelegate.quest.item1
-                }else if appDelegate.quest.item2Position == b_pos {
-                    alertView.title = appDelegate.quest.item2
-                }else if appDelegate.quest.getQuestItemCounts() == 3 && appDelegate.quest.item3Position == b_pos {
-                    alertView.title = appDelegate.quest.item3
-                }
-                presentViewController(alertView, animated: true, completion: nil)
-            }
-            
-            //エンカウント関連
-            if 1 == 0/*指定レベル && クエスト完了 &&　beaconID一致*/ {
-                var alert = UIAlertController(title: nil, message: "敵が現れた！！", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) -> Void in
-                    self.performSegueWithIdentifier("boss", sender: self)
-                }))
-            }else if 1 == 0/*クエスト未完了*/ {
-                //あとで
-                if self.b_count! >= 3 {
-                    self.b_count! = 0
-                }
-            }else if self.b_count! >= 3 {
-                self.b_count! = 0
-                //敵遭遇！
-                var alert = UIAlertController(title: nil, message: "敵が現れた！！", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) -> Void in
+        //最近通ったビーコンの更新、雑魚とのエンカウント
+        if self.recent != closeBeacon && closeBeacon.accuracy < 1.0 {
+            self.b_count++
+            self.recent = closeBeacon
+            if self.b_count >= 3 {
+                self.b_count = 0
+                var uiAlert = UIAlertController(title: "敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                uiAlert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
                     self.performSegueWithIdentifier("enemy", sender: self)
                 }))
-                presentViewController(alert, animated: true, completion: nil)
+                presentViewController(uiAlert, animated: true, completion: nil)
             }
         }
-        
-        //マップを光らせる処理
-        self.map.drawLightEffect(b_pos)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -141,7 +94,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         }else if segue.identifier == "boss" {
             //bossViewに渡す値の設定
         }else if segue.identifier == "quest" {
-            //questに渡す値の設定
+            var qVC = segue.destinationViewController as! questViewController
+            qVC.items = [true, true, true]
         }
     }
 }

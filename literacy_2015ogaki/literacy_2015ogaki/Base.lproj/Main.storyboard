@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_layout" translatesAutoresizingMaskIntoConstraints="NO" id="hOy-NO-TCg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapView" translatesAutoresizingMaskIntoConstraints="NO" id="hOy-NO-TCg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="grassland" translatesAutoresizingMaskIntoConstraints="NO" id="TdJ-HE-atF" customClass="mapView" customModule="literacy_2015ogaki" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Grassland" translatesAutoresizingMaskIntoConstraints="NO" id="TdJ-HE-atF" customClass="mapView" customModule="literacy_2015ogaki" customModuleProvider="target">
                                 <rect key="frame" x="16" y="141" width="568" height="331"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TdJ-HE-atF" secondAttribute="height" multiplier="20:18" id="zot-MG-vbT"/>
@@ -73,7 +73,8 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="mainLeftButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bkK-nM-wVp"/>
+                                    <action selector="questButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kFP-Uc-wvr"/>
+                                    <segue destination="xjN-zw-VjD" kind="presentation" identifier="quest" modalTransitionStyle="flipHorizontal" id="cp0-LR-aFt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -93,7 +94,7 @@
                     </view>
                     <connections>
                         <outlet property="armorName" destination="YRM-uZ-ajS" id="8wM-xb-0Vk"/>
-                        <outlet property="levelView" destination="wGe-8q-Xb7" id="1DO-ZV-yHK"/>
+                        <outlet property="levelView" destination="wGe-8q-Xb7" id="dDU-fl-lgZ"/>
                         <outlet property="map" destination="TdJ-HE-atF" id="jkR-Nz-CVC"/>
                         <outlet property="nameView" destination="hNP-Ky-5Hu" id="9DI-gX-H0O"/>
                         <outlet property="weaponName" destination="P8X-2G-7v9" id="3I9-zp-jt4"/>
@@ -103,12 +104,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="-1"/>
+            <point key="canvasLocation" x="138" y="3"/>
         </scene>
-        <!--View Controller-->
+        <!--Quest View Controller-->
         <scene sceneID="KvU-xU-k6G">
             <objects>
-                <viewController id="xjN-zw-VjD" sceneMemberID="viewController">
+                <viewController id="xjN-zw-VjD" customClass="questViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ezZ-OR-tmF"/>
                         <viewControllerLayoutGuide type="bottom" id="Pl8-UU-0t6"/>
@@ -116,13 +117,89 @@
                     <view key="view" contentMode="scaleToFill" id="TKk-9k-kPz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapView" translatesAutoresizingMaskIntoConstraints="NO" id="huN-zV-HMZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An8-bi-5hz">
+                                <rect key="frame" x="134" y="88" width="160" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vef-zV-21P">
+                                <rect key="frame" x="373" y="88" width="43" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoQ-DF-a9Q">
+                                <rect key="frame" x="83" y="88" width="43" height="45"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz7-wM-bis">
+                                <rect key="frame" x="194" y="41" width="369" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C9-YS-2Sd">
+                                <rect key="frame" x="22" y="28" width="78" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="questView" translatesAutoresizingMaskIntoConstraints="NO" id="ZGY-fh-Kax" customClass="questItems" customModule="literacy_2015ogaki" customModuleProvider="target">
+                                <rect key="frame" x="16" y="141" width="568" height="331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZGY-fh-Kax" secondAttribute="height" multiplier="20:18" id="Oc4-By-cuG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn4-he-Cbz">
+                                <rect key="frame" x="424" y="88" width="160" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x21-th-L8n">
+                                <rect key="frame" x="50" y="480" width="500" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="19u-7C-ly3"/>
+                                    <constraint firstAttribute="height" constant="100" id="DhW-Ay-Ois"/>
+                                    <constraint firstAttribute="width" secondItem="x21-th-L8n" secondAttribute="height" multiplier="5:1" id="O5x-PX-jSL"/>
+                                    <constraint firstAttribute="width" secondItem="x21-th-L8n" secondAttribute="height" multiplier="4:1" id="gFA-7s-fmv"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="mapButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="O5x-PX-jSL"/>
+                                        <exclude reference="gFA-7s-fmv"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="mapButton:" destination="xjN-zw-VjD" eventType="touchUpInside" id="jtp-hI-tg0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="x21-th-L8n" secondAttribute="centerX" id="35T-8H-eQC"/>
+                            <constraint firstItem="Pl8-UU-0t6" firstAttribute="top" secondItem="huN-zV-HMZ" secondAttribute="bottom" id="Aso-II-MEJ"/>
+                            <constraint firstItem="huN-zV-HMZ" firstAttribute="top" secondItem="TKk-9k-kPz" secondAttribute="topMargin" id="C6g-z2-Gbs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="huN-zV-HMZ" secondAttribute="trailing" constant="-16" id="QMU-J5-Qse"/>
+                            <constraint firstItem="ZGY-fh-Kax" firstAttribute="leading" secondItem="TKk-9k-kPz" secondAttribute="leadingMargin" id="c2S-gJ-mtL"/>
+                            <constraint firstItem="huN-zV-HMZ" firstAttribute="leading" secondItem="TKk-9k-kPz" secondAttribute="leadingMargin" constant="-16" id="cSD-rR-4SN"/>
+                            <constraint firstItem="Pl8-UU-0t6" firstAttribute="top" secondItem="x21-th-L8n" secondAttribute="bottom" constant="20" id="flV-9X-g4G"/>
+                            <constraint firstItem="x21-th-L8n" firstAttribute="top" secondItem="ZGY-fh-Kax" secondAttribute="bottom" constant="8" id="jE2-hQ-rv0"/>
+                            <constraint firstItem="ZGY-fh-Kax" firstAttribute="trailing" secondItem="TKk-9k-kPz" secondAttribute="trailingMargin" id="rTx-Ys-DQp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i4l-Iu-mS3"/>
+                    <connections>
+                        <outlet property="itemView" destination="ZGY-fh-Kax" id="Uu9-Xl-btf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2m-C4-956" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841.5" y="193.5"/>
+            <point key="canvasLocation" x="844" y="198"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SpD-D5-ELu">
@@ -216,8 +293,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="grassland" width="1536" height="1240"/>
-        <image name="main_layout" width="1536" height="2048"/>
+        <image name="Grassland" width="1536" height="1240"/>
+        <image name="mapButton" width="1000" height="248"/>
+        <image name="mapView" width="1536" height="2048"/>
+        <image name="questView" width="1536" height="1241"/>
         <image name="quest_button" width="1001" height="248"/>
     </resources>
 </document>
