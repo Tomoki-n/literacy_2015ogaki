@@ -20,6 +20,7 @@ class playerClass{
     //getter,setterで変更
     private var _name:String?             //名前
     private var _HP:Int?                  //HP
+    private var _level:Int?               //レベル
     //外部からは変更不可
     private (set) var weapon:String?      //武器
     private (set) var armor:String?       //防具
@@ -30,6 +31,7 @@ class playerClass{
     init(){
         _name   = "YAMAGUCHI"
         _HP     = 5                      //HP最大値は5
+        _level  = 0
         weapon  = "木の棒"                //初期武器
         armor   = "木の盾"                //初期防具
         weaponImage = "firstWeapon.png"  //初期武器パス
@@ -76,6 +78,19 @@ class playerClass{
                 }
             }else{
                 println("ERROR!設定HPは0~5です。この数字は設定できません。")
+            }
+        }
+    }
+    
+    var level:Int?{
+        get{
+            return _level
+        }
+        set{
+            if(newValue < 0){
+                _level = 0
+            }else{
+                _level = newValue
             }
         }
     }
