@@ -75,7 +75,7 @@ class playerClass{
                     _HP = newValue
                 }
             }else{
-                println("ERROR!設定HPは0~5です。この数字は設定できません。")
+                print("ERROR!設定HPは0~5です。この数字は設定できません。")
             }
         }
     }
@@ -190,7 +190,7 @@ class questClass{
         if (Struct.secondFlag == false){
             //どちらのクエストを選択するか乱数で決定
             Struct.i = arc4random_uniform(2)
-            println("NEW")
+            //println("NEW")
         }
         
         //クエスト分岐
@@ -412,7 +412,7 @@ private func getsMap() -> String{
     case 4:
         return "Devil"
     default:
-        println("map番号がおかしい")
+        //println("map番号がおかしい")
         return "ERROR"
     }
 }
