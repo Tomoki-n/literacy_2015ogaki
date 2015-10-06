@@ -25,7 +25,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var myRegion:CLBeaconRegion!
     var selectBeacon:CLBeacon!
     
-    var recent:CLBeacon?
+    var id = 0
     var b_count = 0
     var level = 1
     
@@ -33,16 +33,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //test
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.levelView.text = String(self.level)
-        self.nameView.text = "T.Kosen"
+        self.nameView.text = appDelegate.player.name
+        appDelegate.player.HP = 4
         
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
         self.locationManerger = CLLocationManager()
-        self.locationManerger.delegate? = self
-        
-        self.locationManerger.startMonitoringForRegion(self.myRegion!)
+        self.locationManerger.delegate = self
+        self.locationManerger.requestWhenInUseAuthorization()
         self.map.drawBeacons()
+        println("View was Loaded")
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +58,17 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     //iBeacon関連の関数
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .AuthorizedWhenInUse:
+            self.locationManerger.startRangingBeaconsInRegion(self.myRegion)
+            break
+        default:
+            println("許可がありません")
+            break
+        }
+    }
+    
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("iPad did Enter Region")
     }
@@ -67,23 +80,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        let closeBeacon = beacons.first as! CLBeacon
-        //最初の処理
-        if self.recent == nil && closeBeacon.accuracy < 1.0 {
-            self.recent = closeBeacon
-        }
+        if beacons.count != 0 {
+            let closeBeacon = beacons.first as! CLBeacon
+            let newid = closeBeacon.major.integerValue * 5 + closeBeacon.minor.integerValue
+            println(newid)
+            if self.id != newid && closeBeacon.proximity == CLProximity.Immediate {
+                self.id = newid
+                self.map.drawEffectonBeacon(id) //対応したbeaconの青丸が黄色になる
         
-        //最近通ったビーコンの更新、雑魚とのエンカウント
-        if self.recent != closeBeacon && closeBeacon.accuracy < 1.0 {
-            self.b_count++
-            self.recent = closeBeacon
-            if self.b_count >= 3 {
-                self.b_count = 0
-                var uiAlert = UIAlertController(title: "敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                uiAlert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
-                    self.performSegueWithIdentifier("enemy", sender: self)
-                }))
-                presentViewController(uiAlert, animated: true, completion: nil)
+                //回復
+                if appDelegate.player.HP < 5 && id == 8 {
+                    var recovery = UIAlertController(title: "体力が回復した！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    recovery.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                        appDelegate.player.HP? = 5
+                    }))
+                    self.presentViewController(recovery, animated: true, completion: nil)
+                }
+        
+                //エンカウント
             }
         }
     }
@@ -96,6 +110,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         }else if segue.identifier == "quest" {
             var qVC = segue.destinationViewController as! questViewController
             qVC.items = [true, true, true]
+            qVC.level = self.level
+            qVC.name = self.nameView.text
         }
     }
 }

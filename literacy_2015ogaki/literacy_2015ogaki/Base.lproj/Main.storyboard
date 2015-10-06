@@ -194,7 +194,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="i4l-Iu-mS3"/>
                     <connections>
+                        <outlet property="armorView" destination="Tn4-he-Cbz" id="KaY-4H-UJe"/>
                         <outlet property="itemView" destination="ZGY-fh-Kax" id="Uu9-Xl-btf"/>
+                        <outlet property="levelView" destination="0C9-YS-2Sd" id="9pZ-zo-o5U"/>
+                        <outlet property="nameView" destination="Uz7-wM-bis" id="m33-kz-dTg"/>
+                        <outlet property="weaponView" destination="An8-bi-5hz" id="6rc-vO-biu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2m-C4-956" userLabel="First Responder" sceneMemberID="firstResponder"/>

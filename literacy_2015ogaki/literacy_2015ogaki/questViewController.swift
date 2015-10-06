@@ -11,6 +11,13 @@ import UIKit
 class questViewController: UIViewController {
 
     @IBOutlet weak var itemView: questItems!
+    @IBOutlet weak var levelView: UILabel!
+    @IBOutlet weak var nameView: UILabel!
+    @IBOutlet weak var weaponView: UILabel!
+    @IBOutlet weak var armorView: UILabel!
+    
+    var level:Int?
+    var name:String?
     
     var items:Array<Bool>?
     
@@ -18,7 +25,10 @@ class questViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let appDeleagte = UIApplication.sharedApplication().delegate as! AppDelegate
         self.itemView.setItemImages(items!)
+        self.nameView.text = appDeleagte.player.name
+        self.levelView.text = String(self.level!)
     }
 
     override func didReceiveMemoryWarning() {
