@@ -19,7 +19,9 @@ private let armorList:[String]  = ["風のマント","潮風のスカーフ","�
 class playerClass{
     //getter,setterで変更
     private var _name:String?             //名前
-    private var _HP:Int?                  //HP
+    private var _HP:Int?
+    private var _level:Int?               //レベル
+    //HP
     //外部からは変更不可
     private (set) var weapon:String?      //武器
     private (set) var armor:String?       //防具
@@ -29,7 +31,8 @@ class playerClass{
     
     init(){
         _name   = "YAMAGUCHI"
-        _HP     = 5                      //HP最大値は5
+        _HP     = 5
+        _level  = 0 //HP最大値は5
         weapon  = "木の棒"                //初期武器
         armor   = "木の盾"                //初期防具
         weaponImage = "firstWeapon.png"  //初期武器パス
@@ -79,6 +82,21 @@ class playerClass{
             }
         }
     }
+    
+    var level:Int?{
+        get{
+            return _level
+        }
+        set{
+            if(newValue < 0){
+                _level = 0
+            }else{
+                _level = newValue
+            }
+        }
+    }
+
+    
 }
 
 

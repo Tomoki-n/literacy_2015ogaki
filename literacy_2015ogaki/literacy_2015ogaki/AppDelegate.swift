@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var player:playerClass = playerClass() //プレイヤー
     var enemy:enemyClass = enemyClass()    //敵
     var quest:questClass = questClass()    //クエスト
-    
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        player.level = 150
         
         return true
     }

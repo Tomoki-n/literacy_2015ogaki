@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oTz-mz-8Ve">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kxP-NE-JAo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -348,6 +348,10 @@
                                 <rect key="frame" x="423" y="182" width="240" height="240"/>
                                 <animations/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-m9-t4U">
+                                <rect key="frame" x="74" y="170" width="200" height="200"/>
+                                <animations/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW4-iQ-RyJ">
                                 <rect key="frame" x="284" y="804" width="200" height="200"/>
                                 <animations/>
@@ -386,10 +390,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-m9-t4U">
-                                <rect key="frame" x="74" y="170" width="200" height="200"/>
-                                <animations/>
-                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -409,10 +409,10 @@
             </objects>
             <point key="canvasLocation" x="1083" y="-42"/>
         </scene>
-        <!--View Controller-->
+        <!--Boss View Controller-->
         <scene sceneID="SC5-8V-B6G">
             <objects>
-                <viewController id="kxP-NE-JAo" sceneMemberID="viewController">
+                <viewController id="kxP-NE-JAo" customClass="BossViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iJH-da-1j8"/>
                         <viewControllerLayoutGuide type="bottom" id="0rc-pj-CpX"/>
@@ -421,7 +421,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="呪術者.png" translatesAutoresizingMaskIntoConstraints="NO" id="EJN-Jq-rFp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="quiz" translatesAutoresizingMaskIntoConstraints="NO" id="E9L-ix-Lh8">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjy-nA-fKW">
+                                <rect key="frame" x="264" y="54" width="241" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="呪術師が現れた" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K3-Ud-kvy">
+                                <rect key="frame" x="20" y="103" width="728" height="94"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="44"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CoastBoss" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-ex-rSH">
                                 <rect key="frame" x="264" y="180" width="240" height="240"/>
                                 <animations/>
                             </imageView>
@@ -429,52 +447,60 @@
                                 <rect key="frame" x="11" y="637" width="737" height="67"/>
                                 <animations/>
                                 <state key="normal" title=" "/>
+                                <connections>
+                                    <action selector="b1:" destination="kxP-NE-JAo" eventType="touchUpInside" id="mcs-dc-N8j"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPr-oh-5Of">
                                 <rect key="frame" x="11" y="723" width="737" height="67"/>
                                 <animations/>
+                                <connections>
+                                    <action selector="b2:" destination="kxP-NE-JAo" eventType="touchUpInside" id="AWU-3m-ftD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48n-yl-ihA">
                                 <rect key="frame" x="11" y="806" width="737" height="67"/>
                                 <animations/>
+                                <connections>
+                                    <action selector="b3:" destination="kxP-NE-JAo" eventType="touchUpInside" id="zBv-6n-EPz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azJ-tu-5Cn">
                                 <rect key="frame" x="11" y="891" width="737" height="67"/>
                                 <animations/>
+                                <connections>
+                                    <action selector="b4:" destination="kxP-NE-JAo" eventType="touchUpInside" id="LED-ki-W9m"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="呪術者.png" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-ex-rSH">
-                                <rect key="frame" x="264" y="180" width="240" height="240"/>
-                                <animations/>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="今日、説明してくれたメガネをかけた先生はどこの学校の先生でしょう？" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dT7-wk-waC">
-                                <rect key="frame" x="42" y="484" width="642" height="128"/>
+                                <rect key="frame" x="42" y="488" width="642" height="128"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="29"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="岐阜高専" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGU-VE-LFZ">
-                                <rect key="frame" x="117" y="651" width="135" height="36"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="東京高専" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8h-TK-aXP">
-                                <rect key="frame" x="117" y="739" width="135" height="36"/>
+                                <rect key="frame" x="117" y="653" width="318" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="群馬高専" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9T-pn-Ses">
-                                <rect key="frame" x="117" y="822" width="135" height="36"/>
+                                <rect key="frame" x="117" y="822" width="354" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="大垣高専" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POK-3j-RbD">
-                                <rect key="frame" x="117" y="907" width="135" height="36"/>
+                                <rect key="frame" x="117" y="907" width="398" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="東京高専" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8h-TK-aXP">
+                                <rect key="frame" x="117" y="739" width="341" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -485,6 +511,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="HP" destination="fjy-nA-fKW" id="SWC-d4-nDQ"/>
+                        <outlet property="enemyimage" destination="w5e-ex-rSH" id="t1u-A4-gOP"/>
+                        <outlet property="gametext" destination="3K3-Ud-kvy" id="od0-Fk-iSH"/>
+                        <outlet property="questiontext" destination="dT7-wk-waC" id="J8I-9d-MIC"/>
+                        <outlet property="t0" destination="WGU-VE-LFZ" id="YW8-ul-ZKo"/>
+                        <outlet property="t1" destination="I8h-TK-aXP" id="hYS-Jv-EMB"/>
+                        <outlet property="t2" destination="l9T-pn-Ses" id="lRj-Uw-rGc"/>
+                        <outlet property="t3" destination="POK-3j-RbD" id="bSF-47-Ya3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0j6-fY-axN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -492,10 +528,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CoastBoss" width="640" height="640"/>
         <image name="battle_janken" width="1536" height="2048"/>
         <image name="choki" width="525" height="525"/>
         <image name="gu-" width="525" height="525"/>
         <image name="pa-" width="525" height="525"/>
+        <image name="quiz" width="1536" height="2048"/>
         <image name="呪術者.png" width="640" height="640"/>
     </resources>
 </document>
