@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C02EB6EC1BBB5C4D00339991 /* DatabaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02EB6EB1BBB5C4D00339991 /* DatabaseClass.swift */; };
-		C0DD12011BB3EB330078B4C5 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD12001BB3EB330078B4C5 /* mapView.swift */; };
+		C06244261BC652C600CB9192 /* EnemyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06244251BC652C600CB9192 /* EnemyViewController.swift */; };
 		C0DD12031BB3EDF30078B4C5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */; };
 		C0DFDD641BC2C38E000444A3 /* questViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFDD631BC2C38E000444A3 /* questViewController.swift */; };
 		C0DFDD661BC2C522000444A3 /* questItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFDD651BC2C522000444A3 /* questItems.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		C02EB6EB1BBB5C4D00339991 /* DatabaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseClass.swift; sourceTree = "<group>"; };
-		C0DD12001BB3EB330078B4C5 /* mapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
+		C06244251BC652C600CB9192 /* EnemyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyViewController.swift; sourceTree = "<group>"; };
 		C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0DFDD631BC2C38E000444A3 /* questViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questViewController.swift; sourceTree = "<group>"; };
 		C0DFDD651BC2C522000444A3 /* questItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questItems.swift; sourceTree = "<group>"; };
@@ -94,8 +94,8 @@
 				FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */,
 				FA9B7D731BA66D05003DB632 /* ViewController.swift */,
 				C0DFDD631BC2C38E000444A3 /* questViewController.swift */,
+				C06244251BC652C600CB9192 /* EnemyViewController.swift */,
 				C02EB6EB1BBB5C4D00339991 /* DatabaseClass.swift */,
-				C0DD12001BB3EB330078B4C5 /* mapView.swift */,
 				C0DFDD651BC2C522000444A3 /* questItems.swift */,
 				FA9B7D751BA66D05003DB632 /* Main.storyboard */,
 				FA9B7D781BA66D05003DB632 /* Images.xcassets */,
@@ -235,10 +235,10 @@
 			files = (
 				FA9B7D741BA66D05003DB632 /* ViewController.swift in Sources */,
 				C0DFDD641BC2C38E000444A3 /* questViewController.swift in Sources */,
-				C0DD12011BB3EB330078B4C5 /* mapView.swift in Sources */,
 				FA9B7D721BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld in Sources */,
 				C02EB6EC1BBB5C4D00339991 /* DatabaseClass.swift in Sources */,
 				FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */,
+				C06244261BC652C600CB9192 /* EnemyViewController.swift in Sources */,
 				C0DFDD661BC2C522000444A3 /* questItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

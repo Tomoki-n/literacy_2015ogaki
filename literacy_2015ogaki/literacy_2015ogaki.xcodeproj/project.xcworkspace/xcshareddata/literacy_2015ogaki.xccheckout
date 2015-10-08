@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>493050F5-04EF-4C32-9F1C-F36B607FC509</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>literacy_2015ogaki</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0D85633CE11CEBDE2FC3ADFD198C011A41D9B26E</key>
 		<string>https://github.com/Tomoki-n/literacy_2015ogaki.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>literacy_2015ogaki/literacy_2015ogaki.xcodeproj/project.xcworkspace</string>
+	<string>literacy_2015ogaki/literacy_2015ogaki.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0D85633CE11CEBDE2FC3ADFD198C011A41D9B26E</key>
