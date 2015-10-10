@@ -96,8 +96,10 @@ class BossViewController : UIViewController {
         
         self.HP.text = "HP:" + String(player.HP! * player.level!) + "/" + String(player.level! * 5)
         
+        let path = NSBundle.mainBundle().pathForResource("question", ofType: "json")!
         
-        let JSONData :NSData = NSData(contentsOfFile: "/Users/tomoki-n/Develop/2015/iOS/literacy/literacy_2015ogaki/literacy_2015ogaki/question.json")!
+        
+        let JSONData = NSData(contentsOfFile: path)!
         
         let json = JSON(data: JSONData)
         
