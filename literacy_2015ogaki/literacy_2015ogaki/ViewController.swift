@@ -86,6 +86,8 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         var x:String = String(stringInterpolationSegment: app.quest.getQuestFinished())
         image3Label.text = x
         print(app.quest.getItemStatus())
+        app.quest.getItem(1)
+        println(app.quest.getItemStatus())
     }
 
     
@@ -95,12 +97,11 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIToolbarDelegate {
         //描画し直し
         name1Label.text = app.enemy.Name!
         image1Label.text = app.enemy.Image!
-        enemyImage = UIImage(named:app.enemy.Image!)
+        enemyImage = UIImage(named:app.quest.getGrayMap())
         charaImage.image = enemyImage
         self.view.addSubview(charaImage)
         
         app.quest.setNextQuest()
-        app.quest.getItem(1)
         app.player.setNextWeapon()
         app.player.setNextArmor()
         

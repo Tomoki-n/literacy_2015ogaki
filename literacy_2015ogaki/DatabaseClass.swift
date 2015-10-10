@@ -178,6 +178,7 @@ class questClass{
     private (set) var sentenceQuest:String? = ""
     private var nowQuest:Int?
     private var itemStatus:[Bool] = [false,false,false]
+    private var questFinishedStatus:Int?         //0からスタートし、1なら片方、２なら両方
     
     private var mapName:String? //画像パス
     
@@ -187,6 +188,7 @@ class questClass{
         item2Position = 0
         item3Position = 0
         nowQuest = 0
+        questFinishedStatus = 0
     }
     
     func setNextQuest(){
@@ -199,42 +201,48 @@ class questClass{
         //mapが移ったらフラグリセット
         if (Struct.pastMap != app.map){
             Struct.secondFlag = false
+            questFinishedStatus = 0
         }
         
-        //secondFlagがfalseのときは、1回目のクエストを乱数で選択
-        if (Struct.secondFlag == false){
-            //どちらのクエストを選択するか乱数で決定
-            Struct.i = arc4random_uniform(2)
-            println("NEW")
-        }
+        //すでに両方のクエストが終了している場合は実行しない。
+        if(questFinishedStatus < 2){
+            //secondFlagがfalseのときは、1回目のクエストを乱数で選択
+            if (Struct.secondFlag == false){
+                //どちらのクエストを選択するか乱数で決定
+                Struct.i = arc4random_uniform(2)
+                println("NEW")
+            }
         
-        //クエスト分岐
-        mapName = getsMap()
-        if (Struct.i == 0) {
-            setWeaponQuest() //武器クエスト
-            Struct.i = 1
+            //クエスト分岐
+            mapName = getsMap()
+            if (Struct.i == 0) {
+                setWeaponQuest() //武器クエスト
+                Struct.i = 1
+            }else{
+                setArmorQuest()  //防具クエスト
+                Struct.i = 0
+            }
+        
+            //アイテムの数に応じてステータスを確定
+            switch(getQuestItemCounts()){
+            case 1:
+                itemStatus = [false,true,true]
+                break
+            case 2:
+                itemStatus = [false,false,true]
+                break
+            case 3:
+                itemStatus = [false,false,false]
+                break
+            default:
+                break
+            }
+        
+            Struct.secondFlag = !Struct.secondFlag
         }else{
-            setArmorQuest()  //防具クエスト
-            Struct.i = 0
+            println("すでに両方のクエストが完了しています。")
         }
-        
-        //アイテムの数に応じてステータスを確定
-        switch(getQuestItemCounts()){
-        case 1:
-            itemStatus = [false,true,true]
-            break
-        case 2:
-            itemStatus = [false,false,true]
-            break
-        case 3:
-            itemStatus = [false,false,false]
-            break
-        default:
-            break
-        }
-        
         Struct.pastMap = app.map
-        Struct.secondFlag = !Struct.secondFlag
     }
     
     private func setWeaponQuest(){
@@ -357,9 +365,34 @@ class questClass{
         return nowQuest!
     }
     
-    //アイテムを取得した時実行する
+    //現在のクエストが武器なのか返却
+    func getQuestOfWeapon() -> Bool{
+        if(nowQuest == 1){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    //現在のアイテムが防具なのか返却
+    func getQuestOfArmor() -> Bool{
+        if(nowQuest == 2){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    //アイテムを取得した時、フラグを立てるのに実行する
     func getItem(x:Int){
         itemStatus[x-1] = true
+        
+        //アイテムをゲットしたときにクエストが終了していれば、ステータスを1増加
+        if (getQuestFinished() == true){
+            if(questFinishedStatus < 2){
+                questFinishedStatus = questFinishedStatus! + 1
+            }
+        }
     }
     
     //アイテムの取得状況を取得する
@@ -374,6 +407,26 @@ class questClass{
         }
         return false
     }
+    
+    //マップにおいて両方のクエストが終了したかどうか判断する
+    func getMapQuestFinished() -> Bool{
+        if (questFinishedStatus == 2){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func getGrayMap() -> String{
+        var pass:String = getsMap() + "_Gray.png"
+        return pass
+    }
+    
+    
+    
+    
+    
+    
     
     //武器素材
     private let weaponItemList:[[String]] = [["ヒスイの勾玉"],
