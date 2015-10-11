@@ -9,8 +9,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class jyankenViewController: UIViewController {
+class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     
     //Appdelegate
     var app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -185,6 +186,7 @@ class jyankenViewController: UIViewController {
             
             self.gametext.text = str
             btnno()
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
             break
         case -1:
             str = "あなたの負けです！"
@@ -194,6 +196,8 @@ class jyankenViewController: UIViewController {
             
             player.HP! -= 1
             if player.HP == 0{
+                NSTimer.scheduledTimerWithTimeInterval(0.9, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
+
                 //HPがゼロ
             }
             NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: false);          phase = 1
@@ -213,8 +217,7 @@ class jyankenViewController: UIViewController {
             break
         }
         
-        
-        print(str)
+               print(str)
         
     }
     func onUpdate(timer: NSTimer) {
@@ -222,6 +225,12 @@ class jyankenViewController: UIViewController {
         btnyes()
     }
     
+    func returnv(timer: NSTimer) {
+       
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+
+    }
     func setenemyhand(dset: UInt32){
         if dset == 1{
             enemyhand.image = UIImage(named: "gu-")
@@ -282,6 +291,5 @@ class jyankenViewController: UIViewController {
         */
     }
     
-    
-}
+   }
 

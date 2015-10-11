@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kxP-NE-JAo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8DV-PO-Hn2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="892" y="628"/>
         </scene>
-        <!--Input View Controller-->
+        <!--Select View Controller-->
         <scene sceneID="PV3-7H-UcW">
             <objects>
-                <viewController storyboardIdentifier="input" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8DV-PO-Hn2" customClass="inputViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="input" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8DV-PO-Hn2" customClass="selectViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yhS-La-gaW"/>
                         <viewControllerLayoutGuide type="bottom" id="JB0-fo-z3P"/>
@@ -265,6 +265,9 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="BATTLE!!"/>
+                                <connections>
+                                    <action selector="battle:" destination="8DV-PO-Hn2" eventType="touchUpInside" id="9fh-cK-gHd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="キャラ番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dG1-VL-dDl">
                                 <rect key="frame" x="286" y="384" width="85" height="21"/>
@@ -288,14 +291,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="０" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-sT-DNs">
-                                <rect key="frame" x="433" y="303" width="17" height="21"/>
+                                <rect key="frame" x="433" y="303" width="44" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="０" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnW-8t-3GY">
-                                <rect key="frame" x="433" y="384" width="17" height="21"/>
+                                <rect key="frame" x="433" y="384" width="64" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -312,26 +315,36 @@
                                 <rect key="frame" x="557" y="298" width="53" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="field:" destination="8DV-PO-Hn2" eventType="touchUpInside" id="ywA-km-AAe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3py-S1-h4b">
                                 <rect key="frame" x="557" y="379" width="53" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="setboss:" destination="8DV-PO-Hn2" eventType="touchUpInside" id="S0M-S3-4Qc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="bossv" destination="CnW-8t-3GY" id="bn3-n1-r1B"/>
+                        <outlet property="fieldv" destination="qhK-sT-DNs" id="Ewq-3h-6hO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMT-90-mYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="-542"/>
+            <point key="canvasLocation" x="286" y="-694"/>
         </scene>
         <!--Jyanken View Controller-->
         <scene sceneID="Nb0-bX-9ri">
             <objects>
-                <viewController id="oTz-mz-8Ve" customClass="jyankenViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ja" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oTz-mz-8Ve" customClass="jyankenViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FiC-m6-TbF"/>
                         <viewControllerLayoutGuide type="bottom" id="Hdn-Lr-tCf"/>
@@ -412,7 +425,7 @@
         <!--Boss View Controller-->
         <scene sceneID="SC5-8V-B6G">
             <objects>
-                <viewController id="kxP-NE-JAo" customClass="BossViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="boss" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kxP-NE-JAo" customClass="BossViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iJH-da-1j8"/>
                         <viewControllerLayoutGuide type="bottom" id="0rc-pj-CpX"/>

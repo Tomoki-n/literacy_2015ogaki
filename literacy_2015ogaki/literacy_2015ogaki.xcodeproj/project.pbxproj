@@ -12,6 +12,27 @@
 		FA939D301BC3E92A00BA04D2 /* BossViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA939D2F1BC3E92A00BA04D2 /* BossViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA939D341BC6397300BA04D2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA939D331BC6397300BA04D2 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		FA939D361BC6511100BA04D2 /* question.json in Resources */ = {isa = PBXBuildFile; fileRef = FA939D351BC6511100BA04D2 /* question.json */; settings = {ASSET_TAGS = (); }; };
+		FA939D381BC8A6A800BA04D2 /* select.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA939D371BC8A6A800BA04D2 /* select.swift */; settings = {ASSET_TAGS = (); }; };
+		FA939D3A1BC8B65D00BA04D2 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA939D391BC8B65D00BA04D2 /* Sound.swift */; settings = {ASSET_TAGS = (); }; };
+		FA939D7F1BC93B5C00BA04D2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA939D7E1BC93B5C00BA04D2 /* AudioToolbox.framework */; };
+		FA939D811BC93D5200BA04D2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA939D801BC93D5200BA04D2 /* AVFoundation.framework */; };
+		FA939D931BC942C000BA04D2 /* battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D821BC942C000BA04D2 /* battle.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D941BC942C000BA04D2 /* bossbattle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D831BC942C000BA04D2 /* bossbattle.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D951BC942C000BA04D2 /* bubu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D841BC942C000BA04D2 /* bubu.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D961BC942C000BA04D2 /* claer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D851BC942C000BA04D2 /* claer.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D971BC942C000BA04D2 /* deru.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D861BC942C000BA04D2 /* deru.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D981BC942C000BA04D2 /* field_ido.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D871BC942C000BA04D2 /* field_ido.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D991BC942C000BA04D2 /* field_kaigan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D881BC942C000BA04D2 /* field_kaigan.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D9A1BC942C000BA04D2 /* field_makai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D891BC942C000BA04D2 /* field_makai.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D9B1BC942C000BA04D2 /* field_mori.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D8A1BC942C000BA04D2 /* field_mori.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D9C1BC942C000BA04D2 /* field_sabaku.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D8B1BC942C000BA04D2 /* field_sabaku.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D9D1BC942C000BA04D2 /* field_souden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D8C1BC942C000BA04D2 /* field_souden.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D9E1BC942C000BA04D2 /* kaihuku.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D8D1BC942C000BA04D2 /* kaihuku.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939D9F1BC942C000BA04D2 /* make.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D8E1BC942C000BA04D2 /* make.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939DA01BC942C000BA04D2 /* panti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D8F1BC942C000BA04D2 /* panti.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939DA11BC942C000BA04D2 /* seikai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D901BC942C000BA04D2 /* seikai.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939DA21BC942C000BA04D2 /* seikai2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D911BC942C000BA04D2 /* seikai2.mp3 */; settings = {ASSET_TAGS = (); }; };
+		FA939DA31BC942C000BA04D2 /* syutugen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA939D921BC942C000BA04D2 /* syutugen.mp3 */; settings = {ASSET_TAGS = (); }; };
 		FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */; };
 		FA9B7D721BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D701BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld */; };
 		FA9B7D741BA66D05003DB632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D731BA66D05003DB632 /* ViewController.swift */; };
@@ -37,6 +58,27 @@
 		FA939D2F1BC3E92A00BA04D2 /* BossViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BossViewController.swift; sourceTree = "<group>"; };
 		FA939D331BC6397300BA04D2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		FA939D351BC6511100BA04D2 /* question.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question.json; sourceTree = "<group>"; };
+		FA939D371BC8A6A800BA04D2 /* select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = select.swift; sourceTree = "<group>"; };
+		FA939D391BC8B65D00BA04D2 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		FA939D7E1BC93B5C00BA04D2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FA939D801BC93D5200BA04D2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FA939D821BC942C000BA04D2 /* battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = battle.mp3; path = sound/battle.mp3; sourceTree = "<group>"; };
+		FA939D831BC942C000BA04D2 /* bossbattle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bossbattle.mp3; path = sound/bossbattle.mp3; sourceTree = "<group>"; };
+		FA939D841BC942C000BA04D2 /* bubu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bubu.mp3; path = sound/bubu.mp3; sourceTree = "<group>"; };
+		FA939D851BC942C000BA04D2 /* claer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = claer.mp3; path = sound/claer.mp3; sourceTree = "<group>"; };
+		FA939D861BC942C000BA04D2 /* deru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = deru.mp3; path = sound/deru.mp3; sourceTree = "<group>"; };
+		FA939D871BC942C000BA04D2 /* field_ido.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = field_ido.mp3; path = sound/field_ido.mp3; sourceTree = "<group>"; };
+		FA939D881BC942C000BA04D2 /* field_kaigan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = field_kaigan.mp3; path = sound/field_kaigan.mp3; sourceTree = "<group>"; };
+		FA939D891BC942C000BA04D2 /* field_makai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = field_makai.mp3; path = sound/field_makai.mp3; sourceTree = "<group>"; };
+		FA939D8A1BC942C000BA04D2 /* field_mori.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = field_mori.mp3; path = sound/field_mori.mp3; sourceTree = "<group>"; };
+		FA939D8B1BC942C000BA04D2 /* field_sabaku.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = field_sabaku.mp3; path = sound/field_sabaku.mp3; sourceTree = "<group>"; };
+		FA939D8C1BC942C000BA04D2 /* field_souden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = field_souden.mp3; path = sound/field_souden.mp3; sourceTree = "<group>"; };
+		FA939D8D1BC942C000BA04D2 /* kaihuku.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = kaihuku.mp3; path = sound/kaihuku.mp3; sourceTree = "<group>"; };
+		FA939D8E1BC942C000BA04D2 /* make.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = make.mp3; path = sound/make.mp3; sourceTree = "<group>"; };
+		FA939D8F1BC942C000BA04D2 /* panti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = panti.mp3; path = sound/panti.mp3; sourceTree = "<group>"; };
+		FA939D901BC942C000BA04D2 /* seikai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = seikai.mp3; path = sound/seikai.mp3; sourceTree = "<group>"; };
+		FA939D911BC942C000BA04D2 /* seikai2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = seikai2.mp3; path = sound/seikai2.mp3; sourceTree = "<group>"; };
+		FA939D921BC942C000BA04D2 /* syutugen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = syutugen.mp3; path = sound/syutugen.mp3; sourceTree = "<group>"; };
 		FA9B7D691BA66D05003DB632 /* literacy_2015ogaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = literacy_2015ogaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9B7D6D1BA66D05003DB632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA939D811BC93D5200BA04D2 /* AVFoundation.framework in Frameworks */,
+				FA939D7F1BC93B5C00BA04D2 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +115,8 @@
 		FA9B7D601BA66D05003DB632 = {
 			isa = PBXGroup;
 			children = (
+				FA939D801BC93D5200BA04D2 /* AVFoundation.framework */,
+				FA939D7E1BC93B5C00BA04D2 /* AudioToolbox.framework */,
 				FA9B7D6B1BA66D05003DB632 /* literacy_2015ogaki */,
 				FA9B7D841BA66D05003DB632 /* literacy_2015ogakiTests */,
 				FA9B7D6A1BA66D05003DB632 /* Products */,
@@ -93,7 +139,26 @@
 				FA9B7D731BA66D05003DB632 /* ViewController.swift */,
 				FA5ABE9B1BC268F000D64F90 /* jyankenController.swift */,
 				FA939D2F1BC3E92A00BA04D2 /* BossViewController.swift */,
+				FA939D821BC942C000BA04D2 /* battle.mp3 */,
+				FA939D831BC942C000BA04D2 /* bossbattle.mp3 */,
+				FA939D841BC942C000BA04D2 /* bubu.mp3 */,
+				FA939D851BC942C000BA04D2 /* claer.mp3 */,
+				FA939D861BC942C000BA04D2 /* deru.mp3 */,
+				FA939D871BC942C000BA04D2 /* field_ido.mp3 */,
+				FA939D881BC942C000BA04D2 /* field_kaigan.mp3 */,
+				FA939D891BC942C000BA04D2 /* field_makai.mp3 */,
+				FA939D8A1BC942C000BA04D2 /* field_mori.mp3 */,
+				FA939D8B1BC942C000BA04D2 /* field_sabaku.mp3 */,
+				FA939D8C1BC942C000BA04D2 /* field_souden.mp3 */,
+				FA939D8D1BC942C000BA04D2 /* kaihuku.mp3 */,
+				FA939D8E1BC942C000BA04D2 /* make.mp3 */,
+				FA939D8F1BC942C000BA04D2 /* panti.mp3 */,
+				FA939D901BC942C000BA04D2 /* seikai.mp3 */,
+				FA939D911BC942C000BA04D2 /* seikai2.mp3 */,
+				FA939D921BC942C000BA04D2 /* syutugen.mp3 */,
 				03D04D281BACFA8400885AC6 /* DatabaseClass.swift */,
+				FA939D391BC8B65D00BA04D2 /* Sound.swift */,
+				FA939D371BC8A6A800BA04D2 /* select.swift */,
 				FA9B7D751BA66D05003DB632 /* Main.storyboard */,
 				FA939D331BC6397300BA04D2 /* SwiftyJSON.swift */,
 				FA939D351BC6511100BA04D2 /* question.json */,
@@ -212,10 +277,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA939D9F1BC942C000BA04D2 /* make.mp3 in Resources */,
 				FA9B7D771BA66D05003DB632 /* Main.storyboard in Resources */,
+				FA939D941BC942C000BA04D2 /* bossbattle.mp3 in Resources */,
+				FA939DA31BC942C000BA04D2 /* syutugen.mp3 in Resources */,
+				FA939D971BC942C000BA04D2 /* deru.mp3 in Resources */,
 				FA939D361BC6511100BA04D2 /* question.json in Resources */,
+				FA939DA01BC942C000BA04D2 /* panti.mp3 in Resources */,
+				FA939D981BC942C000BA04D2 /* field_ido.mp3 in Resources */,
+				FA939D991BC942C000BA04D2 /* field_kaigan.mp3 in Resources */,
 				FA9B7D7C1BA66D05003DB632 /* LaunchScreen.xib in Resources */,
+				FA939DA21BC942C000BA04D2 /* seikai2.mp3 in Resources */,
+				FA939D9D1BC942C000BA04D2 /* field_souden.mp3 in Resources */,
+				FA939D951BC942C000BA04D2 /* bubu.mp3 in Resources */,
+				FA939D931BC942C000BA04D2 /* battle.mp3 in Resources */,
+				FA939D961BC942C000BA04D2 /* claer.mp3 in Resources */,
+				FA939D9E1BC942C000BA04D2 /* kaihuku.mp3 in Resources */,
+				FA939D9C1BC942C000BA04D2 /* field_sabaku.mp3 in Resources */,
+				FA939D9B1BC942C000BA04D2 /* field_mori.mp3 in Resources */,
 				FA9B7D791BA66D05003DB632 /* Images.xcassets in Resources */,
+				FA939D9A1BC942C000BA04D2 /* field_makai.mp3 in Resources */,
+				FA939DA11BC942C000BA04D2 /* seikai.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +322,8 @@
 				FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */,
 				FA939D341BC6397300BA04D2 /* SwiftyJSON.swift in Sources */,
 				FA939D301BC3E92A00BA04D2 /* BossViewController.swift in Sources */,
+				FA939D3A1BC8B65D00BA04D2 /* Sound.swift in Sources */,
+				FA939D381BC8A6A800BA04D2 /* select.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
