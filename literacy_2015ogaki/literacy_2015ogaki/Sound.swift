@@ -61,7 +61,7 @@ class Sound :NSObject{
             setfile("bubu")
             break
         case 3:
-            setfile("clear")
+            setfile("claer")
             break
         case 4:
             setfile("deru")
@@ -99,6 +99,9 @@ class Sound :NSObject{
         case 15:
             setfile("syutugen")
             break
+        case 16:
+            setfile("field_makai")
+            break
         default:
             break
         }
@@ -110,6 +113,11 @@ class Sound :NSObject{
     func callfinish(){
         
        print("finish")
+    }
+    
+    func vol(v:Float){
+        player.volume = v
+        
     }
     
 }

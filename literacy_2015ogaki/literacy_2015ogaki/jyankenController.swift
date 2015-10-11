@@ -18,6 +18,9 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     
     var phase:Int = 0
     var n:UInt32!
+    
+    let bgm = Sound()
+    let bgm1 = Sound()
     //現在マップ
     var map:Int = 0  //0,1,2,3,4
     //var map:String = "Grassland" //Grassland,Coast,Forest,Desert,Devil
@@ -85,7 +88,8 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
         btnno()
         
         
-        
+        bgm.ids(0)
+        bgm.infstart()
         
     }
     
@@ -186,17 +190,22 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             
             self.gametext.text = str
             btnno()
+            bgm1.ids(12)
+            bgm1.start()
             NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
             break
         case -1:
             str = "あなたの負けです！"
             self.gametext.text = str
             btnno()
-            
+            bgm1.ids(12)
+            bgm1.start()
             
             player.HP! -= 1
             if player.HP == 0{
-                NSTimer.scheduledTimerWithTimeInterval(0.9, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
+                bgm1.ids(11)
+                bgm1.start()
+                NSTimer.scheduledTimerWithTimeInterval(1.1, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
 
                 //HPがゼロ
             }

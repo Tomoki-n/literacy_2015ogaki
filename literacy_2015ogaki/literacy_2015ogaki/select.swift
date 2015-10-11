@@ -15,7 +15,8 @@ class selectViewController: UIViewController {
     //Appdelegate
     var app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     let bgm = Sound()
-
+    //var map:String = "Grassland" //Grassland,Coast,Forest,Desert,Devil
+    
     
     @IBOutlet var fieldv: UILabel!
     
@@ -29,9 +30,9 @@ class selectViewController: UIViewController {
         
         fieldv.text = String(fieldvv)
         bossv.text = String(bossvv)
-        bgm.ids(11)
+        bgm.ids(9)
         //bgm.para! = 0
-        bgm.start()
+        bgm.infstart()
         
     }
     
@@ -52,8 +53,28 @@ class selectViewController: UIViewController {
         }
         fieldvv++
         fieldv.text = String(fieldvv)
-        bgm.ids(<#T##id: Int##Int#>)
+       
     
+        if fieldvv == 0 {
+             bgm.ids(9)
+            bgm.infstart()
+        }else if fieldvv == 1{
+             bgm.ids(6)
+            bgm.infstart()
+            
+        }else if fieldvv == 2{
+             bgm.ids(7)
+            bgm.infstart()
+            
+        }else if fieldvv == 3{
+             bgm.ids(8)
+            bgm.infstart()
+            
+        }else if fieldvv == 4{
+             bgm.ids(16)
+            bgm.infstart()
+            
+        }
         
         
     }
@@ -88,6 +109,10 @@ class selectViewController: UIViewController {
         app.player.HP = 5
         app.player.level = 50
         app.map = fieldvv
+        
+        
+        bgm.ids(15)
+        bgm.start()
         
         if bossvv == 1{
             let NVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("boss") 

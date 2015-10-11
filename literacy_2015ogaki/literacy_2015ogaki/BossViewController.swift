@@ -16,6 +16,8 @@ class BossViewController : UIViewController {
     var app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     var phase:Int = 0
+    let bgm = Sound()
+    let bgm1 = Sound()
     
     var map:Int = 4  //0,1,2,3,4
     //var map:String = "Grassland" //Grassland,Coast,Forest,Desert,Devil
@@ -69,8 +71,9 @@ class BossViewController : UIViewController {
         super.viewDidLoad()
         
         setaparam()
-        
-        
+        bgm.ids(1)
+        bgm.vol(0.5)
+        bgm.infstart()
         
     }
     
@@ -144,27 +147,45 @@ class BossViewController : UIViewController {
         if (chk == Int(ans[count]) && chk < 4){
             
             self.gametext.text = "正解です"
+            bgm1.ids(14)
+            bgm1.start()
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: false)
             
             count++
             chks++
+            if(chks == 3){
+                //画面遷移
+                bgm1.ids(3)
+                bgm1.start()
+
+                NSTimer.scheduledTimerWithTimeInterval(1.3, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
+                
+            }
+            else{
             questiontext.text = ques[count]
             t0.text = a1[count]
             t1.text = a2[count]
             t2.text = a3[count]
             t3.text = a4[count]
-            
-            if(chk == 3){
-                //画面遷移
-                
             }
+           
             
         }
         else{
              self.gametext.text = "不正解です"
+                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: false)
+            bgm1.ids(2)
+            bgm1.start()
+            
             
             player.HP!--
             self.HP.text = "HP:" + String(player.HP! * player.level!) + "/" + String(player.level! * 5)
-        
+            
+            if player.HP == 0{
+                NSTimer.scheduledTimerWithTimeInterval(0.9, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
+                
+                //HPがゼロ
+            }
             
         }
         
@@ -173,5 +194,14 @@ class BossViewController : UIViewController {
     }
     
     
+    func onUpdate(timer: NSTimer) {
+        self.gametext.text = "好きな手を入れて下さい"
+     }
+    func returnv(timer: NSTimer) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+    }
     
 }
