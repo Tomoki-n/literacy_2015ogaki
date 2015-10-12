@@ -52,6 +52,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var id = 0
     var b_count = 0
     var level = 1
+    var death = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.nameView.text = appDelegate.player.name
         appDelegate.player.HP = 4
         self.HPView.text = String(appDelegate.player.HP! * level * 10)
+        self.hilightedBeacon.frame.origin = CGPointMake(-1000, -1000)
         
         UIView.animateWithDuration(NSTimeInterval(1.0), delay: 0.0, options: UIViewAnimationOptions.Repeat, animations: { () -> Void in
             if self.hilightedBeacon.alpha >= 0.5 {
@@ -82,10 +84,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         println(appDelegate.win)
         if appDelegate.flag && appDelegate.win {
-            self.level++
+            self.level += 3
             self.levelView.text = String(self.level)
-            appDelegate.flag = false
+            !appDelegate.flag
+        }else if appDelegate.flag && !appDelegate.win {
+            self.death = true
+            self.map.image = UIImage(named: "Grassland_Gray.png")
+            !appDelegate.flag
         }
+        self.HPView.text = String(appDelegate.player.HP! * self.level * 10)
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,11 +128,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        
         //フラグ類
         var recoveryFlag = false
         
         if beacons.count != 0 {
             let closeBeacon = beacons.first as! CLBeacon
+            println(closeBeacon)
             let newid = closeBeacon.major.integerValue * 5 + closeBeacon.minor.integerValue
             drawEffectonBeacon(newid)
             if self.id != newid && closeBeacon.proximity == CLProximity.Immediate {
@@ -139,12 +148,22 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                         self.HPView.text = String(appDelegate.player.HP! * self.level * 10)
                     }))
                     self.presentViewController(recovery, animated: true, completion: nil)
+                    if self.death {
+                        self.death = false
+                        self.map.image = UIImage(named: "Grassland.png")
+                    }
                     recoveryFlag = true
                 }
         
                 //エンカウント
-                self.b_count++
-                if !recoveryFlag {
+                if !self.death {
+                    self.level++
+                    self.levelView.text = String(self.level)
+                    self.HPView.text = String(appDelegate.player.HP! * self.level * 10)
+                    self.b_count++
+                }
+                
+                if !recoveryFlag && !self.death {
                     if self.b_count >= 3 {
                         var enemy = UIAlertController(title: "敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                         enemy.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
@@ -168,6 +187,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             var eVC = segue.destinationViewController as! UIViewController
         }else if segue.identifier == "boss" {
             //bossViewに渡す値の設定
+            var bVC = segue.destinationViewController as! UIViewController
         }else if segue.identifier == "quest" {
             var qVC = segue.destinationViewController as! questViewController
             qVC.items = [true, true, true]
@@ -201,7 +221,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         case 6:
             self.hilightedBeacon.frame.origin.x = self.beacon6.frame.origin.x
             self.hilightedBeacon.frame.origin.y = self.beacon6.frame.origin.y
-
             break
         case 7:
             self.hilightedBeacon.frame.origin.x = self.beacon7.frame.origin.x
@@ -262,6 +281,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         default :
             break
         }
+    }
+    
+    @IBAction func boss(sender: AnyObject) {
+        self.performSegueWithIdentifier("boss", sender: self)
     }
 }
 
