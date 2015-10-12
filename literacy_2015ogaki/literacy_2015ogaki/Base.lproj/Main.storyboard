@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -296,10 +297,10 @@
             </objects>
             <point key="canvasLocation" x="1034" y="3"/>
         </scene>
-        <!--Enemy View Controller-->
+        <!--Jyanken View Controller-->
         <scene sceneID="SpD-D5-ELu">
             <objects>
-                <viewController id="PTx-3E-MZZ" customClass="EnemyViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PTx-3E-MZZ" customClass="jyankenViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="duH-h3-SFa"/>
                         <viewControllerLayoutGuide type="bottom" id="z61-38-4gd"/>
@@ -308,19 +309,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-6h-dvD">
-                                <rect key="frame" x="206" y="436" width="356" height="152"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="83"/>
-                                <state key="normal" title="ENEMY">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="battle_janken" translatesAutoresizingMaskIntoConstraints="NO" id="Lds-ic-xVn">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ForestEnemy3" translatesAutoresizingMaskIntoConstraints="NO" id="Fai-Pg-shU">
+                                <rect key="frame" x="420" y="145" width="240" height="240"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBC-Ny-edu">
+                                <rect key="frame" x="74" y="170" width="200" height="200"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zv-ia-sIx">
+                                <rect key="frame" x="548" y="804" width="200" height="200"/>
+                                <state key="normal" backgroundImage="pa-"/>
                                 <connections>
-                                    <action selector="backButton:" destination="PTx-3E-MZZ" eventType="touchUpInside" id="njg-cH-WRg"/>
+                                    <action selector="pushpa:" destination="PTx-3E-MZZ" eventType="touchUpInside" id="VgQ-sK-P28"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPU-R3-gm4" userLabel="Gu">
+                                <rect key="frame" x="20" y="804" width="200" height="200"/>
+                                <state key="normal" backgroundImage="gu-"/>
+                                <connections>
+                                    <action selector="pushgu:" destination="PTx-3E-MZZ" eventType="touchUpInside" id="mvh-J0-XTC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="py7-i9-ziu">
+                                <rect key="frame" x="284" y="804" width="200" height="200"/>
+                                <state key="normal" backgroundImage="choki"/>
+                                <connections>
+                                    <action selector="pushchoki:" destination="PTx-3E-MZZ" eventType="touchUpInside" id="4w3-f5-dPi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jc-xQ-jhd">
+                                <rect key="frame" x="264" y="82" width="241" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoG-vf-cpe">
+                                <rect key="frame" x="20" y="465" width="728" height="94"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="HP" destination="6Jc-xQ-jhd" id="MY1-Ly-gBk"/>
+                        <outlet property="choki" destination="py7-i9-ziu" id="bY9-9k-7N7"/>
+                        <outlet property="enemyhand" destination="jBC-Ny-edu" id="iHo-Ou-Bsa"/>
+                        <outlet property="enemyimage" destination="Fai-Pg-shU" id="Qd3-1H-hfR"/>
+                        <outlet property="gametext" destination="yoG-vf-cpe" id="eTf-bo-cL6"/>
+                        <outlet property="gu" destination="MPU-R3-gm4" id="AB6-cZ-9BJ"/>
+                        <outlet property="pa" destination="0Zv-ia-sIx" id="EJ6-9W-Q43"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZu-mr-XoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,20 +380,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDa-dY-KfI">
-                                <rect key="frame" x="206" y="436" width="356" height="152"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="83"/>
-                                <state key="normal" title="BOSS">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="quiz" translatesAutoresizingMaskIntoConstraints="NO" id="KT3-YT-fPP">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM0-hp-0nK">
+                                <rect key="frame" x="11" y="723" width="737" height="67"/>
                                 <connections>
-                                    <action selector="backButton:" destination="PTx-3E-MZZ" eventType="touchUpInside" id="uvF-w2-IeW"/>
-                                    <action selector="bossButton:" destination="7lp-Of-Ntc" eventType="touchUpInside" id="5jH-Ei-e9I"/>
+                                    <action selector="b2:" destination="7lp-Of-Ntc" eventType="touchUpInside" id="svd-T2-oA7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smi-Jm-K8f">
+                                <rect key="frame" x="11" y="806" width="737" height="67"/>
+                                <connections>
+                                    <action selector="b3:" destination="7lp-Of-Ntc" eventType="touchUpInside" id="FTp-wV-szi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft9-z8-wV9">
+                                <rect key="frame" x="117" y="739" width="318" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtn-vi-efm">
+                                <rect key="frame" x="117" y="822" width="318" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7d-pa-r93">
+                                <rect key="frame" x="117" y="907" width="318" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khC-iX-Vnu">
+                                <rect key="frame" x="20" y="103" width="728" height="94"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZE-2q-fyq">
+                                <rect key="frame" x="264" y="74" width="241" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3R-HH-Udk">
+                                <rect key="frame" x="117" y="653" width="318" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CoastBoss" translatesAutoresizingMaskIntoConstraints="NO" id="qC4-f3-Dxa">
+                                <rect key="frame" x="264" y="180" width="240" height="240"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xZj-b3-Fg9">
+                                <rect key="frame" x="42" y="488" width="642" height="128"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orj-bI-l6z">
+                                <rect key="frame" x="11" y="637" width="737" height="67"/>
+                                <connections>
+                                    <action selector="b1:" destination="7lp-Of-Ntc" eventType="touchUpInside" id="djw-D0-oLk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFx-ch-qcy">
+                                <rect key="frame" x="11" y="894" width="737" height="67"/>
+                                <connections>
+                                    <action selector="b4:" destination="7lp-Of-Ntc" eventType="touchUpInside" id="7XQ-eu-uG0"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="HP" destination="zZE-2q-fyq" id="aAO-3k-TTt"/>
+                        <outlet property="enemyimage" destination="qC4-f3-Dxa" id="hsU-bC-xzf"/>
+                        <outlet property="gametext" destination="khC-iX-Vnu" id="FgO-MD-QE6"/>
+                        <outlet property="questiontext" destination="xZj-b3-Fg9" id="Nnl-Ip-lR1"/>
+                        <outlet property="t0" destination="C3R-HH-Udk" id="Guo-TA-72w"/>
+                        <outlet property="t1" destination="Ft9-z8-wV9" id="coK-ny-aVI"/>
+                        <outlet property="t2" destination="wtn-vi-efm" id="xVr-va-Y1w"/>
+                        <outlet property="t3" destination="A7d-pa-r93" id="YW4-H6-2kX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tL0-Ea-FwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -359,12 +472,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CoastBoss" width="640" height="640"/>
+        <image name="ForestEnemy3" width="640" height="640"/>
         <image name="Grassland" width="1536" height="1240"/>
+        <image name="battle_janken" width="1536" height="2048"/>
+        <image name="choki" width="525" height="525"/>
+        <image name="gu-" width="525" height="525"/>
         <image name="mapButton" width="1000" height="248"/>
         <image name="mapView" width="1536" height="2048"/>
         <image name="noItem" width="400" height="400"/>
+        <image name="pa-" width="525" height="525"/>
         <image name="questView" width="1536" height="1241"/>
         <image name="quest_button" width="1001" height="248"/>
+        <image name="quiz" width="1536" height="2048"/>
         <image name="recoveryPoint" width="400" height="400"/>
         <image name="ringBlue" width="400" height="400"/>
     </resources>

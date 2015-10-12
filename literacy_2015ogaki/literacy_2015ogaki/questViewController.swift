@@ -68,12 +68,12 @@ class questViewController: UIViewController {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         var questStatus = appDelegate.quest.getItemStatus()
-        if questStatus == [true, true, true] && appDelegate.quest.getQuestFinished() {
+        if questStatus == [true, true, true] && appDelegate.quest.getQuestFinished() && !appDelegate.itemFlag {
             if appDelegate.quest.getQuestEquip() == 1 {
                 appDelegate.player.setNextWeapon()
-                var alert = UIAlertController(title: "武器が" + appDelegate.player.weapon! + "になった！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                presentViewController(alert, animated: true, completion: nil)
+                var weaponAlert = UIAlertController(title: "武器が" + appDelegate.player.weapon! + "になった！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                weaponAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                presentViewController(weaponAlert, animated: true, completion: nil)
             }else{
                 appDelegate.player.setNextArmor()
                 var alert = UIAlertController(title: "防具が" + appDelegate.player.armor! + "になった！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
@@ -82,6 +82,8 @@ class questViewController: UIViewController {
             }
             if !appDelegate.quest.getMapQuestFinished(){
                 appDelegate.quest.setNextQuest()
+            }else{
+                appDelegate.itemFlag = true
             }
         }
         self.weaponView.text = appDelegate.player.weapon

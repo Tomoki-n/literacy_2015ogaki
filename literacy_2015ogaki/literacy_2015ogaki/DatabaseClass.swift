@@ -77,7 +77,7 @@ class playerClass{
                     _HP = newValue
                 }
             }else{
-                println("ERROR!設定HPは0~5です。この数字は設定できません。")
+                print("ERROR!設定HPは0~5です。この数字は設定できません。\n")
             }
         }
     }
@@ -210,7 +210,7 @@ class questClass{
             if (Struct.secondFlag == false){
                 //どちらのクエストを選択するか乱数で決定
                 Struct.i = arc4random_uniform(2)
-                println("NEW")
+                print("NEW\n")
             }
         
             //クエスト分岐
@@ -240,7 +240,7 @@ class questClass{
         
             Struct.secondFlag = !Struct.secondFlag
         }else{
-            println("すでに両方のクエストが完了しています。")
+            print("すでに両方のクエストが完了しています。\n")
         }
         Struct.pastMap = app.map
     }
@@ -436,8 +436,8 @@ class questClass{
                                              ["草原の思い出","砂漠の思い出","ライオンハート"]]
     
     //武器素材の位置
-    private let weaponItemPositionList:[[Int]]  = [[7/*1*/],[20,5],[2,9,17],[1,9,11],[2,10,12]]
-    private let weaponItemPositionList2:[[Int]] = [[7/*5*/],[18,3],[4,7,19],[5,7,15],[4,6,14]]
+    private let weaponItemPositionList:[[Int]]  = [[1],[20,5],[2,9,17],[1,9,11],[2,10,12]]
+    private let weaponItemPositionList2:[[Int]] = [[5],[18,3],[4,7,19],[5,7,15],[4,6,14]]
     
     //防具素材
     private let armorItemList:[[String]]  = [["そよ風のオーブ"],
@@ -480,7 +480,7 @@ private func getsMap() -> String{
     case 4:
         return "Devil"
     default:
-        println("map番号がおかしい")
+        print("map番号がおかしい\n")
         return "ERROR"
     }
 }

@@ -60,6 +60,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         //test
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        print(String(appDelegate.player.level!) + "\n")
         appDelegate.quest.setNextQuest()
         self.levelView.text = String(appDelegate.player.level!)
         self.nameView.text = appDelegate.player.name
@@ -86,18 +87,19 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 appDelegate.player.level! += 5
                 self.levelView.text = String(appDelegate.player.level!)
                 appDelegate.quest.setNextQuest()
+                appDelegate.itemFlag = false
                 appDelegate.map++
                 switch appDelegate.map {
-                case 2:
+                case 1:
                     self.map.image = UIImage(named: "Coast.png")
                     break
-                case 3:
+                case 2:
                     self.map.image = UIImage(named: "Forest.png")
                     break
-                case 4:
+                case 3:
                     self.map.image = UIImage(named: "Desert.png")
                     break
-                case 5:
+                case 4:
                     self.map.image = UIImage(named: "Devil.png")
                     break
                 default:
@@ -105,7 +107,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
                 var mapAlert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                 mapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(mapAlert, animated: true, completion: nil)
+                if appDelegate.map >= 5 {
+                    var alert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }else{
+                    self.presentViewController(mapAlert, animated: true, completion: nil)
+                }
             }else if appDelegate.flag{
                 appDelegate.player.level! += 3
                 self.levelView.text = String(appDelegate.player.level!)
@@ -137,7 +145,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             self.locationManerger.startRangingBeaconsInRegion(self.myRegion)
             break
         default:
-            println("許可がありません")
+            print("許可がありません\n")
             break
         }
     }
@@ -150,7 +158,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         print("iPad did Exit Region")
     }
     
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         
@@ -159,15 +167,19 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var bossFlag = false
         
         if beacons.count != 0 {
-            let closeBeacon = beacons.first as! CLBeacon
-            let newid = closeBeacon.major.integerValue * 5 + closeBeacon.minor.integerValue
-            if self.id != newid && closeBeacon.proximity == CLProximity.Immediate {
+            let closeBeacon = beacons.first as CLBeacon?
+            let newid = closeBeacon!.major.integerValue * 5 + closeBeacon!.minor.integerValue
+            if self.id != newid && closeBeacon!.proximity == CLProximity.Near {
                 self.id = newid
-                println(self.id)
                 drawEffectonBeacon(self.id)
                 
+                //ボス
                 if appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 {
-                    println(appDelegate.player.level)
+                    var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction) -> Void in
+                        self.performSegueWithIdentifier("boss", sender: self)
+                    }))
+                    presentViewController(alert, animated: true, completion: nil)
                     drawBoss(appDelegate.enemy.getBossPosition())
                 }
                 
@@ -195,16 +207,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                         appDelegate.quest.getItem(3)
                         self.presentViewController(items, animated: true, completion: nil)
                     }
-                }
-                
-                //ボス
-                if appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 && appDelegate.enemy.getBossPosition() == self.id {
-                    var boss = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                    boss.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                        self.performSegueWithIdentifier("boss", sender: self)
-                    }))
-                    self.presentViewController(boss, animated: true, completion: nil)
-                    bossFlag = true
                 }
                 
                 //回復
@@ -251,7 +253,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "enemy" {
             //enemyViewに渡す値の設定
-            var eVC = segue.destinationViewController as! EnemyViewController
+            var eVC = segue.destinationViewController as! jyankenViewController
         }else if segue.identifier == "boss" {
             //bossViewに渡す値の設定
             var bVC = segue.destinationViewController as! BossViewController
@@ -329,7 +331,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             break
         }
         
-        var blue = UIImage(named: "ringBlue.png")
+        let blue = UIImage(named: "ringBlue.png")
         switch self.before_id {
         case 1:
             self.beacon1.image = blue
@@ -400,7 +402,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     func drawBoss(id:Int){
-        var image = UIImage(named: "boss.png")
+        let image = UIImage(named: "boss.png")
         switch id {
         case 1:
             self.beacon1.image = image
