@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //戦闘の勝ち負け
     var flag:Bool = false
-    var win:Bool = false
+    //ボス戦かどうか
+    var boss:Bool = false
 
     var window: UIWindow?
 

@@ -24,7 +24,6 @@ class EnemyViewController: UIViewController {
     @IBAction func backButton(sender: AnyObject) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.flag = true
-        appDelegate.win = true
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

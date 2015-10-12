@@ -86,19 +86,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNP-Ky-5Hu">
                                 <rect key="frame" x="250" y="72" width="470" height="51"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8X-2G-7v9">
                                 <rect key="frame" x="177" y="155" width="205" height="67"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRM-uZ-ajS">
                                 <rect key="frame" x="551" y="155" width="201" height="67"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ziP-kI-P4t">
@@ -110,7 +110,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGe-8q-Xb7">
                                 <rect key="frame" x="32" y="52" width="90" height="63"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZ0-Rd-uRf">
@@ -136,7 +136,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hz-YC-gU2">
                                 <rect key="frame" x="102" y="257" width="317" height="133"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="101"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eic-na-Dff">
@@ -149,9 +149,6 @@
                                     <action selector="boss:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w8T-Ik-okU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ringYellow" translatesAutoresizingMaskIntoConstraints="NO" id="dVV-uT-HZe">
-                                <rect key="frame" x="60" y="460" width="70" height="70"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -162,6 +159,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="HPView" destination="5Hz-YC-gU2" id="OOE-lc-Bdn"/>
+                        <outlet property="armorImage" destination="Knp-V3-Puy" id="rUX-u3-sjH"/>
                         <outlet property="armorName" destination="YRM-uZ-ajS" id="8wM-xb-0Vk"/>
                         <outlet property="beacon1" destination="WZK-q2-ViA" id="dCV-It-fyN"/>
                         <outlet property="beacon10" destination="a8n-St-Q92" id="Kn2-11-NYb"/>
@@ -183,10 +181,10 @@
                         <outlet property="beacon7" destination="52j-Jk-e3w" id="0wI-rc-GoO"/>
                         <outlet property="beacon8" destination="2Ge-7t-hKe" id="IEH-bx-xxK"/>
                         <outlet property="beacon9" destination="IbO-rw-kfb" id="juY-aU-NlH"/>
-                        <outlet property="hilightedBeacon" destination="dVV-uT-HZe" id="Ypl-JQ-X9K"/>
                         <outlet property="levelView" destination="wGe-8q-Xb7" id="dDU-fl-lgZ"/>
                         <outlet property="map" destination="TdJ-HE-atF" id="kOs-h7-pjG"/>
                         <outlet property="nameView" destination="hNP-Ky-5Hu" id="9DI-gX-H0O"/>
+                        <outlet property="weaponImage" destination="ziP-kI-P4t" id="I9J-gP-SXN"/>
                         <outlet property="weaponName" destination="P8X-2G-7v9" id="3I9-zp-jt4"/>
                         <segue destination="PTx-3E-MZZ" kind="presentation" identifier="enemy" modalTransitionStyle="flipHorizontal" id="kPC-kk-eKK"/>
                         <segue destination="7lp-Of-Ntc" kind="presentation" identifier="boss" modalTransitionStyle="flipHorizontal" id="AfF-8r-ay0"/>
@@ -212,9 +210,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An8-bi-5hz">
-                                <rect key="frame" x="176" y="156" width="160" height="67"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="176" y="156" width="207" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vef-zV-21P">
@@ -226,16 +224,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz7-wM-bis">
                                 <rect key="frame" x="250" y="71" width="471" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="questView" translatesAutoresizingMaskIntoConstraints="NO" id="ZGY-fh-Kax" customClass="questItems" customModule="literacy_2015ogaki" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="questView" translatesAutoresizingMaskIntoConstraints="NO" id="ZGY-fh-Kax">
                                 <rect key="frame" x="16" y="294" width="736" height="602"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noItem" translatesAutoresizingMaskIntoConstraints="NO" id="aeq-Xq-lPo">
+                                <rect key="frame" x="292" y="524" width="184" height="187"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn4-he-Cbz">
-                                <rect key="frame" x="552" y="156" width="160" height="67"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="552" y="156" width="205" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x21-th-L8n">
@@ -262,9 +263,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C9-YS-2Sd">
                                 <rect key="frame" x="28" y="51" width="97" height="70"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noItem" translatesAutoresizingMaskIntoConstraints="NO" id="U49-yu-cUT">
+                                <rect key="frame" x="533" y="524" width="184" height="187"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noItem" translatesAutoresizingMaskIntoConstraints="NO" id="ixO-yt-ggz">
+                                <rect key="frame" x="51" y="524" width="184" height="187"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -274,10 +281,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="i4l-Iu-mS3"/>
                     <connections>
+                        <outlet property="armorImage" destination="vef-zV-21P" id="tNa-80-bqT"/>
                         <outlet property="armorView" destination="Tn4-he-Cbz" id="KaY-4H-UJe"/>
-                        <outlet property="itemView" destination="ZGY-fh-Kax" id="Uu9-Xl-btf"/>
+                        <outlet property="item1" destination="ixO-yt-ggz" id="N6O-88-bHJ"/>
+                        <outlet property="item2" destination="aeq-Xq-lPo" id="6y3-1x-pgu"/>
+                        <outlet property="item3" destination="U49-yu-cUT" id="hnY-BM-K47"/>
                         <outlet property="levelView" destination="0C9-YS-2Sd" id="9pZ-zo-o5U"/>
                         <outlet property="nameView" destination="Uz7-wM-bis" id="m33-kz-dTg"/>
+                        <outlet property="weaponImage" destination="aoQ-DF-a9Q" id="Xvb-fo-9MD"/>
                         <outlet property="weaponView" destination="An8-bi-5hz" id="6rc-vO-biu"/>
                     </connections>
                 </viewController>
@@ -351,10 +362,10 @@
         <image name="Grassland" width="1536" height="1240"/>
         <image name="mapButton" width="1000" height="248"/>
         <image name="mapView" width="1536" height="2048"/>
+        <image name="noItem" width="400" height="400"/>
         <image name="questView" width="1536" height="1241"/>
         <image name="quest_button" width="1001" height="248"/>
         <image name="recoveryPoint" width="400" height="400"/>
         <image name="ringBlue" width="400" height="400"/>
-        <image name="ringYellow" width="400" height="400"/>
     </resources>
 </document>

@@ -17,6 +17,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var weaponName: UILabel!
     @IBOutlet weak var armorName: UILabel!
+    @IBOutlet weak var weaponImage: UIImageView!
+    @IBOutlet weak var armorImage: UIImageView!
     
     @IBOutlet weak var map: UIImageView!
     //beacons
@@ -40,7 +42,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var beacon18: UIImageView!
     @IBOutlet weak var beacon19: UIImageView!
     @IBOutlet weak var beacon20: UIImageView!
-    @IBOutlet weak var hilightedBeacon: UIImageView!
     
     
     var locationManerger:CLLocationManager!
@@ -50,8 +51,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var selectBeacon:CLBeacon!
     
     var id = 0
+    var before_id = 0
     var b_count = 0
-    var level = 1
     var death = false
     
     override func viewDidLoad() {
@@ -59,19 +60,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         //test
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        self.levelView.text = String(self.level)
+        appDelegate.quest.setNextQuest()
+        self.levelView.text = String(appDelegate.player.level!)
         self.nameView.text = appDelegate.player.name
         appDelegate.player.HP = 4
-        self.HPView.text = String(appDelegate.player.HP! * level * 10)
-        self.hilightedBeacon.frame.origin = CGPointMake(-1000, -1000)
-        
-        UIView.animateWithDuration(NSTimeInterval(1.0), delay: 0.0, options: UIViewAnimationOptions.Repeat, animations: { () -> Void in
-            if self.hilightedBeacon.alpha >= 0.5 {
-                self.hilightedBeacon.alpha = 0.3
-            }else{
-                self.hilightedBeacon.alpha = 1.0
-            }
-        }, completion: nil)
+        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
         
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
@@ -82,17 +75,49 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        println(appDelegate.win)
-        if appDelegate.flag && appDelegate.win {
-            self.level += 3
-            self.levelView.text = String(self.level)
+        
+        self.weaponName.text = appDelegate.player.weapon
+        self.weaponImage.image = UIImage(named: appDelegate.player.weaponImage!)
+        self.armorName.text = appDelegate.player.armor
+        self.armorImage.image = UIImage(named: appDelegate.player.armorImage!)
+        
+        if appDelegate.flag && appDelegate.player.HP != 0 {
+            if appDelegate.quest.getMapQuestFinished() && appDelegate.boss {
+                appDelegate.player.level! += 5
+                self.levelView.text = String(appDelegate.player.level!)
+                appDelegate.quest.setNextQuest()
+                appDelegate.map++
+                switch appDelegate.map {
+                case 2:
+                    self.map.image = UIImage(named: "Coast.png")
+                    break
+                case 3:
+                    self.map.image = UIImage(named: "Forest.png")
+                    break
+                case 4:
+                    self.map.image = UIImage(named: "Desert.png")
+                    break
+                case 5:
+                    self.map.image = UIImage(named: "Devil.png")
+                    break
+                default:
+                    break
+                }
+                var mapAlert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                mapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(mapAlert, animated: true, completion: nil)
+            }else if appDelegate.flag{
+                appDelegate.player.level! += 3
+                self.levelView.text = String(appDelegate.player.level!)
+            }
             !appDelegate.flag
-        }else if appDelegate.flag && !appDelegate.win {
+            appDelegate.boss = false
+        }else if appDelegate.flag && appDelegate.player.HP == 0 {
             self.death = true
-            self.map.image = UIImage(named: "Grassland_Gray.png")
+            self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
             !appDelegate.flag
         }
-        self.HPView.text = String(appDelegate.player.HP! * self.level * 10)
+        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,21 +156,63 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         //フラグ類
         var recoveryFlag = false
+        var bossFlag = false
         
         if beacons.count != 0 {
             let closeBeacon = beacons.first as! CLBeacon
-            println(closeBeacon)
             let newid = closeBeacon.major.integerValue * 5 + closeBeacon.minor.integerValue
-            drawEffectonBeacon(newid)
             if self.id != newid && closeBeacon.proximity == CLProximity.Immediate {
                 self.id = newid
                 println(self.id)
+                drawEffectonBeacon(self.id)
+                
+                if appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 {
+                    println(appDelegate.player.level)
+                    drawBoss(appDelegate.enemy.getBossPosition())
+                }
+                
+                if !appDelegate.quest.getMapQuestFinished() {
+                    var items:UIAlertController
+                    if appDelegate.quest.item1Position == self.id && appDelegate.quest.getItemStatus()[0] == false {
+                        items = UIAlertController(title: appDelegate.quest.item1! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                            self.performSegueWithIdentifier("quest", sender: self)
+                        }))
+                        appDelegate.quest.getItem(1)
+                        self.presentViewController(items, animated: true, completion: nil)
+                    }else if appDelegate.quest.item2Position == self.id && appDelegate.quest.getItemStatus()[1] == false {
+                        items = UIAlertController(title: appDelegate.quest.item2! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                            self.performSegueWithIdentifier("quest", sender: self)
+                        }))
+                        appDelegate.quest.getItem(2)
+                        self.presentViewController(items, animated: true, completion: nil)
+                    }else if appDelegate.quest.item3Position == self.id && appDelegate.quest.getItemStatus()[2] == false {
+                        items = UIAlertController(title: appDelegate.quest.item3! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                            self.performSegueWithIdentifier("quest", sender: self)
+                        }))
+                        appDelegate.quest.getItem(3)
+                        self.presentViewController(items, animated: true, completion: nil)
+                    }
+                }
+                
+                //ボス
+                if appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 && appDelegate.enemy.getBossPosition() == self.id {
+                    var boss = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    boss.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                        self.performSegueWithIdentifier("boss", sender: self)
+                    }))
+                    self.presentViewController(boss, animated: true, completion: nil)
+                    bossFlag = true
+                }
+                
                 //回復
-                if appDelegate.player.HP < 5 && id == 8 {
+                if appDelegate.player.HP < 5 && id == 8 && !bossFlag {
                     var recovery = UIAlertController(title: "体力が回復した！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     recovery.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
                         appDelegate.player.HP? = 5
-                        self.HPView.text = String(appDelegate.player.HP! * self.level * 10)
+                        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
                     }))
                     self.presentViewController(recovery, animated: true, completion: nil)
                     if self.death {
@@ -156,14 +223,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
         
                 //エンカウント
-                if !self.death {
-                    self.level++
-                    self.levelView.text = String(self.level)
-                    self.HPView.text = String(appDelegate.player.HP! * self.level * 10)
+                if !self.death && !bossFlag{
+                    appDelegate.player.level!++
+                    self.levelView.text = String(appDelegate.player.level!)
+                    self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
                     self.b_count++
                 }
                 
-                if !recoveryFlag && !self.death {
+                if !recoveryFlag || !self.death && !bossFlag {
                     if self.b_count >= 3 {
                         var enemy = UIAlertController(title: "敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                         enemy.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
@@ -184,103 +251,221 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "enemy" {
             //enemyViewに渡す値の設定
-            var eVC = segue.destinationViewController as! UIViewController
+            var eVC = segue.destinationViewController as! EnemyViewController
         }else if segue.identifier == "boss" {
             //bossViewに渡す値の設定
-            var bVC = segue.destinationViewController as! UIViewController
+            var bVC = segue.destinationViewController as! BossViewController
+            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.boss = true
         }else if segue.identifier == "quest" {
             var qVC = segue.destinationViewController as! questViewController
-            qVC.items = [true, true, true]
-            qVC.level = self.level
-            qVC.name = self.nameView.text
         }
     }
     
     func drawEffectonBeacon(id: Int){
+        let image = UIImage(named: "ringYellow")
         switch id {
         case 1:
-            self.hilightedBeacon.frame.origin.x = self.beacon1.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon1.frame.origin.y
+            self.beacon1.image = image
             break
         case 2:
-            self.hilightedBeacon.frame.origin.x = self.beacon2.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon2.frame.origin.y
+            self.beacon2.image = image
             break
         case 3:
-            self.hilightedBeacon.frame.origin.x = self.beacon3.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon3.frame.origin.y
+            self.beacon3.image = image
             break
         case 4:
-            self.hilightedBeacon.frame.origin.x = self.beacon4.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon4.frame.origin.y
+            self.beacon4.image = image
             break
         case 5:
-            self.hilightedBeacon.frame.origin.x = self.beacon5.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon5.frame.origin.y
+            self.beacon5.image = image
             break
         case 6:
-            self.hilightedBeacon.frame.origin.x = self.beacon6.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon6.frame.origin.y
+            self.beacon6.image = image
             break
         case 7:
-            self.hilightedBeacon.frame.origin.x = self.beacon7.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon7.frame.origin.y
+            self.beacon7.image = image
             break
         case 8:
-            self.hilightedBeacon.frame.origin.x = self.beacon8.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon8.frame.origin.y
+            self.beacon8.image = image
             break
         case 9:
-            self.hilightedBeacon.frame.origin.x = self.beacon9.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon9.frame.origin.y
+            self.beacon9.image = image
             break
         case 10:
-            self.hilightedBeacon.frame.origin.x = self.beacon10.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon10.frame.origin.y
+            self.beacon10.image = image
             break
         case 11:
-            self.hilightedBeacon.frame.origin.x = self.beacon11.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon11.frame.origin.y
+            self.beacon11.image = image
             break
         case 12:
-            self.hilightedBeacon.frame.origin.x = self.beacon12.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon12.frame.origin.y
+            self.beacon12.image = image
             break
         case 13:
-            self.hilightedBeacon.frame.origin.x = self.beacon13.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon13.frame.origin.y
+            self.beacon13.image = image
             break
         case 14:
-            self.hilightedBeacon.frame.origin.x = self.beacon14.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon14.frame.origin.y
+            self.beacon14.image = image
             break
         case 15:
-            self.hilightedBeacon.frame.origin.x = self.beacon15.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon15.frame.origin.y
+            self.beacon15.image = image
             break
         case 16:
-            self.hilightedBeacon.frame.origin.x = self.beacon16.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon16.frame.origin.y
+            self.beacon16.image = image
             break
         case 17:
-            self.hilightedBeacon.frame.origin.x = self.beacon17.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon17.frame.origin.y
+            self.beacon17.image = image
             break
         case 18:
-            self.hilightedBeacon.frame.origin.x = self.beacon18.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon18.frame.origin.y
+            self.beacon18.image = image
             break
         case 19:
-            self.hilightedBeacon.frame.origin.x = self.beacon19.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon19.frame.origin.y
+            self.beacon19.image = image
             break
         case 20:
-            self.hilightedBeacon.frame.origin.x = self.beacon20.frame.origin.x
-            self.hilightedBeacon.frame.origin.y = self.beacon20.frame.origin.y
+            self.beacon20.image = image
             break
-        default :
+        default:
             break
         }
+        
+        var blue = UIImage(named: "ringBlue.png")
+        switch self.before_id {
+        case 1:
+            self.beacon1.image = blue
+            break
+        case 2:
+            self.beacon2.image = blue
+            break
+        case 3:
+            self.beacon3.image = blue
+            break
+        case 4:
+            self.beacon4.image = blue
+            break
+        case 5:
+            self.beacon5.image = blue
+            break
+        case 6:
+            self.beacon6.image = blue
+            break
+        case 7:
+            self.beacon7.image = blue
+            break
+        case 8:
+            self.beacon8.image = UIImage(named: "recoveryPoint.png")
+            break
+        case 9:
+            self.beacon9.image = blue
+            break
+        case 10:
+            self.beacon10.image = blue
+            break
+        case 11:
+            self.beacon11.image = blue
+            break
+        case 12:
+            self.beacon12.image = blue
+            break
+        case 13:
+            self.beacon13.image = blue
+            break
+        case 14:
+            self.beacon14.image = blue
+            break
+        case 15:
+            self.beacon15.image = blue
+            break
+        case 16:
+            self.beacon16.image = blue
+            break
+        case 17:
+            self.beacon17.image = blue
+            break
+        case 18:
+            self.beacon18.image = blue
+            break
+        case 19:
+            self.beacon19.image = blue
+            break
+        case 20:
+            self.beacon20.image = blue
+            break
+        default:
+            break
+            
+        }
+
+        self.before_id = id
+    }
+    
+    func drawBoss(id:Int){
+        var image = UIImage(named: "boss.png")
+        switch id {
+        case 1:
+            self.beacon1.image = image
+            break
+        case 2:
+            self.beacon2.image = image
+            break
+        case 3:
+            self.beacon3.image = image
+            break
+        case 4:
+            self.beacon4.image = image
+            break
+        case 5:
+            self.beacon5.image = image
+            break
+        case 6:
+            self.beacon6.image = image
+            break
+        case 7:
+            self.beacon7.image = image
+            break
+        case 8:
+            self.beacon8.image = image
+            break
+        case 9:
+            self.beacon9.image = image
+            break
+        case 10:
+            self.beacon10.image = image
+            break
+        case 11:
+            self.beacon11.image = image
+            break
+        case 12:
+            self.beacon12.image = image
+            break
+        case 13:
+            self.beacon13.image = image
+            break
+        case 14:
+            self.beacon14.image = image
+            break
+        case 15:
+            self.beacon15.image = image
+            break
+        case 16:
+            self.beacon16.image = image
+            break
+        case 17:
+            self.beacon17.image = image
+            break
+        case 18:
+            self.beacon18.image = image
+            break
+        case 19:
+            self.beacon19.image = image
+            break
+        case 20:
+            self.beacon20.image = image
+            break
+        default:
+            break
+        }
+
     }
     
     @IBAction func boss(sender: AnyObject) {

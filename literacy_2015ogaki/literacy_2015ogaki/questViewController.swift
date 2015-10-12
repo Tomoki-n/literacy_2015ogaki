@@ -10,15 +10,16 @@ import UIKit
 
 class questViewController: UIViewController {
 
-    @IBOutlet weak var itemView: questItems!
     @IBOutlet weak var levelView: UILabel!
     @IBOutlet weak var nameView: UILabel!
     @IBOutlet weak var weaponView: UILabel!
     @IBOutlet weak var armorView: UILabel!
+    @IBOutlet weak var weaponImage: UIImageView!
+    @IBOutlet weak var armorImage: UIImageView!
     
-    
-    var level:Int?
-    var name:String?
+    @IBOutlet weak var item1: UIImageView!
+    @IBOutlet weak var item2: UIImageView!
+    @IBOutlet weak var item3: UIImageView!
     
     var items:Array<Bool>?
     
@@ -26,10 +27,68 @@ class questViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let appDeleagte = UIApplication.sharedApplication().delegate as! AppDelegate
-        self.itemView.setItemImages(items!)
-        self.nameView.text = appDeleagte.player.name
-        self.levelView.text = String(self.level!)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        self.nameView.text = appDelegate.player.name
+        self.levelView.text = String(appDelegate.player.level!)
+        self.weaponView.text = appDelegate.player.weapon
+        self.weaponImage.image = UIImage(named: appDelegate.player.weaponImage!)
+        self.armorView.text = appDelegate.player.armor
+        self.armorImage.image = UIImage(named: appDelegate.player.armorImage!)
+        
+        self.item1.image = UIImage(named: appDelegate.quest.item1Image!)
+        if appDelegate.quest.getQuestItemCounts() == 2 {
+        self.item2.image = UIImage(named: appDelegate.quest.item2Image!)
+        }else if appDelegate.quest.getQuestItemCounts() == 3 {
+            self.item3.image = UIImage(named: appDelegate.quest.item3Image!)
+        }
+    
+        let questStatus = appDelegate.quest.getItemStatus()
+        for var i = 0; i < appDelegate.quest.getQuestItemCounts(); i++ {
+            if questStatus[i] {
+                var get = UIImageView(image: UIImage(named: "getItem.png"))
+                switch i {
+                case 0:
+                    get.frame = self.item1.frame
+                    break
+                case 1:
+                    get.frame = self.item2.frame
+                    break
+                case 2:
+                    get.frame = self.item3.frame
+                    break
+                default:
+                    break
+                }
+                self.view.addSubview(get)
+            }
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var questStatus = appDelegate.quest.getItemStatus()
+        if questStatus == [true, true, true] && appDelegate.quest.getQuestFinished() {
+            if appDelegate.quest.getQuestEquip() == 1 {
+                appDelegate.player.setNextWeapon()
+                var alert = UIAlertController(title: "武器が" + appDelegate.player.weapon! + "になった！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                presentViewController(alert, animated: true, completion: nil)
+            }else{
+                appDelegate.player.setNextArmor()
+                var alert = UIAlertController(title: "防具が" + appDelegate.player.armor! + "になった！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                presentViewController(alert, animated: true, completion: nil)
+            }
+            if !appDelegate.quest.getMapQuestFinished(){
+                appDelegate.quest.setNextQuest()
+            }
+        }
+        self.weaponView.text = appDelegate.player.weapon
+        self.weaponImage.image = UIImage(named: appDelegate.player.weaponImage!)
+        self.armorView.text = appDelegate.player.armor
+        self.armorImage.image = UIImage(named: appDelegate.player.armorImage!)
+
     }
 
     override func didReceiveMemoryWarning() {

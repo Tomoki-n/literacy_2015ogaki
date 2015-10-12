@@ -23,9 +23,8 @@ class BossViewController: UIViewController {
     
     @IBAction func bossButton(sender: AnyObject) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.player.HP = 0
+        appDelegate.player.HP = 1
         appDelegate.flag = true
-        appDelegate.win = false
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
