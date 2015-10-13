@@ -80,22 +80,25 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
-        
-        setaparam()
-        
-        
-        
         btnno()
         
         
         bgm.ids(0)
         bgm.infstart()
         
+        start()
+               
     }
     
     
     override func viewDidAppear(animated: Bool) {
-        start()
+       
+        
+        
+        
+       
+         // NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("onUpdate1:"), userInfo: nil, repeats: false);
+         setaparam()
     }
     
     override func didReceiveMemoryWarning() {
@@ -117,7 +120,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
         
     }
     func setaparam(){
-        //appdelegeteのクラスを取得
+     //appdelegeteのクラスを取得
         player = app.player
         enemy = app.enemy
         quest = app.quest
@@ -193,7 +196,6 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             btnno()
             bgm1.ids(12)
             bgm1.start()
-            appDelegate.flag = true
             NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
             break
         case -1:
@@ -238,6 +240,10 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     
     func returnv(timer: NSTimer) {
        
+       app.player = player
+        app.enemy = enemy
+        app.quest = quest
+        app.flag = true
         self.dismissViewControllerAnimated(true, completion: nil)
         
 

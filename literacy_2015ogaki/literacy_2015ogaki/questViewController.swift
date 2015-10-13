@@ -39,6 +39,7 @@ class questViewController: UIViewController {
         if appDelegate.quest.getQuestItemCounts() == 2 {
         self.item2.image = UIImage(named: appDelegate.quest.item2Image!)
         }else if appDelegate.quest.getQuestItemCounts() == 3 {
+            self.item2.image = UIImage(named: appDelegate.quest.item2Image!)
             self.item3.image = UIImage(named: appDelegate.quest.item3Image!)
         }
     

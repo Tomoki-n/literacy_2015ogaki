@@ -43,6 +43,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var beacon18: UIImageView!
     @IBOutlet weak var beacon19: UIImageView!
     @IBOutlet weak var beacon20: UIImageView!
+    @IBOutlet var zuru: UILabel!
     
     
     var locationManerger:CLLocationManager!
@@ -55,14 +56,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var before_id = 0
     var b_count = 0
     var death = false
+    var boss = false
     
     var bgm = Sound()
-    
+    var bgm1 = Sound()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //test
-       
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         print(String(appDelegate.player.level!) + "\n")
@@ -80,18 +81,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+       
+        self.locationManerger.startRangingBeaconsInRegion(self.myRegion)
+        setmusic()
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        self.zuru.text = String(appDelegate.quest.item1Position!) + String(appDelegate.quest.item2Position!) + String(appDelegate.quest.item3Position!)
+      
         self.weaponName.text = appDelegate.player.weapon
         self.weaponImage.image = UIImage(named: appDelegate.player.weaponImage!)
         self.armorName.text = appDelegate.player.armor
         self.armorImage.image = UIImage(named: appDelegate.player.armorImage!)
-        
+        print(appDelegate.player.HP!)
         if appDelegate.flag && appDelegate.player.HP != 0 {
             if appDelegate.quest.getMapQuestFinished() && appDelegate.boss {
                 appDelegate.player.level! += 5
                 self.levelView.text = String(appDelegate.player.level!)
                 appDelegate.itemFlag = false
+                drawBeacon(appDelegate.enemy.getBossPosition(), image: "ringBlue.png")
                 appDelegate.map++
                 appDelegate.quest.setNextQuest()
                 switch appDelegate.map {
@@ -112,6 +119,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
                 var mapAlert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                 mapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.boss = false
                 if appDelegate.map >= 5 {
                     var alert =  UIAlertController(title:"おしまい", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -127,6 +135,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.boss = false
         }else if appDelegate.flag && appDelegate.player.HP == 0 {
             self.death = true
+            print("死んだ")
             self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
             !appDelegate.flag
         }
@@ -162,6 +171,43 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("iPad did Exit Region")
     }
+    func setmusic(){
+        switch app.map {
+        
+        case 0:
+            
+            bgm.ids(9)
+            bgm.infstart()
+            break
+            
+        case 1:
+            
+            bgm.ids(6)
+            bgm.infstart()
+            break
+            
+        case 2:
+            
+            bgm.ids(7)
+            bgm.infstart()
+            break
+            
+        case 3:
+            
+            bgm.ids(8)
+            bgm.infstart()
+            break
+            
+        case 4:
+            
+            bgm.ids(16)
+            bgm.infstart()
+            break
+        default:
+            break
+        }
+        
+    }
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -179,16 +225,16 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 drawEffectonBeacon(self.id)
                 
                 //ボス
-                if appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 {
+                if appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 && !self.boss {
                     var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction) -> Void in
-                        self.performSegueWithIdentifier("boss", sender: self)
+                    alert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+                        self.boss = true
                     }))
                     presentViewController(alert, animated: true, completion: nil)
-                    drawBoss(appDelegate.enemy.getBossPosition())
+                    drawBeacon(appDelegate.enemy.getBossPosition(), image: "boss.png")
                 }
                 
-                if !appDelegate.quest.getMapQuestFinished() {
+                if !appDelegate.quest.getMapQuestFinished() && !self.death {
                     var items:UIAlertController
                     if appDelegate.quest.item1Position == self.id && appDelegate.quest.getItemStatus()[0] == false {
                         items = UIAlertController(title: appDelegate.quest.item1! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
@@ -212,20 +258,45 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                         appDelegate.quest.getItem(3)
                         self.presentViewController(items, animated: true, completion: nil)
                     }
+                }else if appDelegate.player.level >= (appDelegate.map + 1) * 30 && self.id == appDelegate.enemy.getBossPosition(){
+                    var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+                        self.performSegueWithIdentifier("boss", sender: self)
+                    }))
+                    presentViewController(alert, animated: true, completion: nil)
                 }
                 
                 //回復
                 if appDelegate.player.HP < 5 && id == 8 && !bossFlag {
                     var recovery = UIAlertController(title: "体力が回復した！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     recovery.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                        self.bgm1.ids(10)
+                        self.bgm1.start()
                         appDelegate.player.HP? = 5
                         self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
+                        if self.death {
+                            self.death = false
+                            switch appDelegate.map {
+                            case 0:
+                                self.map.image = UIImage(named: "Grassland.png")
+                            case 1:
+                                self.map.image = UIImage(named: "Coast.png")
+                                break
+                            case 2:
+                                self.map.image = UIImage(named: "Forest.png")
+                                break
+                            case 3:
+                                self.map.image = UIImage(named: "Desert.png")
+                                break
+                            case 4:
+                                self.map.image = UIImage(named: "Devil.png")
+                                break
+                            default:
+                                break
+                            }
+                        }
                     }))
                     self.presentViewController(recovery, animated: true, completion: nil)
-                    if self.death {
-                        self.death = false
-                        self.map.image = UIImage(named: "Grassland.png")
-                    }
                     recoveryFlag = true
                 }
         
@@ -256,10 +327,16 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.locationManerger.stopRangingBeaconsInRegion(self.myRegion)
+        
         if segue.identifier == "enemy" {
             //enemyViewに渡す値の設定
+            bgm.ids(15)
+            bgm.start()
             var eVC = segue.destinationViewController as! jyankenViewController
         }else if segue.identifier == "boss" {
+            bgm.ids(15)
+            bgm.start()
             //bossViewに渡す値の設定
             var bVC = segue.destinationViewController as! BossViewController
             var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -268,6 +345,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             var qVC = segue.destinationViewController as! questViewController
         }
     }
+    
     
     func drawEffectonBeacon(id: Int){
         let image = UIImage(named: "ringYellow")
@@ -402,12 +480,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             break
             
         }
-
         self.before_id = id
     }
     
-    func drawBoss(id:Int){
-        let image = UIImage(named: "boss.png")
+    func drawBeacon(id:Int, image:String){
+        let image = UIImage(named: image)
         switch id {
         case 1:
             self.beacon1.image = image

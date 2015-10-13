@@ -199,8 +199,13 @@ class BossViewController : UIViewController {
         self.gametext.text = "答えを選んでね"
      }
     func returnv(timer: NSTimer) {
+        app.player = player
+        app.enemy = enemy
+        app.quest = quest
         
         self.dismissViewControllerAnimated(true, completion: nil)
+        
+
         
         
     }
