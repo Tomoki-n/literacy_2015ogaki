@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AVFoundation
 
 class ViewController: UIViewController,CLLocationManagerDelegate {
     
@@ -55,10 +56,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var b_count = 0
     var death = false
     
+    var bgm = Sound()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //test
+       
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         print(String(appDelegate.player.level!) + "\n")
         appDelegate.quest.setNextQuest()
@@ -86,9 +91,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             if appDelegate.quest.getMapQuestFinished() && appDelegate.boss {
                 appDelegate.player.level! += 5
                 self.levelView.text = String(appDelegate.player.level!)
-                appDelegate.quest.setNextQuest()
                 appDelegate.itemFlag = false
                 appDelegate.map++
+                appDelegate.quest.setNextQuest()
                 switch appDelegate.map {
                 case 1:
                     self.map.image = UIImage(named: "Coast.png")
@@ -108,7 +113,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 var mapAlert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                 mapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 if appDelegate.map >= 5 {
-                    var alert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    var alert =  UIAlertController(title:"おしまい", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }else{
@@ -118,7 +123,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 appDelegate.player.level! += 3
                 self.levelView.text = String(appDelegate.player.level!)
             }
-            !appDelegate.flag
+            appDelegate.flag = false
             appDelegate.boss = false
         }else if appDelegate.flag && appDelegate.player.HP == 0 {
             self.death = true
@@ -169,7 +174,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         if beacons.count != 0 {
             let closeBeacon = beacons.first as CLBeacon?
             let newid = closeBeacon!.major.integerValue * 5 + closeBeacon!.minor.integerValue
-            if self.id != newid && closeBeacon!.proximity == CLProximity.Near {
+            if self.id != newid && closeBeacon!.proximity == CLProximity.Near || closeBeacon!.proximity == CLProximity.Immediate {
                 self.id = newid
                 drawEffectonBeacon(self.id)
                 

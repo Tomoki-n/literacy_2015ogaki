@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import AVFoundation
 
 class Sound :NSObject{
@@ -22,7 +21,7 @@ class Sound :NSObject{
         let url = NSURL.fileURLWithPath(path!)
         print(url)
         do {
-            try  self.player = AVAudioPlayer(contentsOfURL:url)
+            try self.player = AVAudioPlayer(contentsOfURL:url)
         } catch {
             print("error")
             //Handle the error
