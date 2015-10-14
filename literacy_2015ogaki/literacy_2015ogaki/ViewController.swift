@@ -74,7 +74,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         appDelegate.quest.setNextQuest()
         self.levelView.text = String(appDelegate.player.level!)
         self.nameView.text = appDelegate.player.name
-        
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
         self.locationManerger = CLLocationManager()
@@ -216,61 +215,26 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         
-        //フラグ類
-        var recoveryFlag = false
+        //フラグ
         var bossFlag = false
+        var item = false
         
         if beacons.count != 0 {
             let closeBeacon = beacons.first as CLBeacon?
             let newid = closeBeacon!.major.integerValue * 5 + closeBeacon!.minor.integerValue
-            if self.id != newid && closeBeacon!.proximity == CLProximity.Near || closeBeacon!.proximity == CLProximity.Immediate {
+            if self.id != newid && closeBeacon!.proximity == CLProximity.Immediate {
                 self.id = newid
+                if appDelegate.quest.item1Position == self.id {
+                    item = true
+                }else if appDelegate.quest.item2Position == self.id {
+                    item = true
+                }else if appDelegate.quest.item3Position == self.id {
+                    item = true
+                }
                 drawEffectonBeacon(self.id)
-                
-                //ボス
-                if appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 && !self.boss {
-                    var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
-                        self.boss = true
-                    }))
-                    presentViewController(alert, animated: true, completion: nil)
-                    drawBeacon(appDelegate.enemy.getBossPosition(), image: "boss.png")
-                }
-                
-                if !appDelegate.quest.getMapQuestFinished() && !self.death {
-                    var items:UIAlertController
-                    if appDelegate.quest.item1Position == self.id && appDelegate.quest.getItemStatus()[0] == false {
-                        items = UIAlertController(title: appDelegate.quest.item1! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                            self.performSegueWithIdentifier("quest", sender: self)
-                        }))
-                        appDelegate.quest.getItem(1)
-                        self.presentViewController(items, animated: true, completion: nil)
-                    }else if appDelegate.quest.item2Position == self.id && appDelegate.quest.getItemStatus()[1] == false {
-                        items = UIAlertController(title: appDelegate.quest.item2! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                            self.performSegueWithIdentifier("quest", sender: self)
-                        }))
-                        appDelegate.quest.getItem(2)
-                        self.presentViewController(items, animated: true, completion: nil)
-                    }else if appDelegate.quest.item3Position == self.id && appDelegate.quest.getItemStatus()[2] == false {
-                        items = UIAlertController(title: appDelegate.quest.item3! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                            self.performSegueWithIdentifier("quest", sender: self)
-                        }))
-                        appDelegate.quest.getItem(3)
-                        self.presentViewController(items, animated: true, completion: nil)
-                    }
-                }else if appDelegate.player.level >= (appDelegate.map + 1) * 30 && self.id == appDelegate.enemy.getBossPosition(){
-                    var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
-                        self.performSegueWithIdentifier("boss", sender: self)
-                    }))
-                    presentViewController(alert, animated: true, completion: nil)
-                }
-                
-                //回復
-                if appDelegate.player.HP < 5 && id == 8 && !bossFlag {
+              
+                if self.id == 8 && appDelegate.player.HP != 5{
+                    //回復
                     var recovery = UIAlertController(title: "体力が回復した！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     recovery.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
                         self.bgm1.ids(10)
@@ -300,29 +264,67 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                         }
                     }))
                     self.presentViewController(recovery, animated: true, completion: nil)
-                    recoveryFlag = true
-                }
+            }
         
                 //エンカウント
                 if !self.death && !bossFlag{
                     appDelegate.player.level!++
                     self.levelView.text = String(appDelegate.player.level!)
+
+                }else if bossFlag && self.id == appDelegate.enemy.getBossPosition() && appDelegate.player.HP != 0 {
+                    //ボス
+                    var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+                        self.performSegueWithIdentifier("boss", sender: self)
+                    }))
+                    bossFlag = true
+
+                }else if !bossFlag && appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= appDelegate.map * 30 {
+                    //ボス表示
+                    var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+                    bossFlag = true
+                    presentViewController(alert, animated: true, completion: nil)
+                    drawBeacon(appDelegate.enemy.getBossPosition(), image: "boss.png")
+                }else if !appDelegate.quest.getMapQuestFinished() && appDelegate.player.HP != 0 && item {
+                    //アイテム
+                    var items:UIAlertController
+                    if appDelegate.quest.item1Position == self.id && appDelegate.quest.getItemStatus()[0] == false {
+                        items = UIAlertController(title: appDelegate.quest.item1! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                            self.performSegueWithIdentifier("quest", sender: self)
+                        }))
+                        appDelegate.quest.getItem(1)
+                        self.presentViewController(items, animated: true, completion: nil)
+                    }else if appDelegate.quest.item2Position == self.id && appDelegate.quest.getItemStatus()[1] == false {
+                        items = UIAlertController(title: appDelegate.quest.item2! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                            self.performSegueWithIdentifier("quest", sender: self)
+                        }))
+                        appDelegate.quest.getItem(2)
+                        self.presentViewController(items, animated: true, completion: nil)
+                    }else if appDelegate.quest.item3Position == self.id && appDelegate.quest.getItemStatus()[2] == false {
+                        items = UIAlertController(title: appDelegate.quest.item3! + "を手に入れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        items.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                            self.performSegueWithIdentifier("quest", sender: self)
+                        }))
+                        appDelegate.quest.getItem(3)
+                        self.presentViewController(items, animated: true, completion: nil)
+                    }
+                }else if appDelegate.player.HP != 0 && self.id != 8 {
+
                     self.b_count++
-                }
-                
-                if !recoveryFlag || !self.death && !bossFlag {
                     if self.b_count >= 3 {
+                        self.b_count = 0
                         var enemy = UIAlertController(title: "敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                         enemy.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
                             self.performSegueWithIdentifier("enemy", sender: self)
                         }))
                         self.presentViewController(enemy, animated: true, completion: nil)
-                        self.b_count = 0
-                    }
-                }else{
-                    if self.b_count >= 3 {
-                        self.b_count--
-                    }
+                    }else{
+                        appDelegate.player.level!++
+                        self.levelView.text = String(appDelegate.player.level!)
+                        }
                 }
             }
         }
@@ -349,9 +351,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     
-    func drawEffectonBeacon(id: Int){
+    func drawEffectonBeacon(id :Int){
         let image = UIImage(named: "ringYellow")
-        switch id {
+        switch self.id {
         case 1:
             self.beacon1.image = image
             break

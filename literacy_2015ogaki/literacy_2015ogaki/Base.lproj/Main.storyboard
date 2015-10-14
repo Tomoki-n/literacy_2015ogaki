@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -293,6 +297,7 @@
                         <outlet property="hp3" destination="bQ5-Rm-ZUK" id="ch6-9T-6gh"/>
                         <outlet property="hp4" destination="pnY-gg-ajd" id="6QS-sM-JcV"/>
                         <outlet property="levelView" destination="wGe-8q-Xb7" id="dDU-fl-lgZ"/>
+                        <outlet property="levelView" destination="wGe-8q-Xb7" id="FpC-kH-7Xr"/>
                         <outlet property="map" destination="TdJ-HE-atF" id="kOs-h7-pjG"/>
                         <outlet property="nameView" destination="hNP-Ky-5Hu" id="9DI-gX-H0O"/>
                         <outlet property="weaponImage" destination="ziP-kI-P4t" id="I9J-gP-SXN"/>
