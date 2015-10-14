@@ -89,7 +89,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         self.zuru.text = String(appDelegate.quest.item1Position!) + String(appDelegate.quest.item2Position!) + String(appDelegate.quest.item3Position!)
-      
+       self.nameView.text = app.player.name!
         self.weaponName.text = appDelegate.player.weapon
         self.weaponImage.image = UIImage(named: appDelegate.player.weaponImage!)
         self.armorName.text = appDelegate.player.armor

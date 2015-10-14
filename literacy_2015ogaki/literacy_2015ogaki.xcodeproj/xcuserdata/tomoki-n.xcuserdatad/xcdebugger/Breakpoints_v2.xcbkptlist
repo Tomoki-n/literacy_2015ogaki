@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "literacy_2015ogaki/AppDelegate.swift"
-            timestampString = "466496417.910573"
+            timestampString = "466498662.794077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "AppDelegate"
             landmarkType = "3">
          </BreakpointContent>
