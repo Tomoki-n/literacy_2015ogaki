@@ -14,7 +14,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var levelView: UILabel!
     @IBOutlet weak var nameView: UILabel!
-    @IBOutlet weak var HPView: UILabel!
     
     @IBOutlet weak var weaponName: UILabel!
     @IBOutlet weak var armorName: UILabel!
@@ -45,6 +44,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var beacon20: UIImageView!
     @IBOutlet var zuru: UILabel!
     
+    @IBOutlet var hp0: UIImageView!
+    @IBOutlet var hp1: UIImageView!
+    @IBOutlet var hp2: UIImageView!
+    @IBOutlet var hp3: UIImageView!
+    @IBOutlet var hp4: UIImageView!
     
     var locationManerger:CLLocationManager!
     var myUUID:NSUUID!
@@ -70,8 +74,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         appDelegate.quest.setNextQuest()
         self.levelView.text = String(appDelegate.player.level!)
         self.nameView.text = appDelegate.player.name
-        appDelegate.player.HP = 4
-        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
         
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
@@ -100,6 +102,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 appDelegate.itemFlag = false
                 drawBeacon(appDelegate.enemy.getBossPosition(), image: "ringBlue.png")
                 appDelegate.map++
+                setmusic()
                 appDelegate.quest.setNextQuest()
                 switch appDelegate.map {
                 case 1:
@@ -139,7 +142,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
             !appDelegate.flag
         }
-        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
+        drawhp()
     }
 
     override func didReceiveMemoryWarning() {
@@ -273,7 +276,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                         self.bgm1.ids(10)
                         self.bgm1.start()
                         appDelegate.player.HP? = 5
-                        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
+                        self.drawhp()
                         if self.death {
                             self.death = false
                             switch appDelegate.map {
@@ -304,7 +307,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 if !self.death && !bossFlag{
                     appDelegate.player.level!++
                     self.levelView.text = String(appDelegate.player.level!)
-                    self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
                     self.b_count++
                 }
                 
@@ -555,5 +557,55 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBAction func boss(sender: AnyObject) {
         self.performSegueWithIdentifier("boss", sender: self)
     }
+    
+    
+    func drawhp(){
+        if app.player.HP == 5 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_teki")
+        }
+        else if app.player.HP == 4 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 3 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 2 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 1 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 0 {
+            hp0.image = UIImage(named:"hp_mikata")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        
+    }
+    
+   
+    
 }
 

@@ -91,6 +91,7 @@ class questViewController: UIViewController {
         self.weaponImage.image = UIImage(named: appDelegate.player.weaponImage!)
         self.armorView.text = appDelegate.player.armor
         self.armorImage.image = UIImage(named: appDelegate.player.armorImage!)
+        drawhp()
 
     }
 
@@ -104,6 +105,60 @@ class questViewController: UIViewController {
     }
 
 
+    @IBOutlet var hp0: UIImageView!
+    @IBOutlet var hp1: UIImageView!
+    @IBOutlet var hp2: UIImageView!
+    @IBOutlet var hp3: UIImageView!
+    @IBOutlet var hp4: UIImageView!
+    
+    func drawhp(){
+        if app.player.HP == 5 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_teki")
+        }
+        else if app.player.HP == 4 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 3 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 2 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 1 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 0 {
+            hp0.image = UIImage(named:"hp_mikata")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        
+    }
+    
+
+    
     /*
     // MARK: - Navigation
 

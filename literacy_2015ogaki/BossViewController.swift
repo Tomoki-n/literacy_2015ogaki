@@ -97,7 +97,7 @@ class BossViewController : UIViewController {
         //体力の表示
         
         self.HP.text = "HP:" + String(player.HP! * player.level!) + "/" + String(player.level! * 5)
-        
+        drawhp()
         let path = NSBundle.mainBundle().pathForResource("question", ofType: "json")!
         
         
@@ -180,6 +180,7 @@ class BossViewController : UIViewController {
             
             
             player.HP!--
+            drawhp()
             self.HP.text = "HP:" + String(player.HP! * player.level!) + "/" + String(player.level! * 5)
             
             if player.HP == 0{
@@ -205,9 +206,60 @@ class BossViewController : UIViewController {
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
-
-        
+    }
+    
+    @IBOutlet var hp0: UIImageView!
+    @IBOutlet var hp1: UIImageView!
+    @IBOutlet var hp2: UIImageView!
+    @IBOutlet var hp3: UIImageView!
+    @IBOutlet var hp4: UIImageView!
+    
+    func drawhp(){
+        if app.player.HP == 5 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_teki")
+        }
+        else if app.player.HP == 4 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 3 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 2 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 1 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 0 {
+            hp0.image = UIImage(named:"hp_mikata")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
         
     }
+    
+
     
 }

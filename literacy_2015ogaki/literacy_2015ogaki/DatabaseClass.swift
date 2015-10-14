@@ -29,9 +29,9 @@ class playerClass{
     private var mapName:String?           //現在のマップ
     
     init(){
-        _name   = "YAMAGUCHI"
+        _name   = ""
         _HP     = 5                      //HP最大値は5
-        _level  = 0
+        _level  = 1
         weapon  = "木の棒"                //初期武器
         armor   = "木の盾"                //初期防具
         weaponImage = "firstWeapon.png"  //初期武器パス
@@ -88,7 +88,7 @@ class playerClass{
         }
         set{
             if(newValue < 0){
-                _level = 0
+                _level = 1
             }else{
                 _level = newValue
             }

@@ -19,7 +19,6 @@ class Sound :NSObject{
        
         let path = NSBundle.mainBundle().pathForResource(paths as String, ofType:"mp3")
         let url = NSURL.fileURLWithPath(path!)
-        print(url)
         do {
             try self.player = AVAudioPlayer(contentsOfURL:url)
         } catch {

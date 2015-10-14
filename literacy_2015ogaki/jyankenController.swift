@@ -18,7 +18,8 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     
     var phase:Int = 0
     var n:UInt32!
-    
+    var count:UInt32 = 0
+    var te:UInt32 = 0
     let bgm = Sound()
     let bgm1 = Sound()
     //現在マップ
@@ -43,6 +44,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     @IBAction func pushpa(sender: AnyObject) {
         
         if phase == 1 {
+            te = 3
             janken_check(3)
             
             
@@ -52,6 +54,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     }
     @IBAction func pushchoki(sender: AnyObject) {
         if phase == 1 {
+            te = 2
             janken_check(2)
             
             
@@ -65,6 +68,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     @IBAction func pushgu(sender: AnyObject) {
         
         if phase == 1 {
+            te = 1
             janken_check(1)
             
             
@@ -92,7 +96,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     
     
     override func viewDidAppear(animated: Bool) {
-       
+      drawhp()
         
         
         
@@ -147,7 +151,6 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
         
         // 画像を再表示
         n = arc4random() % 3 + 1;
-        print(n)
         var res = 0
         setenemyhand(n)
         
@@ -185,7 +188,10 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
                 break
             }
         }
-        
+        if count == 2 && res == -1{
+            janken_check(te)
+        }
+        else{
         // しょうぶけっか
         var str = ""
         switch(res){
@@ -200,12 +206,14 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             break
         case -1:
             str = "あなたの負けです！"
+            count++
             self.gametext.text = str
             btnno()
             bgm1.ids(12)
             bgm1.start()
             
             player.HP! -= 1
+            drawhp()
             if player.HP == 0{
                 bgm1.ids(11)
                 bgm1.start()
@@ -230,8 +238,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             break
         }
         
-               print(str)
-        
+        }
     }
     func onUpdate(timer: NSTimer) {
         self.gametext.text = "好きな手を入れて下さい"
@@ -262,6 +269,62 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             enemyhand.image = UIImage(named: "pa-")
         }
     }
+    
+    
+    
+    @IBOutlet var hp0: UIImageView!
+    @IBOutlet var hp1: UIImageView!
+    @IBOutlet var hp2: UIImageView!
+    @IBOutlet var hp3: UIImageView!
+    @IBOutlet var hp4: UIImageView!
+    
+    func drawhp(){
+        if app.player.HP == 5 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_teki")
+        }
+        else if app.player.HP == 4 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 3 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 2 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 1 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 0 {
+            hp0.image = UIImage(named:"hp_mikata")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        
+    }
+    
+    
     
     
     func start(){

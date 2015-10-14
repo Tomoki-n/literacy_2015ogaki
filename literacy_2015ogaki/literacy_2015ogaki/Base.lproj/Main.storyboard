@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Input View Controller-->
+        <scene sceneID="Dsx-rl-h9h">
+            <objects>
+                <viewController id="HR7-Dg-CMZ" customClass="inputViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9gO-Oi-Bct"/>
+                        <viewControllerLayoutGuide type="bottom" id="pCQ-tY-Tyg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WaI-QB-ya5">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYd-84-t0d">
+                                <rect key="frame" x="171" y="464" width="427" height="60"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdo-A2-b0u">
+                                <rect key="frame" x="164" y="585" width="440" height="122"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="16"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="test2:" destination="HR7-Dg-CMZ" eventType="touchUpInside" id="6bO-QR-Uja"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" id="nBp-4F-4Hf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcW-ux-KBY">
+                                <rect key="frame" x="298" y="627" width="173" height="51"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nameEntry" translatesAutoresizingMaskIntoConstraints="NO" id="vh7-8V-b0h">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="test1" destination="hdo-A2-b0u" id="73H-kC-YzY"/>
+                        <outlet property="text" destination="uYd-84-t0d" id="OKE-4R-smc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vbk-Wu-mQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="3"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -18,7 +75,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mapView" translatesAutoresizingMaskIntoConstraints="NO" id="hOy-NO-TCg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="マップ(70下げ).png" translatesAutoresizingMaskIntoConstraints="NO" id="hOy-NO-TCg">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <animations/>
                             </imageView>
@@ -107,36 +164,14 @@
                                 <animations/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNP-Ky-5Hu">
-                                <rect key="frame" x="250" y="72" width="470" height="51"/>
+                                <rect key="frame" x="249" y="107" width="470" height="51"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8X-2G-7v9">
-                                <rect key="frame" x="177" y="155" width="205" height="67"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRM-uZ-ajS">
-                                <rect key="frame" x="551" y="155" width="201" height="67"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ziP-kI-P4t">
-                                <rect key="frame" x="102" y="155" width="67" height="67"/>
-                                <animations/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Knp-V3-Puy">
-                                <rect key="frame" x="476" y="155" width="67" height="67"/>
-                                <animations/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGe-8q-Xb7">
-                                <rect key="frame" x="32" y="52" width="90" height="63"/>
+                                <rect key="frame" x="29" y="86" width="90" height="63"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -163,31 +198,59 @@
                                     <segue destination="xjN-zw-VjD" kind="presentation" identifier="quest" modalTransitionStyle="flipHorizontal" id="cp0-LR-aFt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hz-YC-gU2">
-                                <rect key="frame" x="102" y="257" width="317" height="133"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="101"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eic-na-Dff">
-                                <rect key="frame" x="519" y="270" width="128" height="84"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="BOSS!!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="boss:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w8T-Ik-okU"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eD-HE-4bB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eD-HE-4bB">
                                 <rect key="frame" x="84" y="15" width="600" height="35"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8X-2G-7v9">
+                                <rect key="frame" x="177" y="190" width="205" height="67"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRM-uZ-ajS">
+                                <rect key="frame" x="547" y="190" width="201" height="67"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ziP-kI-P4t">
+                                <rect key="frame" x="102" y="190" width="67" height="67"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Knp-V3-Puy">
+                                <rect key="frame" x="476" y="190" width="67" height="67"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp.png" translatesAutoresizingMaskIntoConstraints="NO" id="zI9-gS-Cne">
+                                <rect key="frame" x="152" y="28" width="574" height="53"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-gg-ajd">
+                                <rect key="frame" x="632" y="33" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Lo-AX-uSa">
+                                <rect key="frame" x="245" y="33" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="yfy-gg-u0m">
+                                <rect key="frame" x="345" y="33" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="NnQ-wc-VWH">
+                                <rect key="frame" x="445" y="33" width="90" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-Rm-ZUK">
+                                <rect key="frame" x="540" y="33" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -195,10 +258,14 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CZ0-Rd-uRf" secondAttribute="bottom" constant="20" id="6xm-xo-CHI"/>
                             <constraint firstAttribute="centerX" secondItem="CZ0-Rd-uRf" secondAttribute="centerX" id="R5L-0Z-9Dc"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8eD-HE-4bB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
-                        <outlet property="HPView" destination="5Hz-YC-gU2" id="OOE-lc-Bdn"/>
                         <outlet property="armorImage" destination="Knp-V3-Puy" id="rUX-u3-sjH"/>
                         <outlet property="armorName" destination="YRM-uZ-ajS" id="8wM-xb-0Vk"/>
                         <outlet property="beacon1" destination="WZK-q2-ViA" id="dCV-It-fyN"/>
@@ -221,6 +288,11 @@
                         <outlet property="beacon7" destination="52j-Jk-e3w" id="0wI-rc-GoO"/>
                         <outlet property="beacon8" destination="2Ge-7t-hKe" id="IEH-bx-xxK"/>
                         <outlet property="beacon9" destination="IbO-rw-kfb" id="juY-aU-NlH"/>
+                        <outlet property="hp0" destination="6Lo-AX-uSa" id="ZpT-Lu-CZF"/>
+                        <outlet property="hp1" destination="yfy-gg-u0m" id="dXc-a5-1fA"/>
+                        <outlet property="hp2" destination="NnQ-wc-VWH" id="GPf-iC-1sc"/>
+                        <outlet property="hp3" destination="bQ5-Rm-ZUK" id="ch6-9T-6gh"/>
+                        <outlet property="hp4" destination="pnY-gg-ajd" id="6QS-sM-JcV"/>
                         <outlet property="levelView" destination="wGe-8q-Xb7" id="dDU-fl-lgZ"/>
                         <outlet property="map" destination="TdJ-HE-atF" id="kOs-h7-pjG"/>
                         <outlet property="nameView" destination="hNP-Ky-5Hu" id="9DI-gX-H0O"/>
@@ -247,27 +319,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mapView" translatesAutoresizingMaskIntoConstraints="NO" id="huN-zV-HMZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="マップ(70下げ).png" translatesAutoresizingMaskIntoConstraints="NO" id="huN-zV-HMZ">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An8-bi-5hz">
-                                <rect key="frame" x="176" y="156" width="207" height="67"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp.png" translatesAutoresizingMaskIntoConstraints="NO" id="JI6-LY-HRJ">
+                                <rect key="frame" x="151" y="28" width="574" height="53"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jt2-db-yxX">
+                                <rect key="frame" x="244" y="33" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="oOh-Ue-qDi">
+                                <rect key="frame" x="344" y="33" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ymc-4f-eNs">
+                                <rect key="frame" x="539" y="33" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="dzS-4K-PuH">
+                                <rect key="frame" x="631" y="33" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An8-bi-5hz">
+                                <rect key="frame" x="176" y="189" width="207" height="67"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vef-zV-21P">
-                                <rect key="frame" x="477" y="156" width="67" height="67"/>
+                                <rect key="frame" x="477" y="189" width="67" height="67"/>
                                 <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoQ-DF-a9Q">
-                                <rect key="frame" x="101" y="156" width="67" height="67"/>
+                                <rect key="frame" x="101" y="189" width="67" height="67"/>
                                 <animations/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz7-wM-bis">
-                                <rect key="frame" x="250" y="71" width="471" height="52"/>
+                                <rect key="frame" x="248" y="109" width="471" height="52"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -281,13 +373,6 @@
                                 <rect key="frame" x="292" y="524" width="184" height="187"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn4-he-Cbz">
-                                <rect key="frame" x="552" y="156" width="205" height="67"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x21-th-L8n">
                                 <rect key="frame" x="134" y="904" width="500" height="100"/>
                                 <animations/>
@@ -311,7 +396,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C9-YS-2Sd">
-                                <rect key="frame" x="28" y="51" width="97" height="70"/>
+                                <rect key="frame" x="27" y="80" width="97" height="70"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -323,6 +408,17 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noItem" translatesAutoresizingMaskIntoConstraints="NO" id="ixO-yt-ggz">
                                 <rect key="frame" x="51" y="524" width="184" height="187"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn4-he-Cbz">
+                                <rect key="frame" x="552" y="189" width="205" height="67"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="cT7-Zi-rfg">
+                                <rect key="frame" x="445" y="33" width="90" height="43"/>
                                 <animations/>
                             </imageView>
                         </subviews>
@@ -337,6 +433,11 @@
                     <connections>
                         <outlet property="armorImage" destination="vef-zV-21P" id="tNa-80-bqT"/>
                         <outlet property="armorView" destination="Tn4-he-Cbz" id="KaY-4H-UJe"/>
+                        <outlet property="hp0" destination="Jt2-db-yxX" id="hMe-cg-fCP"/>
+                        <outlet property="hp1" destination="oOh-Ue-qDi" id="9eY-97-cB1"/>
+                        <outlet property="hp2" destination="cT7-Zi-rfg" id="NjD-sv-BwZ"/>
+                        <outlet property="hp3" destination="Ymc-4f-eNs" id="vqh-01-rSe"/>
+                        <outlet property="hp4" destination="dzS-4K-PuH" id="0F6-cc-IUV"/>
                         <outlet property="item1" destination="ixO-yt-ggz" id="N6O-88-bHJ"/>
                         <outlet property="item2" destination="aeq-Xq-lPo" id="6y3-1x-pgu"/>
                         <outlet property="item3" destination="U49-yu-cUT" id="hnY-BM-K47"/>
@@ -364,6 +465,10 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="battle_janken" translatesAutoresizingMaskIntoConstraints="NO" id="kSo-gQ-W9I">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp.png" translatesAutoresizingMaskIntoConstraints="NO" id="va6-71-vNm">
+                                <rect key="frame" x="97" y="50" width="574" height="53"/>
                                 <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battle_janken" translatesAutoresizingMaskIntoConstraints="NO" id="Lds-ic-xVn">
@@ -416,6 +521,26 @@
                                 <rect key="frame" x="422" y="165" width="240" height="240"/>
                                 <animations/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="UzO-TW-lLv">
+                                <rect key="frame" x="190" y="55" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="4fO-4a-NnS">
+                                <rect key="frame" x="290" y="55" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="mxk-93-bBP">
+                                <rect key="frame" x="390" y="55" width="90" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="nGL-Pd-HrR">
+                                <rect key="frame" x="485" y="55" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="y9b-6r-I1L">
+                                <rect key="frame" x="577" y="55" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -432,6 +557,11 @@
                         <outlet property="enemyimage" destination="Fai-Pg-shU" id="Qd3-1H-hfR"/>
                         <outlet property="gametext" destination="yoG-vf-cpe" id="eTf-bo-cL6"/>
                         <outlet property="gu" destination="MPU-R3-gm4" id="AB6-cZ-9BJ"/>
+                        <outlet property="hp0" destination="UzO-TW-lLv" id="5o3-xy-dCE"/>
+                        <outlet property="hp1" destination="4fO-4a-NnS" id="LNi-I6-HRp"/>
+                        <outlet property="hp2" destination="mxk-93-bBP" id="Eqr-Zf-2im"/>
+                        <outlet property="hp3" destination="nGL-Pd-HrR" id="L7L-PQ-eoK"/>
+                        <outlet property="hp4" destination="y9b-6r-I1L" id="2g6-UG-Vgx"/>
                         <outlet property="pa" destination="0Zv-ia-sIx" id="EJ6-9W-Q43"/>
                     </connections>
                 </viewController>
@@ -535,6 +665,30 @@
                                     <action selector="b4:" destination="7lp-Of-Ntc" eventType="touchUpInside" id="7XQ-eu-uG0"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp.png" translatesAutoresizingMaskIntoConstraints="NO" id="GoM-CN-DrU">
+                                <rect key="frame" x="97" y="42" width="574" height="53"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xup-hh-LKS">
+                                <rect key="frame" x="190" y="47" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="rqj-o3-2Ve">
+                                <rect key="frame" x="290" y="47" width="95" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="BXp-Gp-Tkm">
+                                <rect key="frame" x="390" y="47" width="90" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="JAp-l5-hUw">
+                                <rect key="frame" x="485" y="47" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_teki.png" translatesAutoresizingMaskIntoConstraints="NO" id="GuZ-Se-RJX">
+                                <rect key="frame" x="577" y="47" width="88" height="43"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -543,6 +697,11 @@
                         <outlet property="HP" destination="zZE-2q-fyq" id="aAO-3k-TTt"/>
                         <outlet property="enemyimage" destination="qC4-f3-Dxa" id="hsU-bC-xzf"/>
                         <outlet property="gametext" destination="khC-iX-Vnu" id="FgO-MD-QE6"/>
+                        <outlet property="hp0" destination="Xup-hh-LKS" id="mVg-y2-aBc"/>
+                        <outlet property="hp1" destination="rqj-o3-2Ve" id="Bx7-x1-Dfg"/>
+                        <outlet property="hp2" destination="BXp-Gp-Tkm" id="n5J-eQ-lhh"/>
+                        <outlet property="hp3" destination="JAp-l5-hUw" id="i1T-7f-k5M"/>
+                        <outlet property="hp4" destination="GuZ-Se-RJX" id="mEQ-5p-w7e"/>
                         <outlet property="questiontext" destination="xZj-b3-Fg9" id="Nnl-Ip-lR1"/>
                         <outlet property="t0" destination="C3R-HH-Udk" id="Guo-TA-72w"/>
                         <outlet property="t1" destination="Ft9-z8-wV9" id="coK-ny-aVI"/>
@@ -560,8 +719,10 @@
         <image name="battle_janken" width="1536" height="2048"/>
         <image name="choki" width="525" height="525"/>
         <image name="gu-" width="525" height="525"/>
+        <image name="hp.png" width="1500" height="150"/>
+        <image name="hp_teki.png" width="141" height="130"/>
         <image name="mapButton" width="1000" height="248"/>
-        <image name="mapView" width="1536" height="2048"/>
+        <image name="nameEntry" width="1536" height="2048"/>
         <image name="noItem" width="400" height="400"/>
         <image name="pa-" width="525" height="525"/>
         <image name="questView" width="1536" height="1241"/>
@@ -569,5 +730,6 @@
         <image name="quiz" width="1536" height="2048"/>
         <image name="recoveryPoint" width="400" height="400"/>
         <image name="ringBlue" width="400" height="400"/>
+        <image name="マップ(70下げ).png" width="1536" height="2048"/>
     </resources>
 </document>
