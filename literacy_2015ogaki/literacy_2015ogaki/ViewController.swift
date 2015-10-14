@@ -55,8 +55,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var id = 0
     var before_id = 0
     var b_count = 0
-    var death = false
-    var boss = false
     
     var bgm = Sound()
     var bgm1 = Sound()
@@ -119,7 +117,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
                 var mapAlert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                 mapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.boss = false
                 if appDelegate.map >= 5 {
                     var alert =  UIAlertController(title:"おしまい", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -134,7 +131,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.flag = false
             appDelegate.boss = false
         }else if appDelegate.flag && appDelegate.player.HP == 0 {
-            self.death = true
             print("死んだ")
             self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
             !appDelegate.flag
@@ -545,6 +541,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             break
         }
 
+    }
+    
+    func refreshItemPosition(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let items = appDelegate.quest.getItemStatus()
+        if appDelegate.quest.getQuestItemCounts() == 2 {
+            
+        }
     }
     
     @IBAction func boss(sender: AnyObject) {
