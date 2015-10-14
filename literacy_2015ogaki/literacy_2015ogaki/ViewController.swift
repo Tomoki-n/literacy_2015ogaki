@@ -314,6 +314,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                     }else{
                         appDelegate.player.level!++
                         self.levelView.text = String(appDelegate.player.level!)
+                        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
                     }
                 }
             }
