@@ -35,6 +35,8 @@
 		C0CFA76F1BCC15450086F7D1 /* question.json in Resources */ = {isa = PBXBuildFile; fileRef = C0CFA76E1BCC15450086F7D1 /* question.json */; settings = {ASSET_TAGS = (); }; };
 		C0DD12031BB3EDF30078B4C5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */; };
 		C0DFDD641BC2C38E000444A3 /* questViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFDD631BC2C38E000444A3 /* questViewController.swift */; };
+		FA5A37C61BCE3D410008C7D6 /* kagi.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C51BCE3D410008C7D6 /* kagi.png */; settings = {ASSET_TAGS = (); }; };
+		FA5A37C81BCE3D650008C7D6 /* 死亡メイン(70下げ).png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF8FB1BCE14A800969853 /* hp_teki.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8F81BCE14A800969853 /* hp_teki.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF8FE1BCE162D00969853 /* hp.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8FD1BCE162D00969853 /* hp.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF9001BCE186000969853 /* hp_mikata.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8FF1BCE186000969853 /* hp_mikata.png */; settings = {ASSET_TAGS = (); }; };
@@ -91,6 +93,8 @@
 		C0CFA76E1BCC15450086F7D1 /* question.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question.json; sourceTree = "<group>"; };
 		C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0DFDD631BC2C38E000444A3 /* questViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questViewController.swift; sourceTree = "<group>"; };
+		FA5A37C51BCE3D410008C7D6 /* kagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kagi.png; sourceTree = "<group>"; };
+		FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "死亡メイン(70下げ).png"; sourceTree = "<group>"; };
 		FA7DF8F81BCE14A800969853 /* hp_teki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_teki.png; sourceTree = "<group>"; };
 		FA7DF8FD1BCE162D00969853 /* hp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.png; sourceTree = "<group>"; };
 		FA7DF8FF1BCE186000969853 /* hp_mikata.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_mikata.png; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 		FA9B7D6B1BA66D05003DB632 /* literacy_2015ogaki */ = {
 			isa = PBXGroup;
 			children = (
+				FA5A37C51BCE3D410008C7D6 /* kagi.png */,
+				FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */,
 				FA939DA41BCD4EFD00BA04D2 /* マップ(50下げ).png */,
 				FA939DA51BCD4EFD00BA04D2 /* マップ(60下げ).png */,
 				FA939DA61BCD4EFD00BA04D2 /* マップ(70下げ).png */,
@@ -275,7 +281,7 @@
 				TargetAttributes = {
 					FA9B7D681BA66D05003DB632 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = SQ74G58HZQ;
+						DevelopmentTeam = 8589MH68KB;
 					};
 					FA9B7D801BA66D05003DB632 = {
 						CreatedOnToolsVersion = 6.4;
@@ -308,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02B24091BCCEFA900785E68 /* battle.mp3 in Resources */,
+				FA5A37C81BCE3D650008C7D6 /* 死亡メイン(70下げ).png in Resources */,
 				C02B240A1BCCEFA900785E68 /* bossbattle.mp3 in Resources */,
 				FA7DF9001BCE186000969853 /* hp_mikata.png in Resources */,
 				C02B240B1BCCEFA900785E68 /* bubu.mp3 in Resources */,
@@ -326,6 +333,7 @@
 				C02B24151BCCEFA900785E68 /* make.mp3 in Resources */,
 				C02B24161BCCEFA900785E68 /* panti.mp3 in Resources */,
 				C02B24171BCCEFA900785E68 /* seikai.mp3 in Resources */,
+				FA5A37C61BCE3D410008C7D6 /* kagi.png in Resources */,
 				FA939DA71BCD4EFD00BA04D2 /* マップ(50下げ).png in Resources */,
 				C02B24181BCCEFA900785E68 /* seikai2.mp3 in Resources */,
 				C02B24191BCCEFA900785E68 /* syutugen.mp3 in Resources */,

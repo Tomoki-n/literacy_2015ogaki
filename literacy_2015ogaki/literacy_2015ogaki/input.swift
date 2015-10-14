@@ -20,7 +20,10 @@ class inputViewController:UIViewController {
     
     @IBAction func test2(sender: AnyObject) {
         if text.text != ""{
-        app.player.name! = text.text!
+            app.player.name! = text.text!
+            
+                let NVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tes")
+                self.presentViewController(NVC, animated: true, completion: nil)
             }
         }
     
