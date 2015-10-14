@@ -37,6 +37,7 @@
 		C0DFDD641BC2C38E000444A3 /* questViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFDD631BC2C38E000444A3 /* questViewController.swift */; };
 		FA5A37C61BCE3D410008C7D6 /* kagi.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C51BCE3D410008C7D6 /* kagi.png */; settings = {ASSET_TAGS = (); }; };
 		FA5A37C81BCE3D650008C7D6 /* 死亡メイン(70下げ).png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */; settings = {ASSET_TAGS = (); }; };
+		FA5A37CA1BCE4CF80008C7D6 /* nokagi.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C91BCE4CF80008C7D6 /* nokagi.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF8FB1BCE14A800969853 /* hp_teki.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8F81BCE14A800969853 /* hp_teki.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF8FE1BCE162D00969853 /* hp.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8FD1BCE162D00969853 /* hp.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF9001BCE186000969853 /* hp_mikata.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8FF1BCE186000969853 /* hp_mikata.png */; settings = {ASSET_TAGS = (); }; };
@@ -95,6 +96,7 @@
 		C0DFDD631BC2C38E000444A3 /* questViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questViewController.swift; sourceTree = "<group>"; };
 		FA5A37C51BCE3D410008C7D6 /* kagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kagi.png; sourceTree = "<group>"; };
 		FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "死亡メイン(70下げ).png"; sourceTree = "<group>"; };
+		FA5A37C91BCE4CF80008C7D6 /* nokagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nokagi.png; sourceTree = "<group>"; };
 		FA7DF8F81BCE14A800969853 /* hp_teki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_teki.png; sourceTree = "<group>"; };
 		FA7DF8FD1BCE162D00969853 /* hp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.png; sourceTree = "<group>"; };
 		FA7DF8FF1BCE186000969853 /* hp_mikata.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_mikata.png; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5A37C51BCE3D410008C7D6 /* kagi.png */,
+				FA5A37C91BCE4CF80008C7D6 /* nokagi.png */,
 				FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */,
 				FA939DA41BCD4EFD00BA04D2 /* マップ(50下げ).png */,
 				FA939DA51BCD4EFD00BA04D2 /* マップ(60下げ).png */,
@@ -335,6 +338,7 @@
 				C02B24171BCCEFA900785E68 /* seikai.mp3 in Resources */,
 				FA5A37C61BCE3D410008C7D6 /* kagi.png in Resources */,
 				FA939DA71BCD4EFD00BA04D2 /* マップ(50下げ).png in Resources */,
+				FA5A37CA1BCE4CF80008C7D6 /* nokagi.png in Resources */,
 				C02B24181BCCEFA900785E68 /* seikai2.mp3 in Resources */,
 				C02B24191BCCEFA900785E68 /* syutugen.mp3 in Resources */,
 				FA7DF8FB1BCE14A800969853 /* hp_teki.png in Resources */,

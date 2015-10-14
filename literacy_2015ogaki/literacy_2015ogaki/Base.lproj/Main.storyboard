@@ -250,6 +250,15 @@
                                 <rect key="frame" x="540" y="33" width="88" height="43"/>
                                 <animations/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z92-rp-qy2">
+                                <rect key="frame" x="648" y="904" width="100" height="100"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="nokagi.png"/>
+                                <connections>
+                                    <action selector="viewkagi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2bN-As-KYE"/>
+                                    <segue destination="6yE-U6-9V8" kind="show" id="gHq-mP-pds"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -292,7 +301,9 @@
                         <outlet property="hp2" destination="NnQ-wc-VWH" id="GPf-iC-1sc"/>
                         <outlet property="hp3" destination="bQ5-Rm-ZUK" id="ch6-9T-6gh"/>
                         <outlet property="hp4" destination="pnY-gg-ajd" id="6QS-sM-JcV"/>
+                        <outlet property="kagi" destination="Z92-rp-qy2" id="JJc-l5-U4H"/>
                         <outlet property="levelView" destination="wGe-8q-Xb7" id="dDU-fl-lgZ"/>
+                        <outlet property="main" destination="hOy-NO-TCg" id="Rot-sy-TXT"/>
                         <outlet property="map" destination="TdJ-HE-atF" id="kOs-h7-pjG"/>
                         <outlet property="nameView" destination="hNP-Ky-5Hu" id="9DI-gX-H0O"/>
                         <outlet property="weaponImage" destination="ziP-kI-P4t" id="I9J-gP-SXN"/>
@@ -305,6 +316,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="85" y="3"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="d3s-bw-bfX">
+            <objects>
+                <viewController id="6yE-U6-9V8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TEO-ee-Rrb"/>
+                        <viewControllerLayoutGuide type="bottom" id="834-fI-dSB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IRt-PW-pje">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kagi.png" translatesAutoresizingMaskIntoConstraints="NO" id="9ZS-Hq-gK8">
+                                <rect key="frame" x="161" y="295" width="446" height="433"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRr-ro-P7j">
+                                <rect key="frame" x="20" y="28" width="113" height="80"/>
+                                <animations/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="55V-29-fQJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mZl-7V-3tg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="1255"/>
         </scene>
         <!--Quest View Controller-->
         <scene sceneID="KvU-xU-k6G">
@@ -720,9 +769,11 @@
         <image name="gu-" width="525" height="525"/>
         <image name="hp.png" width="1500" height="150"/>
         <image name="hp_teki.png" width="141" height="130"/>
+        <image name="kagi.png" width="400" height="400"/>
         <image name="mapButton" width="1000" height="248"/>
         <image name="nameEntry" width="1536" height="2048"/>
         <image name="noItem" width="400" height="400"/>
+        <image name="nokagi.png" width="400" height="400"/>
         <image name="pa-" width="525" height="525"/>
         <image name="questView" width="1536" height="1241"/>
         <image name="quest_button" width="1001" height="248"/>

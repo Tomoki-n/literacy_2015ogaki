@@ -14,13 +14,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var levelView: UILabel!
     @IBOutlet weak var nameView: UILabel!
-    @IBOutlet weak var HPView: UILabel!
     
     @IBOutlet weak var weaponName: UILabel!
     @IBOutlet weak var armorName: UILabel!
     @IBOutlet weak var weaponImage: UIImageView!
     @IBOutlet weak var armorImage: UIImageView!
     
+    @IBOutlet weak var main: UIImageView!
     @IBOutlet weak var map: UIImageView!
     //beacons
     @IBOutlet weak var beacon1: UIImageView!
@@ -52,9 +52,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var myRegion:CLBeaconRegion!
     var selectBeacon:CLBeacon!
     
+    @IBOutlet var kagi: UIButton!
     var id = 0
     var before_id = 0
     var b_count = 0
+    var boss = false
     
     var bgm = Sound()
     var bgm1 = Sound()
@@ -62,13 +64,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //test
+        app.map = 4
+        app.player.level = 150
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         print(String(appDelegate.player.level!) + "\n")
         appDelegate.quest.setNextQuest()
         self.levelView.text = String(appDelegate.player.level!)
         self.nameView.text = appDelegate.player.name
-        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
         print(appDelegate.player.level)
         
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
@@ -79,10 +82,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        kagi.enabled = false
         self.locationManerger.startRangingBeaconsInRegion(self.myRegion)
         setmusic()
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if appDelegate.map == 4 && appDelegate.flag && appDelegate.boss {
+            kagi.enabled = true
+            kagi.imageView?.image = UIImage(named: "kagi.png")
+            var alert =  UIAlertController(title:"おしまい", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
         
         self.zuru.text = String(appDelegate.quest.item1Position!) + String(appDelegate.quest.item2Position!) + String(appDelegate.quest.item3Position!)
         
@@ -93,11 +104,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         print(appDelegate.player.HP!)
         if appDelegate.flag && appDelegate.player.HP != 0 {
             if appDelegate.quest.getMapQuestFinished() && appDelegate.boss {
+                self.boss = false
                 appDelegate.player.level! += 5
                 self.levelView.text = String(appDelegate.player.level!)
                 appDelegate.itemFlag = false
                 drawBeacon(appDelegate.enemy.getBossPosition(), image: "ringBlue.png")
-                appDelegate.map++
+                if appDelegate.map != 4{
+                    appDelegate.map++
+                }
+                setmusic()
                 appDelegate.quest.setNextQuest()
                 switch appDelegate.map {
                 case 1:
@@ -117,13 +132,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
                 var mapAlert =  UIAlertController(title:"次のマップに移動します", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                 mapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                if appDelegate.map >= 5 {
-                    var alert =  UIAlertController(title:"おしまい", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }else{
                     self.presentViewController(mapAlert, animated: true, completion: nil)
-                }
             }else if appDelegate.flag{
                 appDelegate.player.level! += 3
                 self.levelView.text = String(appDelegate.player.level!)
@@ -131,13 +140,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.flag = false
             appDelegate.boss = false
         }else if appDelegate.flag && appDelegate.player.HP == 0 {
-            print("死んだ")
+            print("死んだ¥n")
+            self.main.image = UIImage(named: "死亡メイン(70下げ).png")
             self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
-            !appDelegate.flag
+            if appDelegate.boss {
+                self.boss = true
+            }
+            appDelegate.flag = false
+            appDelegate.boss = false
         }
-        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
-        
+
         refreshItemPosition()
+        drawhp()
     }
     
     override func didReceiveMemoryWarning() {
@@ -207,12 +221,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
+    
+    @IBAction func viewkagi(sender: AnyObject) {
+        
+        
+        
+    }
+    
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         
         //フラグ
-        var bossFlag = false
         var item = false
         
         if beacons.count != 0 {
@@ -228,6 +248,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                     item = true
                 }
                 drawEffectonBeacon(self.id)
+                if self.boss {
+                    drawBeacon(appDelegate.enemy.getBossPosition(), image: "boss.png")
+                }
+                refreshItemPosition()
                 
                 if self.id == 8 && appDelegate.player.HP != 5{
                     //回復
@@ -254,24 +278,26 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                             default:
                                 break
                             }
+                            self.main.image = UIImage(named: "マップ(70下げ).png")
                             appDelegate.player.HP? = 5
-                            self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
+                              self.drawhp()
+                        }else{
+                            appDelegate.player.HP? = 5
                         }
                     }))
                     self.presentViewController(recovery, animated: true, completion: nil)
-                }else if bossFlag && self.id == appDelegate.enemy.getBossPosition() && appDelegate.player.HP != 0 {
+                }else if self.boss && self.id == appDelegate.enemy.getBossPosition() && appDelegate.player.HP != 0 {
                     //ボス
                     var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "たたかう", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
                         self.performSegueWithIdentifier("boss", sender: self)
                     }))
-                    bossFlag = true
-                    
-                }else if !bossFlag && appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= appDelegate.map * 30 {
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }else if !self.boss && appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 {
                     //ボス表示
                     var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
-                    bossFlag = true
+                    self.boss = true
                     presentViewController(alert, animated: true, completion: nil)
                     drawBeacon(appDelegate.enemy.getBossPosition(), image: "boss.png")
                 }else if !appDelegate.quest.getMapQuestFinished() && appDelegate.player.HP != 0 && item {
@@ -311,7 +337,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                     }else{
                         appDelegate.player.level!++
                         self.levelView.text = String(appDelegate.player.level!)
-                        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
+                       
                     }
                 }
             }
@@ -550,7 +576,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         if !items[0] {
             drawBeacon(appDelegate.quest.item1Position!, image: appDelegate.quest.item1Image!)
         }
-        if appDelegate.quest.getQuestItemCounts() == 2 && !items[1] {
+        if appDelegate.quest.getQuestItemCounts() >= 2 && !items[1] {
             drawBeacon(appDelegate.quest.item2Position!, image: appDelegate.quest.item2Image!)
         }
         if appDelegate.quest.getQuestItemCounts() == 3 && !items[2] {
@@ -558,9 +584,61 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func boss(sender: AnyObject) {
-        self.performSegueWithIdentifier("boss", sender: self)
+    
+    
+    @IBOutlet var hp0: UIImageView!
+    @IBOutlet var hp1: UIImageView!
+    @IBOutlet var hp2: UIImageView!
+    @IBOutlet var hp3: UIImageView!
+    @IBOutlet var hp4: UIImageView!
+    
+    func drawhp(){
+        if app.player.HP == 5 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_teki")
+        }
+        else if app.player.HP == 4 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_teki")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 3 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_teki")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 2 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_teki")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 1 {
+            hp0.image = UIImage(named:"hp_teki")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        else if app.player.HP == 0 {
+            hp0.image = UIImage(named:"hp_mikata")
+            hp1.image = UIImage(named:"hp_mikata")
+            hp2.image = UIImage(named:"hp_mikata")
+            hp3.image = UIImage(named:"hp_mikata")
+            hp4.image = UIImage(named:"hp_mikata")
+        }
+        
     }
+    
+    
+
 }
 
-ｘ

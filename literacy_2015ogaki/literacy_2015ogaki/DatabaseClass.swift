@@ -436,8 +436,8 @@ class questClass{
                                              ["草原の思い出","砂漠の思い出","ライオンハート"]]
     
     //武器素材の位置
-    private let weaponItemPositionList:[[Int]]  = [[7/*1*/],[7/*20*/,7/*5*/],[2,9,17],[1,9,11],[2,10,12]]
-    private let weaponItemPositionList2:[[Int]] = [[7/*5*/],[7/*18*/,7/*3*/],[4,7,19],[5,7,15],[4,6,14]]
+    private let weaponItemPositionList:[[Int]]  = [[1],[20,5],[2,9,17],[1,9,11],[2,10,12]]
+    private let weaponItemPositionList2:[[Int]] = [[5],[18,3],[4,7,19],[5,7,15],[4,6,14]]
     
     //防具素材
     private let armorItemList:[[String]]  = [["そよ風のオーブ"],
@@ -447,8 +447,8 @@ class questClass{
                                              ["海岸の思い出","森林の思い出","壊れたあいぱっど"]]
     
     //防具素材の位置
-    private let armorItemPositionList:[[Int]]  = [[7/*17*/],[7/*19*/,7],[3,6,13],[13,2,19],[9,16,18]]
-    private let armorItemPositionList2:[[Int]] = [[7/*19*/],[7/*16*/,7/*9*/],[3,10,13],[13,4,17],[7,20,18]]
+    private let armorItemPositionList:[[Int]]  = [[17],[19,7],[3,6,13],[13,2,19],[9,16,13]]
+    private let armorItemPositionList2:[[Int]] = [[19],[16,9],[3,10,13],[13,4,17],[7,20,13]]
     
     //クエストタイトル
     private let titleQuestList:[[String]] = [["はじめての剣","はじめての盾"],
