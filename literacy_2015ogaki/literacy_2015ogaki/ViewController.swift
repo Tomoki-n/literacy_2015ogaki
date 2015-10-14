@@ -136,6 +136,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             !appDelegate.flag
         }
         self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
+        
+        refreshItemPosition()
     }
 
     override func didReceiveMemoryWarning() {
@@ -233,10 +235,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                     recovery.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
                         self.bgm1.ids(10)
                         self.bgm1.start()
-                        appDelegate.player.HP? = 5
-                        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
-                        if self.death {
-                            self.death = false
+                        if appDelegate.player.HP == 0 {
                             switch appDelegate.map {
                             case 0:
                                 self.map.image = UIImage(named: "Grassland.png")
@@ -255,6 +254,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                             default:
                                 break
                             }
+                        appDelegate.player.HP? = 5
+                        self.HPView.text = String(appDelegate.player.HP! * appDelegate.player.level! * 10)
                         }
                     }))
                     self.presentViewController(recovery, animated: true, completion: nil)
@@ -546,8 +547,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     func refreshItemPosition(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let items = appDelegate.quest.getItemStatus()
-        if appDelegate.quest.getQuestItemCounts() == 2 {
-            
+        if !items[0] {
+            drawBeacon(appDelegate.quest.item1Position!, image: appDelegate.quest.item1Image!)
+        }
+        if appDelegate.quest.getQuestItemCounts() == 2 && !items[1] {
+            drawBeacon(appDelegate.quest.item2Position!, image: appDelegate.quest.item2Image!)
+        }
+        if appDelegate.quest.getQuestItemCounts() == 3 && !items[2] {
+            drawBeacon(appDelegate.quest.item3Position!, image: appDelegate.quest.item3Image!)
         }
     }
     
