@@ -45,7 +45,7 @@ class BossViewController : UIViewController {
     var chks:Int = 0
     
     @IBAction func b1(sender: AnyObject) {
-    
+        
         check(0)
         
     }
@@ -69,14 +69,15 @@ class BossViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        bgm.ids(1)
-        bgm.vol(0.5)
-        bgm.infstart()
+       
         
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        bgm.ids(1)
+        bgm.vol(0.5)
+        bgm.infstart()
         setaparam()
     }
     
@@ -107,7 +108,7 @@ class BossViewController : UIViewController {
         
         print(json)
         for i in 0...14 {
-        
+            
             if let que = json[i]["question"].string {
                 ques.append(que)
             }
@@ -136,7 +137,7 @@ class BossViewController : UIViewController {
         
         NSThread.sleepForTimeInterval(1.0)
         self.gametext.text = "答えを選択して下さい"
-
+        
     }
     
     
@@ -156,25 +157,23 @@ class BossViewController : UIViewController {
                 //画面遷移
                 bgm1.ids(3)
                 bgm1.start()
-                var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.flag = true
-                appDelegate.boss = true
-                NSTimer.scheduledTimerWithTimeInterval(1.3, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
+               
+                    NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false)
                 
             }
             else{
-            questiontext.text = ques[count]
-            t0.text = a1[count]
-            t1.text = a2[count]
-            t2.text = a3[count]
-            t3.text = a4[count]
+                questiontext.text = ques[count]
+                t0.text = a1[count]
+                t1.text = a2[count]
+                t2.text = a3[count]
+                t3.text = a4[count]
             }
-           
+            
             
         }
         else{
-             self.gametext.text = "不正解です"
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: false)
+            self.gametext.text = "不正解です"
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: false)
             bgm1.ids(2)
             bgm1.start()
             
@@ -198,14 +197,22 @@ class BossViewController : UIViewController {
     
     func onUpdate(timer: NSTimer) {
         self.gametext.text = "答えを選んでね"
-     }
+    }
     func returnv(timer: NSTimer) {
         app.player = player
         app.enemy = enemy
         app.quest = quest
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
+        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.flag = true
+        appDelegate.boss = true
+        bgm.stop()
+        if player.HP != 0 {
+            self.performSegueWithIdentifier("story", sender: self)
+            print(1)
+        }else{
+            self.dismissViewControllerAnimated(true, completion: nil)
+            print(222)
+        }
     }
     
     @IBOutlet var hp0: UIImageView!
@@ -260,6 +267,12 @@ class BossViewController : UIViewController {
         
     }
     
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(232)
+        if segue.identifier == "story" {
+            print(12324)
+            var sVC = segue.destinationViewController as! storyViewController
+        }
+    }
     
 }

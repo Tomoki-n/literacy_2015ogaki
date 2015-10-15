@@ -317,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="85" y="3"/>
         </scene>
-        <!--View Controller-->
+        <!--Kagi View Controller-->
         <scene sceneID="d3s-bw-bfX">
             <objects>
-                <viewController id="6yE-U6-9V8" sceneMemberID="viewController">
+                <viewController id="6yE-U6-9V8" customClass="kagiViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TEO-ee-Rrb"/>
                         <viewControllerLayoutGuide type="bottom" id="834-fI-dSB"/>
@@ -342,7 +342,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="55V-29-fQJ"/>
+                                    <action selector="re:" destination="6yE-U6-9V8" eventType="touchUpInside" id="cRn-Xn-yl6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -353,7 +353,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZl-7V-3tg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534" y="1255"/>
+            <point key="canvasLocation" x="-366" y="1271"/>
+        </scene>
+        <!--Story View Controller-->
+        <scene sceneID="5vt-ZF-HDO">
+            <objects>
+                <viewController storyboardIdentifier="storys" id="law-ES-XOh" customClass="storyViewController" customModule="literacy_2015ogaki" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EYv-Wx-Ysx"/>
+                        <viewControllerLayoutGuide type="bottom" id="x7x-YW-Pin"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OLn-qN-vTa">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="回復　ふきだしあり.png" translatesAutoresizingMaskIntoConstraints="NO" id="nww-zu-b4s">
+                                <rect key="frame" x="-51" y="0.0" width="819" height="1024"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXS-n6-kJp">
+                                <rect key="frame" x="31" y="20" width="113" height="80"/>
+                                <animations/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="re:" destination="6yE-U6-9V8" eventType="touchUpInside" id="f60-eU-hbe"/>
+                                    <action selector="re:" destination="law-ES-XOh" eventType="touchUpInside" id="u0E-xU-J2D"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eQ7-5H-eyd">
+                                <rect key="frame" x="81" y="445" width="554" height="240"/>
+                                <animations/>
+                                <string key="text">草原のボス＜黒猫ヤマト＞を倒した勇者は、さらなる強さを求めて海岸へ向かいました。勇者は最後に”双鯨デル＆トラ”と呼ばれる二頭のクジラがいます。風を操る“デル”は背中から強力な突風を発生させ、勇者を吹き飛ばそうとします。敵と戦いながら海岸にあるいくつかの海にまつわるアイテムを集めてより強い装備を作り上げ、ボスに挑むのでした。</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="gametext" destination="eQ7-5H-eyd" id="DNv-Ok-Ies"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="main" id="mQo-vx-Za6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xoi-Bu-d8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="552" y="1271"/>
         </scene>
         <!--Quest View Controller-->
         <scene sceneID="KvU-xU-k6G">
@@ -755,6 +805,7 @@
                         <outlet property="t1" destination="Ft9-z8-wV9" id="coK-ny-aVI"/>
                         <outlet property="t2" destination="wtn-vi-efm" id="xVr-va-Y1w"/>
                         <outlet property="t3" destination="A7d-pa-r93" id="YW4-H6-2kX"/>
+                        <segue destination="law-ES-XOh" kind="presentation" identifier="story" id="V2P-Wo-xve"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tL0-Ea-FwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,5 +832,6 @@
         <image name="recoveryPoint" width="400" height="400"/>
         <image name="ringBlue" width="400" height="400"/>
         <image name="マップ(70下げ).png" width="1536" height="2048"/>
+        <image name="回復　ふきだしあり.png" width="1600" height="2048"/>
     </resources>
 </document>

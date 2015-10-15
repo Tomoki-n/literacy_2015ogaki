@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var flag:Bool = false
     var boss:Bool = false
     var itemFlag:Bool = false
+    var clear:Bool = false
     
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

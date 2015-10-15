@@ -102,7 +102,7 @@ class enemyClass{
     //外部からは変更不可
     private (set) var Name :String? //敵の名前
     private (set) var Image:String? //敵の画像パス
-    private let bossPositionList:[Int] = [3,17,5,14,18] //ボスの座標 12345 678910 1112131415 1617181920
+    private let bossPositionList:[Int] = [13,13,18,3,18] //ボスの座標 12345 678910 1112131415 1617181920
     private let bossPosition:Int?
     private var mapName:String?     //現在のマップ（パス用）
     //敵の名前 Grassland,Coast,Forest,Desert,Devil
