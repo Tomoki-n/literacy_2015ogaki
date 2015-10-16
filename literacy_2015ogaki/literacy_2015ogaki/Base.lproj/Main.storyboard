@@ -197,13 +197,6 @@
                                     <segue destination="xjN-zw-VjD" kind="presentation" identifier="quest" modalTransitionStyle="flipHorizontal" id="cp0-LR-aFt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eD-HE-4bB">
-                                <rect key="frame" x="84" y="15" width="600" height="35"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weapon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8X-2G-7v9">
                                 <rect key="frame" x="177" y="190" width="205" height="67"/>
                                 <animations/>
@@ -266,11 +259,6 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CZ0-Rd-uRf" secondAttribute="bottom" constant="20" id="6xm-xo-CHI"/>
                             <constraint firstAttribute="centerX" secondItem="CZ0-Rd-uRf" secondAttribute="centerX" id="R5L-0Z-9Dc"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="8eD-HE-4bB"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
@@ -304,11 +292,9 @@
                         <outlet property="kagi" destination="Z92-rp-qy2" id="JJc-l5-U4H"/>
                         <outlet property="levelView" destination="wGe-8q-Xb7" id="dDU-fl-lgZ"/>
                         <outlet property="main" destination="hOy-NO-TCg" id="Rot-sy-TXT"/>
-                        <outlet property="map" destination="TdJ-HE-atF" id="kOs-h7-pjG"/>
                         <outlet property="nameView" destination="hNP-Ky-5Hu" id="9DI-gX-H0O"/>
                         <outlet property="weaponImage" destination="ziP-kI-P4t" id="I9J-gP-SXN"/>
                         <outlet property="weaponName" destination="P8X-2G-7v9" id="3I9-zp-jt4"/>
-                        <outlet property="zuru" destination="8eD-HE-4bB" id="MY5-T6-tDn"/>
                         <segue destination="PTx-3E-MZZ" kind="presentation" identifier="enemy" modalTransitionStyle="flipHorizontal" id="kPC-kk-eKK"/>
                         <segue destination="7lp-Of-Ntc" kind="presentation" identifier="boss" modalTransitionStyle="flipHorizontal" id="AfF-8r-ay0"/>
                     </connections>

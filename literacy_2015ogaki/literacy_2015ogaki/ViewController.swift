@@ -43,7 +43,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var beacon18: UIImageView!
     @IBOutlet weak var beacon19: UIImageView!
     @IBOutlet weak var beacon20: UIImageView!
-    @IBOutlet var zuru: UILabel!
+
+
     
     
     var locationManerger:CLLocationManager!
@@ -64,8 +65,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //test
-        app.player.level = 150
-        app.map = 4
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         print(String(appDelegate.player.level!) + "\n")
         appDelegate.quest.setNextQuest()
@@ -97,8 +96,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
             appDelegate.clear = true
         }
-        
-        self.zuru.text = String(appDelegate.quest.item1Position!) + String(appDelegate.quest.item2Position!) + String(appDelegate.quest.item3Position!)
         
         self.weaponName.text = appDelegate.player.weapon
         self.weaponImage.image = UIImage(named: appDelegate.player.weaponImage!)
@@ -234,13 +231,29 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        
         //フラグ
         var item = false
         if beacons.count != 0 {
-            let closeBeacon = beacons.first as CLBeacon?
+            
+            //let closeBeacon = beacons.first as CLBeacon?
+            
+            var closeBeacon = beacons.first as CLBeacon?
+            //消えないビーコンを消去
+            for be in beacons
+            {
+                if(be.accuracy > 0){
+                    closeBeacon = be as CLBeacon?
+                    break
+                }
+                
+            }
+            print(closeBeacon!.major.integerValue, "-", closeBeacon!.minor.integerValue)
+            
+            
             let newid = closeBeacon!.major.integerValue * 5 + closeBeacon!.minor.integerValue
-            if self.id != newid && (((closeBeacon!.proximity == CLProximity.Near)||(closeBeacon!.proximity == CLProximity.Immediate))) {
+            
+            //if self.id != newid && (((closeBeacon!.proximity == CLProximity.Near)||(closeBeacon!.proximity == CLProximity.Immediate))) {
+            if self.id != newid {
                 self.id = newid
                 if appDelegate.quest.item1Position == self.id {
                     item = true
@@ -344,6 +357,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
             }
         }
+       
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
