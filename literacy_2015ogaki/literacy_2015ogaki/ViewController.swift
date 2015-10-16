@@ -87,7 +87,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         autoreleasepool({ () -> () in
         
         self.locationManerger.startRangingBeaconsInRegion(self.myRegion)
-        //setmusic()
+        setmusic()
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         if appDelegate.map == 4 && appDelegate.flag && appDelegate.boss && appDelegate.player.HP != 0 {
@@ -239,7 +239,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         autoreleasepool { () -> () in
-            
+         
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //フラグ
@@ -371,7 +371,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             }
         }
         }
-       
+       sleep(2)   
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
