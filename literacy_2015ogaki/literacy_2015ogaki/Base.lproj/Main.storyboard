@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -454,7 +454,7 @@
                                 <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noItem" translatesAutoresizingMaskIntoConstraints="NO" id="aeq-Xq-lPo">
-                                <rect key="frame" x="292" y="524" width="184" height="187"/>
+                                <rect key="frame" x="292" y="673" width="184" height="187"/>
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x21-th-L8n">
@@ -487,11 +487,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noItem" translatesAutoresizingMaskIntoConstraints="NO" id="U49-yu-cUT">
-                                <rect key="frame" x="533" y="524" width="184" height="187"/>
+                                <rect key="frame" x="533" y="673" width="184" height="187"/>
                                 <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noItem" translatesAutoresizingMaskIntoConstraints="NO" id="ixO-yt-ggz">
-                                <rect key="frame" x="51" y="524" width="184" height="187"/>
+                                <rect key="frame" x="51" y="673" width="184" height="187"/>
                                 <animations/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Armor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn4-he-Cbz">
@@ -505,6 +505,18 @@
                                 <rect key="frame" x="445" y="33" width="90" height="43"/>
                                 <animations/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVC-RW-NgL">
+                                <rect key="frame" x="27" y="308" width="711" height="51"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-pC-vVZ">
+                                <rect key="frame" x="27" y="367" width="711" height="186"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -514,6 +526,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i4l-Iu-mS3"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="armorImage" destination="vef-zV-21P" id="tNa-80-bqT"/>
                         <outlet property="armorView" destination="Tn4-he-Cbz" id="KaY-4H-UJe"/>
@@ -527,6 +540,8 @@
                         <outlet property="item3" destination="U49-yu-cUT" id="hnY-BM-K47"/>
                         <outlet property="levelView" destination="0C9-YS-2Sd" id="9pZ-zo-o5U"/>
                         <outlet property="nameView" destination="Uz7-wM-bis" id="m33-kz-dTg"/>
+                        <outlet property="questText" destination="Ued-pC-vVZ" id="y91-Di-zx6"/>
+                        <outlet property="questTitle" destination="MVC-RW-NgL" id="BYO-ho-L0I"/>
                         <outlet property="weaponImage" destination="aoQ-DF-a9Q" id="Xvb-fo-9MD"/>
                         <outlet property="weaponView" destination="An8-bi-5hz" id="6rc-vO-biu"/>
                     </connections>
@@ -544,7 +559,7 @@
                         <viewControllerLayoutGuide type="bottom" id="z61-38-4gd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cAm-WZ-md2">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="battle_janken" translatesAutoresizingMaskIntoConstraints="NO" id="kSo-gQ-W9I">
@@ -662,7 +677,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Cuo-Nc-Lcn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iQV-0a-dWS">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="quiz" translatesAutoresizingMaskIntoConstraints="NO" id="KT3-YT-fPP">

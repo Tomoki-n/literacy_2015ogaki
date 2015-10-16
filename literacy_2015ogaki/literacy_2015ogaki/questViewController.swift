@@ -20,6 +20,8 @@ class questViewController: UIViewController {
     @IBOutlet weak var item1: UIImageView!
     @IBOutlet weak var item2: UIImageView!
     @IBOutlet weak var item3: UIImageView!
+    @IBOutlet weak var questTitle: UILabel!
+    @IBOutlet weak var questText: UILabel!
     
     var items:Array<Bool>?
     
@@ -35,6 +37,8 @@ class questViewController: UIViewController {
         self.armorView.text = appDelegate.player.armor
         self.armorImage.image = UIImage(named: appDelegate.player.armorImage!)
         
+        self.questTitle.text = appDelegate.quest.titleQuest
+        self.questText.text = appDelegate.quest.sentenceQuest
         self.item1.image = UIImage(named: appDelegate.quest.item1Image!)
         if appDelegate.quest.getQuestItemCounts() == 2 {
         self.item2.image = UIImage(named: appDelegate.quest.item2Image!)
