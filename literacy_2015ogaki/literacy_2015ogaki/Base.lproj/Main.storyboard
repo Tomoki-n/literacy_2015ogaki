@@ -561,7 +561,7 @@
                         <viewControllerLayoutGuide type="bottom" id="z61-38-4gd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cAm-WZ-md2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="battle_janken" translatesAutoresizingMaskIntoConstraints="NO" id="kSo-gQ-W9I">
@@ -651,6 +651,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="HP" destination="6Jc-xQ-jhd" id="MY1-Ly-gBk"/>
                         <outlet property="choki" destination="py7-i9-ziu" id="bY9-9k-7N7"/>
@@ -679,7 +680,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Cuo-Nc-Lcn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iQV-0a-dWS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="quiz" translatesAutoresizingMaskIntoConstraints="NO" id="KT3-YT-fPP">
@@ -794,6 +795,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="HP" destination="zZE-2q-fyq" id="aAO-3k-TTt"/>
                         <outlet property="enemyimage" destination="qC4-f3-Dxa" id="hsU-bC-xzf"/>
@@ -817,23 +819,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grassland" width="1536" height="1240"/>
+        <image name="Grassland" width="577" height="466"/>
         <image name="battle_janken" width="1536" height="2048"/>
         <image name="choki" width="525" height="525"/>
         <image name="gu-" width="525" height="525"/>
         <image name="hp.png" width="1500" height="150"/>
         <image name="hp_teki.png" width="141" height="130"/>
         <image name="kagi.png" width="400" height="400"/>
-        <image name="map" width="1536" height="2048"/>
+        <image name="map" width="768" height="1024"/>
         <image name="mapButton" width="1000" height="248"/>
-        <image name="nameEntry" width="1536" height="2048"/>
+        <image name="nameEntry" width="768" height="1024"/>
         <image name="noItem" width="400" height="400"/>
         <image name="pa-" width="525" height="525"/>
         <image name="questView" width="1536" height="1241"/>
         <image name="quest_button" width="1001" height="248"/>
         <image name="quiz" width="1536" height="2048"/>
-        <image name="recoveryPoint" width="400" height="400"/>
-        <image name="ringBlue" width="400" height="400"/>
-        <image name="story" width="1600" height="2048"/>
+        <image name="recoveryPoint" width="70" height="70"/>
+        <image name="ringBlue" width="70" height="70"/>
+        <image name="story" width="800" height="1024"/>
     </resources>
 </document>

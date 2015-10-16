@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "recoveryPoint.png"
+      "filename" : "recoveryPoint.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
