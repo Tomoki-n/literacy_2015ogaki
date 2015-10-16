@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "questButton.png"
+      "filename" : "questButton.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
