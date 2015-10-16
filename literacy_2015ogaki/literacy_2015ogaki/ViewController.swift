@@ -72,6 +72,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.nameView.text = appDelegate.player.name
         print(appDelegate.player.level)
         
+        appDelegate.player.level = 20
+        
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
         self.locationManerger = CLLocationManager()
@@ -82,9 +84,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        autoreleasepool({ () -> () in
         
         self.locationManerger.startRangingBeaconsInRegion(self.myRegion)
-        setmusic()
+        //setmusic()
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         if appDelegate.map == 4 && appDelegate.flag && appDelegate.boss && appDelegate.player.HP != 0 {
@@ -107,12 +110,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 appDelegate.player.level! += 5
                 self.levelView.text = String(appDelegate.player.level!)
                 appDelegate.itemFlag = false
-                drawBeacon(appDelegate.enemy.getBossPosition(), image: "ringBlue.png")
+                self.drawBeacon(appDelegate.enemy.getBossPosition(), image: "ringBlue.png")
                 if appDelegate.map != 4{
                     appDelegate.map++
                 }
-                setmusic()
+                //setmusic()
                 appDelegate.quest.setNextQuest()
+                self.map.image = nil
                 switch appDelegate.map {
                 case 1:
                     self.map.image = UIImage(named: "Coast.png")
@@ -140,7 +144,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.boss = false
         }else if appDelegate.flag && appDelegate.player.HP == 0 {
             print("死んだ¥n")
-            self.main.image = UIImage(named: "test.png")
+            self.main.image = UIImage(named: "deadMap.png")
             self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
             if appDelegate.boss {
                 self.boss = true
@@ -149,8 +153,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.boss = false
         }
 
-        refreshItemPosition()
-        drawhp()
+        self.refreshItemPosition()
+        self.drawEffectonBeacon(self.id)
+            self.drawhp()
+        })
+    }
+    
+    deinit {
+        print("ViewController")
     }
     
     override func didReceiveMemoryWarning() {
@@ -228,6 +238,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        autoreleasepool { () -> () in
+            
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //フラグ
@@ -246,7 +258,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
                 
             }
-            print(closeBeacon!.major.integerValue, "-", closeBeacon!.minor.integerValue)
+            //print(closeBeacon!.major.integerValue, "-", closeBeacon!.minor.integerValue)
             
             
             let newid = closeBeacon!.major.integerValue * 5 + closeBeacon!.minor.integerValue
@@ -272,9 +284,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                     //回復
                     var recovery = UIAlertController(title: "体力が回復した！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     recovery.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                        self.bgm1.ids(10)
-                        self.bgm1.start()
+                        //self.bgm1.ids(10)
+                        //self.bgm1.start()
                         if appDelegate.player.HP == 0 {
+                            self.map.image = nil
                             switch appDelegate.map {
                             case 0:
                                 self.map.image = UIImage(named: "Grassland.png")
@@ -293,7 +306,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                             default:
                                 break
                             }
-                            self.main.image = UIImage(named: "マップ(70下げ).png")
+                            self.main.image = UIImage(named: "map.png")
                             appDelegate.player.HP? = 5
                               self.drawhp()
                         }else{
@@ -357,6 +370,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 }
             }
         }
+        }
        
     }
 
@@ -367,16 +381,16 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             //enemyViewに渡す値の設定
             bgm.ids(15)
             bgm.start()
-            var eVC = segue.destinationViewController as! jyankenViewController
+            //var eVC = segue.destinationViewController as! jyankenViewController
         }else if segue.identifier == "boss" {
             bgm.ids(15)
             bgm.start()
             //bossViewに渡す値の設定
-            var bVC = segue.destinationViewController as! BossViewController
+            //var bVC = segue.destinationViewController as! BossViewController
             var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.boss = true
         }else if segue.identifier == "quest" {
-            var qVC = segue.destinationViewController as! questViewController
+            //var qVC = segue.destinationViewController as! questViewController
         }
     }
     

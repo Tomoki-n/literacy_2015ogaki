@@ -16,8 +16,8 @@ class BossViewController : UIViewController {
     var app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     var phase:Int = 0
-    let bgm = Sound()
-    let bgm1 = Sound()
+    //let bgm = Sound()
+    //let bgm1 = Sound()
     
     var map:Int = 4  //0,1,2,3,4
     //var map:String = "Grassland" //Grassland,Coast,Forest,Desert,Devil
@@ -43,6 +43,8 @@ class BossViewController : UIViewController {
     var ans:[String] = []
     var count :Int = 0
     var chks:Int = 0
+    
+    var flag:Bool = false
     
     @IBAction func b1(sender: AnyObject) {
         
@@ -75,10 +77,14 @@ class BossViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        bgm.ids(1)
-        bgm.vol(0.5)
-        bgm.infstart()
+        //bgm.ids(1)
+        //bgm.vol(0.5)
+        //bgm.infstart()
         setaparam()
+        
+        if self.flag {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func setaparam(){
@@ -147,16 +153,16 @@ class BossViewController : UIViewController {
         if (chk == Int(ans[count]) && chk < 4){
             
             self.gametext.text = "正解です"
-            bgm1.ids(14)
-            bgm1.start()
+            //bgm1.ids(14)
+            //bgm1.start()
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: false)
             
             count++
             chks++
             if(chks == 3){
                 //画面遷移
-                bgm1.ids(3)
-                bgm1.start()
+                //bgm1.ids(3)
+                //bgm1.start()
                
                     NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false)
                 
@@ -174,8 +180,8 @@ class BossViewController : UIViewController {
         else{
             self.gametext.text = "不正解です"
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: false)
-            bgm1.ids(2)
-            bgm1.start()
+            //bgm1.ids(2)
+            //bgm1.start()
             
             
             player.HP!--
@@ -205,7 +211,7 @@ class BossViewController : UIViewController {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.flag = true
         appDelegate.boss = true
-        bgm.stop()
+        //bgm.stop()
         if player.HP != 0 {
             self.performSegueWithIdentifier("story", sender: self)
             print(1)
@@ -271,8 +277,12 @@ class BossViewController : UIViewController {
         print(232)
         if segue.identifier == "story" {
             print(12324)
-            var sVC = segue.destinationViewController as! storyViewController
+            self.flag = true
         }
+    }
+    
+    deinit {
+        print("bossViewController")
     }
     
 }

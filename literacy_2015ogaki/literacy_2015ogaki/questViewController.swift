@@ -98,6 +98,10 @@ class questViewController: UIViewController {
         drawhp()
 
     }
+    
+    deinit {
+        print("questViewController")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

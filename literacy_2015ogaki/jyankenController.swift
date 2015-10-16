@@ -20,8 +20,8 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
     var n:UInt32!
     var count:UInt32 = 0
     var te:UInt32 = 0
-    let bgm = Sound()
-    let bgm1 = Sound()
+    //let bgm = Sound()
+    //let bgm1 = Sound()
     //現在マップ
     var map:Int = 0  //0,1,2,3,4
     //var map:String = "Grassland" //Grassland,Coast,Forest,Desert,Devil
@@ -87,8 +87,8 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
         btnno()
         
         
-        bgm.ids(0)
-        bgm.infstart()
+        //bgm.ids(0)
+        //bgm.infstart()
         
         start()
                
@@ -200,8 +200,8 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             
             self.gametext.text = str
             btnno()
-            bgm1.ids(12)
-            bgm1.start()
+            //bgm1.ids(12)
+            //bgm1.start()
             NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
             break
         case -1:
@@ -209,14 +209,14 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             count++
             self.gametext.text = str
             btnno()
-            bgm1.ids(12)
-            bgm1.start()
+            //bgm1.ids(12)
+            //bgm1.start()
             
             player.HP! -= 1
             drawhp()
             if player.HP == 0{
-                bgm1.ids(11)
-                bgm1.start()
+                //bgm1.ids(11)
+                //bgm1.start()
                 NSTimer.scheduledTimerWithTimeInterval(1.1, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false);
 
                 //HPがゼロ
@@ -251,6 +251,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
         app.enemy = enemy
         app.quest = quest
         app.flag = true
+        
         self.dismissViewControllerAnimated(true, completion: nil)
         
 
@@ -369,6 +370,10 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
         
         }
         */
+    }
+    
+    deinit {
+        print("jyankenViewController")
     }
     
    }

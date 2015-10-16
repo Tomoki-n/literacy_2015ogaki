@@ -81,13 +81,13 @@ class storyViewController:UIViewController {
     
     
     @IBAction func re(sender: AnyObject) {
-        self.performSegueWithIdentifier("main", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        //self.performSegueWithIdentifier("main", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "main" {
-            var mVC = segue.destinationViewController as! ViewController
-        }
+    deinit {
+        print("storyViewController")
     }
+    
     
 }
