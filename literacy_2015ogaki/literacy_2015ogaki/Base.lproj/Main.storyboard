@@ -184,7 +184,7 @@
                                     <constraint firstAttribute="width" secondItem="CZ0-Rd-uRf" secondAttribute="height" multiplier="4:1" id="eP9-rQ-J1l"/>
                                     <constraint firstAttribute="height" constant="100" id="kU1-sM-Btm"/>
                                 </constraints>
-                                <state key="normal" image="quest_button">
+                                <state key="normal" image="questButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -831,8 +831,8 @@
         <image name="nameEntry" width="768" height="1024"/>
         <image name="noItem" width="400" height="400"/>
         <image name="pa-" width="525" height="525"/>
+        <image name="questButton" width="404" height="100"/>
         <image name="questView" width="1536" height="1241"/>
-        <image name="quest_button" width="1001" height="248"/>
         <image name="quiz" width="1536" height="2048"/>
         <image name="recoveryPoint" width="70" height="70"/>
         <image name="ringBlue" width="70" height="70"/>

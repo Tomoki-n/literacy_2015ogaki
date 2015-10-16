@@ -371,7 +371,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             }
         }
         }
-       sleep(2)   
+
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
