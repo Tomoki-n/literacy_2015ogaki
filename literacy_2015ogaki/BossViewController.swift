@@ -158,7 +158,7 @@ class BossViewController : UIViewController {
                 bgm1.ids(3)
                 bgm1.start()
                
-                    NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false)
+                    NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: Selector("returnv:"), userInfo: nil, repeats: false)
                 
             }
             else{

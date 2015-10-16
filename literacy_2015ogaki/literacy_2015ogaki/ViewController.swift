@@ -78,7 +78,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.locationManerger.delegate = self
         self.locationManerger.requestWhenInUseAuthorization()
         kagi.enabled = false
-        kagi.imageView?.image = UIImage(named: "nokagi.png")
         
     }
     
