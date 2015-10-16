@@ -9,8 +9,10 @@
 import UIKit
 import CoreLocation
 import AVFoundation
+import CoreBluetooth
 
-class ViewController: UIViewController,CLLocationManagerDelegate {
+
+class ViewController: UIViewController,CLLocationManagerDelegate , CBPeripheralManagerDelegate {
     
     @IBOutlet weak var levelView: UILabel!
     @IBOutlet weak var nameView: UILabel!
@@ -45,6 +47,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var beacon20: UIImageView!
 
 
+    var peripheralManager: CBPeripheralManager!
     
     
     var locationManerger:CLLocationManager!
@@ -80,6 +83,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.locationManerger.delegate = self
         self.locationManerger.requestWhenInUseAuthorization()
         kagi.enabled = false
+        
+        self.peripheralManager = CBPeripheralManager(
+            delegate: self,
+            queue: nil,
+            options: nil)
         
     }
     
@@ -673,7 +681,74 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
+    //テスト
     
+    @IBAction func save(sender: AnyObject) {
+        
+        
+        if (!self.peripheralManager.isAdvertising) {
+            
+            self.startAdvertise()
+        }
+        else {
+            self.stopAdvertise()
+            self.startAdvertise()
+        }
 
+     
+        
+    }
+    
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
+        
+        print("state: \(peripheral.state)")
+        
+        switch peripheral.state {
+            
+        case CBPeripheralManagerState.PoweredOn:
+            // アドバタイズ開始
+      //      self.startAdvertise()
+            break
+            
+        default:
+            break
+        }
+    }
+    
+    // アドバタイズ開始処理が完了すると呼ばれる
+    func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?) {
+        
+        if (error != nil) {
+            print("アドバタイズ開始失敗！ error: \(error)")
+            return
+        }
+        
+        print("アドバタイズ開始成功！")
+    }
+    
+    
+    func startAdvertise() {
+        
+        // アドバタイズメントデータを作成する
+        
+        var text = String(app.map) + String(app.player.level!) + String(app.player.name!)
+        
+        let advertisementData = [CBAdvertisementDataLocalNameKey:text]
+        
+        // アドバタイズ開始
+        self.peripheralManager.startAdvertising(advertisementData)
+        
+           }
+    
+    func stopAdvertise () {
+        
+        // アドバタイズ停止
+        self.peripheralManager.stopAdvertising()
+        
+        
+    }
+    
+    
+    
 }
 

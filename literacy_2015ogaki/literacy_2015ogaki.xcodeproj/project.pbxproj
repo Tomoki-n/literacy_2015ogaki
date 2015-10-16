@@ -53,6 +53,7 @@
 		FA9B7D791BA66D05003DB632 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9B7D781BA66D05003DB632 /* Images.xcassets */; };
 		FA9B7D7C1BA66D05003DB632 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9B7D7A1BA66D05003DB632 /* LaunchScreen.xib */; };
 		FA9B7D881BA66D05003DB632 /* literacy_2015ogakiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D871BA66D05003DB632 /* literacy_2015ogakiTests.swift */; };
+		FADCA21E1BD1577A00FC325F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADCA21D1BD1577A00FC325F /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		FA9B7D811BA66D05003DB632 /* literacy_2015ogakiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = literacy_2015ogakiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9B7D861BA66D05003DB632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9B7D871BA66D05003DB632 /* literacy_2015ogakiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = literacy_2015ogakiTests.swift; sourceTree = "<group>"; };
+		FADCA21D1BD1577A00FC325F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FADCA21E1BD1577A00FC325F /* CoreBluetooth.framework in Frameworks */,
 				C06895811BCCEAFE000F8BD1 /* AVFoundation.framework in Frameworks */,
 				C06895871BCCEE67000F8BD1 /* AudioToolbox.framework in Frameworks */,
 				C0DD12031BB3EDF30078B4C5 /* CoreLocation.framework in Frameworks */,
@@ -143,6 +146,7 @@
 		FA9B7D601BA66D05003DB632 = {
 			isa = PBXGroup;
 			children = (
+				FADCA21D1BD1577A00FC325F /* CoreBluetooth.framework */,
 				C06895861BCCEE67000F8BD1 /* AudioToolbox.framework */,
 				C06895801BCCEAFE000F8BD1 /* AVFoundation.framework */,
 				C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */,
@@ -511,7 +515,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = literacy_2015ogaki/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.ac.gifu-nct.elec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -527,7 +531,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = literacy_2015ogaki/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.ac.gifu-nct.elec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
