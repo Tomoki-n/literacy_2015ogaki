@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -246,7 +246,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z92-rp-qy2">
                                 <rect key="frame" x="648" y="904" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button" image="nokagi.png"/>
                                 <connections>
                                     <action selector="viewkagi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2bN-As-KYE"/>
                                     <segue destination="6yE-U6-9V8" kind="show" id="gHq-mP-pds"/>
@@ -292,6 +291,7 @@
                         <outlet property="kagi" destination="Z92-rp-qy2" id="JJc-l5-U4H"/>
                         <outlet property="levelView" destination="wGe-8q-Xb7" id="dDU-fl-lgZ"/>
                         <outlet property="main" destination="hOy-NO-TCg" id="Rot-sy-TXT"/>
+                        <outlet property="map" destination="TdJ-HE-atF" id="mPk-xP-Js0"/>
                         <outlet property="nameView" destination="hNP-Ky-5Hu" id="9DI-gX-H0O"/>
                         <outlet property="weaponImage" destination="ziP-kI-P4t" id="I9J-gP-SXN"/>
                         <outlet property="weaponName" destination="P8X-2G-7v9" id="3I9-zp-jt4"/>
@@ -507,12 +507,14 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVC-RW-NgL">
                                 <rect key="frame" x="27" y="308" width="711" height="51"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-pC-vVZ">
                                 <rect key="frame" x="27" y="367" width="711" height="186"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -825,7 +827,6 @@
         <image name="mapButton" width="1000" height="248"/>
         <image name="nameEntry" width="1536" height="2048"/>
         <image name="noItem" width="400" height="400"/>
-        <image name="nokagi.png" width="400" height="400"/>
         <image name="pa-" width="525" height="525"/>
         <image name="questView" width="1536" height="1241"/>
         <image name="quest_button" width="1001" height="248"/>

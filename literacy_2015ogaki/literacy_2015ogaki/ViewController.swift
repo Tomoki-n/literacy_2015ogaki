@@ -141,7 +141,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.boss = false
         }else if appDelegate.flag && appDelegate.player.HP == 0 {
             print("死んだ¥n")
-            self.main.image = UIImage(named: "死亡メイン(70下げ).png")
+            self.main.image = UIImage(named: "test.png")
             self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
             if appDelegate.boss {
                 self.boss = true
@@ -252,8 +252,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             
             let newid = closeBeacon!.major.integerValue * 5 + closeBeacon!.minor.integerValue
             
-            //if self.id != newid && (((closeBeacon!.proximity == CLProximity.Near)||(closeBeacon!.proximity == CLProximity.Immediate))) {
-            if self.id != newid {
+            if self.id != newid && (((closeBeacon!.proximity == CLProximity.Near)||(closeBeacon!.proximity == CLProximity.Immediate))) {
+            
+                //if self.id != newid {
                 self.id = newid
                 if appDelegate.quest.item1Position == self.id {
                     item = true

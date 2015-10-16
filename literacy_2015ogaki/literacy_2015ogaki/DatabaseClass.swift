@@ -419,6 +419,7 @@ class questClass{
     
     func getGrayMap() -> String{
         var pass:String = getsMap() + "_Gray.png"
+        print(pass)
         return pass
     }
     

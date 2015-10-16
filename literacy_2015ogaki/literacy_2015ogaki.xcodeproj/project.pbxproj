@@ -35,7 +35,7 @@
 		C0CFA76F1BCC15450086F7D1 /* question.json in Resources */ = {isa = PBXBuildFile; fileRef = C0CFA76E1BCC15450086F7D1 /* question.json */; settings = {ASSET_TAGS = (); }; };
 		C0DD12031BB3EDF30078B4C5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */; };
 		C0DFDD641BC2C38E000444A3 /* questViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFDD631BC2C38E000444A3 /* questViewController.swift */; };
-		FA5A37C81BCE3D650008C7D6 /* 死亡メイン(70下げ).png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */; settings = {ASSET_TAGS = (); }; };
+		FA5A37C81BCE3D650008C7D6 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C71BCE3D650008C7D6 /* test.png */; settings = {ASSET_TAGS = (); }; };
 		FA5A37CC1BCF7AC60008C7D6 /* kagi.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37CB1BCF7AC60008C7D6 /* kagi.png */; settings = {ASSET_TAGS = (); }; };
 		FA5A37CE1BCF7C2A0008C7D6 /* nokagi.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37CD1BCF7C2A0008C7D6 /* nokagi.png */; settings = {ASSET_TAGS = (); }; };
 		FA5A37D01BCF7E310008C7D6 /* 回復　ふきだしあり.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37CF1BCF7E310008C7D6 /* 回復　ふきだしあり.png */; settings = {ASSET_TAGS = (); }; };
@@ -95,7 +95,7 @@
 		C0CFA76E1BCC15450086F7D1 /* question.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question.json; sourceTree = "<group>"; };
 		C0DD12021BB3EDF30078B4C5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0DFDD631BC2C38E000444A3 /* questViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questViewController.swift; sourceTree = "<group>"; };
-		FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "死亡メイン(70下げ).png"; sourceTree = "<group>"; };
+		FA5A37C71BCE3D650008C7D6 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		FA5A37CB1BCF7AC60008C7D6 /* kagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kagi.png; sourceTree = "<group>"; };
 		FA5A37CD1BCF7C2A0008C7D6 /* nokagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nokagi.png; sourceTree = "<group>"; };
 		FA5A37CF1BCF7E310008C7D6 /* 回復　ふきだしあり.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "回復　ふきだしあり.png"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 			children = (
 				FA5A37CD1BCF7C2A0008C7D6 /* nokagi.png */,
 				FA5A37CB1BCF7AC60008C7D6 /* kagi.png */,
-				FA5A37C71BCE3D650008C7D6 /* 死亡メイン(70下げ).png */,
+				FA5A37C71BCE3D650008C7D6 /* test.png */,
 				FA939DA41BCD4EFD00BA04D2 /* マップ(50下げ).png */,
 				FA939DA51BCD4EFD00BA04D2 /* マップ(60下げ).png */,
 				FA939DA61BCD4EFD00BA04D2 /* マップ(70下げ).png */,
@@ -287,7 +287,7 @@
 				TargetAttributes = {
 					FA9B7D681BA66D05003DB632 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = SQ74G58HZQ;
+						DevelopmentTeam = 8589MH68KB;
 					};
 					FA9B7D801BA66D05003DB632 = {
 						CreatedOnToolsVersion = 6.4;
@@ -320,7 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02B24091BCCEFA900785E68 /* battle.mp3 in Resources */,
-				FA5A37C81BCE3D650008C7D6 /* 死亡メイン(70下げ).png in Resources */,
+				FA5A37C81BCE3D650008C7D6 /* test.png in Resources */,
 				C02B240A1BCCEFA900785E68 /* bossbattle.mp3 in Resources */,
 				FA7DF9001BCE186000969853 /* hp_mikata.png in Resources */,
 				C02B240B1BCCEFA900785E68 /* bubu.mp3 in Resources */,
