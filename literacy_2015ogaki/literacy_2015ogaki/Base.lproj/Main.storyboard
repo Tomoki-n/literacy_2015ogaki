@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HR7-Dg-CMZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -458,7 +458,7 @@
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x21-th-L8n">
-                                <rect key="frame" x="134" y="904" width="500" height="100"/>
+                                <rect key="frame" x="183" y="904" width="403" height="100"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="Iuh-9z-cm6"/>
@@ -466,12 +466,14 @@
                                     <constraint firstAttribute="height" constant="100" id="UeO-am-DwB"/>
                                     <constraint firstAttribute="width" secondItem="x21-th-L8n" secondAttribute="height" multiplier="4:1" id="gFA-7s-fmv"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="mapButton">
+                                <state key="normal" image="mapButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="Iuh-9z-cm6"/>
                                         <exclude reference="O5x-PX-jSL"/>
+                                        <exclude reference="UeO-am-DwB"/>
                                         <exclude reference="gFA-7s-fmv"/>
                                     </mask>
                                 </variation>
@@ -583,7 +585,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zv-ia-sIx">
                                 <rect key="frame" x="548" y="804" width="200" height="200"/>
                                 <animations/>
-                                <state key="normal" backgroundImage="pa-"/>
+                                <state key="normal" backgroundImage="pa-0"/>
                                 <connections>
                                     <action selector="pushpa:" destination="PTx-3E-MZZ" eventType="touchUpInside" id="VgQ-sK-P28"/>
                                 </connections>
@@ -591,7 +593,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPU-R3-gm4" userLabel="Gu">
                                 <rect key="frame" x="20" y="804" width="200" height="200"/>
                                 <animations/>
-                                <state key="normal" backgroundImage="gu-"/>
+                                <state key="normal" backgroundImage="gu-0"/>
                                 <connections>
                                     <action selector="pushgu:" destination="PTx-3E-MZZ" eventType="touchUpInside" id="mvh-J0-XTC"/>
                                 </connections>
@@ -820,19 +822,19 @@
     </scenes>
     <resources>
         <image name="Grassland" width="577" height="466"/>
-        <image name="battle_janken" width="1536" height="2048"/>
-        <image name="choki" width="525" height="525"/>
-        <image name="gu-" width="525" height="525"/>
+        <image name="battle_janken" width="1024" height="1365"/>
+        <image name="choki" width="200" height="200"/>
+        <image name="gu-0" width="200" height="200"/>
         <image name="hp.png" width="1500" height="150"/>
         <image name="hp_teki.png" width="141" height="130"/>
         <image name="kagi.png" width="400" height="400"/>
         <image name="map" width="768" height="1024"/>
-        <image name="mapButton" width="1000" height="248"/>
+        <image name="mapButton" width="403" height="100"/>
         <image name="nameEntry" width="768" height="1024"/>
         <image name="noItem" width="400" height="400"/>
-        <image name="pa-" width="525" height="525"/>
+        <image name="pa-0" width="200" height="200"/>
         <image name="questButton" width="404" height="100"/>
-        <image name="questView" width="1536" height="1241"/>
+        <image name="questView" width="745" height="602"/>
         <image name="quiz" width="1536" height="2048"/>
         <image name="recoveryPoint" width="70" height="70"/>
         <image name="ringBlue" width="70" height="70"/>

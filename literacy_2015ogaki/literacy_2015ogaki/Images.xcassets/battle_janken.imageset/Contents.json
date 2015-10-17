@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "battle_janken.png"
+      "filename" : "battle_janken.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

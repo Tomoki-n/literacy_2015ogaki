@@ -38,14 +38,10 @@
 		FA5A37C81BCE3D650008C7D6 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37C71BCE3D650008C7D6 /* test.png */; settings = {ASSET_TAGS = (); }; };
 		FA5A37CC1BCF7AC60008C7D6 /* kagi.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37CB1BCF7AC60008C7D6 /* kagi.png */; settings = {ASSET_TAGS = (); }; };
 		FA5A37CE1BCF7C2A0008C7D6 /* nokagi.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37CD1BCF7C2A0008C7D6 /* nokagi.png */; settings = {ASSET_TAGS = (); }; };
-		FA5A37D01BCF7E310008C7D6 /* 回復　ふきだしあり.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A37CF1BCF7E310008C7D6 /* 回復　ふきだしあり.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF8FB1BCE14A800969853 /* hp_teki.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8F81BCE14A800969853 /* hp_teki.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF8FE1BCE162D00969853 /* hp.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8FD1BCE162D00969853 /* hp.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF9001BCE186000969853 /* hp_mikata.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7DF8FF1BCE186000969853 /* hp_mikata.png */; settings = {ASSET_TAGS = (); }; };
 		FA7DF9021BCE314E00969853 /* input.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DF9011BCE314E00969853 /* input.swift */; settings = {ASSET_TAGS = (); }; };
-		FA939DA71BCD4EFD00BA04D2 /* マップ(50下げ).png in Resources */ = {isa = PBXBuildFile; fileRef = FA939DA41BCD4EFD00BA04D2 /* マップ(50下げ).png */; settings = {ASSET_TAGS = (); }; };
-		FA939DA81BCD4EFD00BA04D2 /* マップ(60下げ).png in Resources */ = {isa = PBXBuildFile; fileRef = FA939DA51BCD4EFD00BA04D2 /* マップ(60下げ).png */; settings = {ASSET_TAGS = (); }; };
-		FA939DA91BCD4EFD00BA04D2 /* マップ(70下げ).png in Resources */ = {isa = PBXBuildFile; fileRef = FA939DA61BCD4EFD00BA04D2 /* マップ(70下げ).png */; settings = {ASSET_TAGS = (); }; };
 		FA9B7D6F1BA66D05003DB632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */; };
 		FA9B7D721BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D701BA66D05003DB632 /* literacy_2015ogaki.xcdatamodeld */; };
 		FA9B7D741BA66D05003DB632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B7D731BA66D05003DB632 /* ViewController.swift */; };
@@ -98,14 +94,10 @@
 		FA5A37C71BCE3D650008C7D6 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		FA5A37CB1BCF7AC60008C7D6 /* kagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kagi.png; sourceTree = "<group>"; };
 		FA5A37CD1BCF7C2A0008C7D6 /* nokagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nokagi.png; sourceTree = "<group>"; };
-		FA5A37CF1BCF7E310008C7D6 /* 回復　ふきだしあり.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "回復　ふきだしあり.png"; sourceTree = "<group>"; };
 		FA7DF8F81BCE14A800969853 /* hp_teki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_teki.png; sourceTree = "<group>"; };
 		FA7DF8FD1BCE162D00969853 /* hp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.png; sourceTree = "<group>"; };
 		FA7DF8FF1BCE186000969853 /* hp_mikata.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_mikata.png; sourceTree = "<group>"; };
 		FA7DF9011BCE314E00969853 /* input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = input.swift; sourceTree = "<group>"; };
-		FA939DA41BCD4EFD00BA04D2 /* マップ(50下げ).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "マップ(50下げ).png"; sourceTree = "<group>"; };
-		FA939DA51BCD4EFD00BA04D2 /* マップ(60下げ).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "マップ(60下げ).png"; sourceTree = "<group>"; };
-		FA939DA61BCD4EFD00BA04D2 /* マップ(70下げ).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "マップ(70下げ).png"; sourceTree = "<group>"; };
 		FA9B7D691BA66D05003DB632 /* literacy_2015ogaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = literacy_2015ogaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9B7D6D1BA66D05003DB632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9B7D6E1BA66D05003DB632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,11 +160,7 @@
 				FA5A37CD1BCF7C2A0008C7D6 /* nokagi.png */,
 				FA5A37CB1BCF7AC60008C7D6 /* kagi.png */,
 				FA5A37C71BCE3D650008C7D6 /* test.png */,
-				FA939DA41BCD4EFD00BA04D2 /* マップ(50下げ).png */,
-				FA939DA51BCD4EFD00BA04D2 /* マップ(60下げ).png */,
-				FA939DA61BCD4EFD00BA04D2 /* マップ(70下げ).png */,
 				FA7DF8FF1BCE186000969853 /* hp_mikata.png */,
-				FA5A37CF1BCF7E310008C7D6 /* 回復　ふきだしあり.png */,
 				FA7DF8F81BCE14A800969853 /* hp_teki.png */,
 				FA7DF8FD1BCE162D00969853 /* hp.png */,
 				C06895881BCCEEF6000F8BD1 /* battle.mp3 */,
@@ -287,7 +275,7 @@
 				TargetAttributes = {
 					FA9B7D681BA66D05003DB632 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8589MH68KB;
+						DevelopmentTeam = SQ74G58HZQ;
 					};
 					FA9B7D801BA66D05003DB632 = {
 						CreatedOnToolsVersion = 6.4;
@@ -327,9 +315,6 @@
 				C02B240C1BCCEFA900785E68 /* claer.mp3 in Resources */,
 				C02B240D1BCCEFA900785E68 /* deru.mp3 in Resources */,
 				C02B240E1BCCEFA900785E68 /* field_ido.mp3 in Resources */,
-				FA5A37D01BCF7E310008C7D6 /* 回復　ふきだしあり.png in Resources */,
-				FA939DA81BCD4EFD00BA04D2 /* マップ(60下げ).png in Resources */,
-				FA939DA91BCD4EFD00BA04D2 /* マップ(70下げ).png in Resources */,
 				FA7DF8FE1BCE162D00969853 /* hp.png in Resources */,
 				FA5A37CC1BCF7AC60008C7D6 /* kagi.png in Resources */,
 				C02B240F1BCCEFA900785E68 /* field_kaigan.mp3 in Resources */,
@@ -341,7 +326,6 @@
 				C02B24151BCCEFA900785E68 /* make.mp3 in Resources */,
 				C02B24161BCCEFA900785E68 /* panti.mp3 in Resources */,
 				C02B24171BCCEFA900785E68 /* seikai.mp3 in Resources */,
-				FA939DA71BCD4EFD00BA04D2 /* マップ(50下げ).png in Resources */,
 				FA5A37CE1BCF7C2A0008C7D6 /* nokagi.png in Resources */,
 				C02B24181BCCEFA900785E68 /* seikai2.mp3 in Resources */,
 				C02B24191BCCEFA900785E68 /* syutugen.mp3 in Resources */,

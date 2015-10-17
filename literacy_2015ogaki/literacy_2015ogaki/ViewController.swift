@@ -72,8 +72,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.nameView.text = appDelegate.player.name
         print(appDelegate.player.level)
         
-        appDelegate.player.level = 20
-        
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
         self.locationManerger = CLLocationManager()
