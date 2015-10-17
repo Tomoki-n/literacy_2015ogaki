@@ -72,6 +72,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.nameView.text = appDelegate.player.name
         print(appDelegate.player.level)
         
+        appDelegate.player.level = 150
+        appDelegate.map = 4
+        
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
         self.locationManerger = CLLocationManager()
@@ -91,7 +94,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         if appDelegate.map == 4 && appDelegate.flag && appDelegate.boss && appDelegate.player.HP != 0 {
             kagi.enabled = true
             kagi.imageView?.image = UIImage(named: "kagi.png")
-            var alert =  UIAlertController(title:"おしまい", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            var alert =  UIAlertController(title:"おしまい", message: "回復の泉に戻ろう！", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             appDelegate.clear = true
