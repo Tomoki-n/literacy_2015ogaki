@@ -184,7 +184,7 @@ class BossViewController : UIViewController {
             bgm1.start()
             
             
-            player.HP!--
+            player.HP! -= 3
             drawhp()
             self.HP.text = "HP:" + String(player.HP! * player.level!) + "/" + String(player.level! * 5)
             

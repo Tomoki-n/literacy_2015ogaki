@@ -159,7 +159,7 @@ class jyankenViewController: UIViewController, AVAudioPlayerDelegate {
             // あいこ
             res = 0
             
-            // setenemyhand(data)
+             setenemyhand(data)
             
         }else{
             switch(data){

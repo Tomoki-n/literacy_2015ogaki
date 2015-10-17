@@ -112,7 +112,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 if appDelegate.map != 4{
                     appDelegate.map++
                 }
-                //setmusic()
+                setmusic()
                 appDelegate.quest.setNextQuest()
                 self.map.image = nil
                 switch appDelegate.map {
@@ -142,6 +142,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.boss = false
         }else if appDelegate.flag && appDelegate.player.HP == 0 {
             print("死んだ¥n")
+            var alert =  UIAlertController(title:"やられてしまった！", message: "回復の泉へ行って体力を回復しよう！", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
             self.main.image = UIImage(named: "deadMap.png")
             self.map.image = UIImage(named: appDelegate.quest.getGrayMap())
             if appDelegate.boss {
@@ -150,11 +153,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             appDelegate.flag = false
             appDelegate.boss = false
         }
-
-        self.refreshItemPosition()
-        self.drawEffectonBeacon(self.id)
             self.drawhp()
         })
+        self.refreshItemPosition()
+        self.drawBeacon(self.id, image: "ringYellow.png")
     }
     
     deinit {
@@ -261,9 +263,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             
             let newid = closeBeacon!.major.integerValue * 5 + closeBeacon!.minor.integerValue
             
-            if self.id != newid && (((closeBeacon!.proximity == CLProximity.Near)||(closeBeacon!.proximity == CLProximity.Immediate))) {
+            //if self.id != newid && (((closeBeacon!.proximity == CLProximity.Near)||(closeBeacon!.proximity == CLProximity.Immediate))) {
             
-                //if self.id != newid {
+                if self.id != newid {
                 self.id = newid
                 if appDelegate.quest.item1Position == self.id {
                     item = true
@@ -282,8 +284,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                     //回復
                     var recovery = UIAlertController(title: "体力が回復した！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     recovery.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                        //self.bgm1.ids(10)
-                        //self.bgm1.start()
+                        self.bgm1.ids(10)
+                        self.bgm1.start()
                         if appDelegate.player.HP == 0 {
                             self.map.image = nil
                             switch appDelegate.map {
@@ -310,6 +312,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                         }else{
                             appDelegate.player.HP? = 5
                         }
+                        self.drawhp()
                     }))
                     self.presentViewController(recovery, animated: true, completion: nil)
                 }else if self.boss && self.id == appDelegate.enemy.getBossPosition() && appDelegate.player.HP != 0 && !appDelegate.clear {
@@ -319,7 +322,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                         self.performSegueWithIdentifier("boss", sender: self)
                     }))
                     self.presentViewController(alert, animated: true, completion: nil)
-                }else if !self.boss && appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 30 && !appDelegate.clear {
+                }else if !self.boss && appDelegate.quest.getMapQuestFinished() && appDelegate.player.level >= (appDelegate.map + 1) * 20 && !appDelegate.clear {
                     //ボス表示
                     var alert = UIAlertController(title: "強敵が現れた！", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
