@@ -95,7 +95,25 @@ class BossViewController : UIViewController {
         map = app.map
         //敵画像を入れる
         enemy.setBoss()
-        enemyimage.image = UIImage(named: enemy.Image!)
+        switch app.map {
+        case 0:
+            enemyimage.image = UIImage(named: "GrasslandBoss.png")
+            break
+        case 1:
+            enemyimage.image = UIImage(named: "CoastBoss.png")
+            break
+        case 2:
+            enemyimage.image = UIImage(named: "ForestBoss.png")
+            break
+        case 3:
+            enemyimage.image = UIImage(named: "DesertBoss.png")
+            break
+        case 4:
+            enemyimage.image = UIImage(named: "DevilBoss.png")
+            break
+        default:
+            break
+        }
         count = map * 3
         
         //敵の名前の表示
@@ -212,10 +230,15 @@ class BossViewController : UIViewController {
         appDelegate.flag = true
         appDelegate.boss = true
         bgm.stop()
-        if player.HP != 0 {
+        
+        if player.HP != 0 && app.map == 4{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else if player.HP != 0 {
             self.performSegueWithIdentifier("story", sender: self)
             print(1)
-        }else{
+        }
+        else{
             self.dismissViewControllerAnimated(true, completion: nil)
             print(222)
         }

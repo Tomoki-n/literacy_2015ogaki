@@ -72,15 +72,34 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.nameView.text = appDelegate.player.name
         print(appDelegate.player.level)
         
-        appDelegate.player.level = 150
-        appDelegate.map = 4
-        
         self.myUUID = NSUUID(UUIDString: "00000000-88F6-1001-B000-001C4D2D20E6")
         self.myRegion = CLBeaconRegion(proximityUUID: self.myUUID, identifier: self.myUUID.UUIDString)
         self.locationManerger = CLLocationManager()
         self.locationManerger.delegate = self
         self.locationManerger.requestWhenInUseAuthorization()
         kagi.enabled = false
+        
+        appDelegate.quest.setNextQuest()
+        self.map.image = nil
+        switch appDelegate.map {
+        case 0:
+            self.map.image = UIImage(named: "Grassland.png")
+            break
+        case 1:
+            self.map.image = UIImage(named: "Coast.png")
+            break
+        case 2:
+            self.map.image = UIImage(named: "Forest.png")
+            break
+        case 3:
+            self.map.image = UIImage(named: "Desert.png")
+            break
+        case 4:
+            self.map.image = UIImage(named: "Devil.png")
+            break
+        default:
+            break
+        }
         
     }
     
@@ -93,6 +112,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         if appDelegate.map == 4 && appDelegate.flag && appDelegate.boss && appDelegate.player.HP != 0 {
             kagi.enabled = true
+            kagi.backgroundColor = UIColor.grayColor()
             kagi.imageView?.image = UIImage(named: "kagi.png")
             var alert =  UIAlertController(title:"おしまい", message: "回復の泉に戻ろう！", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
